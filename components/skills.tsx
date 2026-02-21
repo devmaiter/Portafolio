@@ -1,229 +1,305 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { motion } from "framer-motion"
-import { Code2, Shield, Terminal, Cpu, Database, Globe, Box, Layers, PenTool } from "lucide-react"
-import { useProfile, useLanguage } from '@/app/providers'
-import { portfolioData } from '@/lib/data'
+import { useEffect, useState, useRef } from "react"
+import { CircuitBackground } from "@/components/circuit-background"
+import { SkillCard } from "@/components/skill-card"
+import { Code2, Server, Wrench, Shield, Music } from "lucide-react"
+import {
+  ReactIcon, NextjsIcon, TailwindIcon, Html5Icon, TypeScriptIcon, Css3Icon,
+  NodejsIcon, ExpressIcon, PrismaIcon, PostgresIcon, MongoIcon, ApiIcon,
+  VscodeIcon, GitIcon, FigmaIcon, TerminalIcon, DockerIcon,
+} from "@/components/tech-icons"
+import { useLanguage, useProfile } from "@/app/providers"
 
-/* ── Intersection hook for scroll-triggered entrance ───────── */
-function useInView(threshold = 0.15) {
-  const ref = useRef<HTMLElement>(null)
-  const [inView, setInView] = useState(false)
+/* ── Animated counter (adapted from reference) ─────────── */
+function AnimatedCounter({ target, duration = 2000 }: { target: number; duration?: number }) {
+  const [count, setCount] = useState(0)
+  const [hasStarted, setStarted] = useState(false)
+  const ref = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    const el = ref.current
-    if (!el) return
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect() } },
-      { threshold },
+      ([entry]) => { if (entry.isIntersecting && !hasStarted) setStarted(true) },
+      { threshold: 0.5 }
     )
-    observer.observe(el)
+    if (ref.current) observer.observe(ref.current)
     return () => observer.disconnect()
-  }, [threshold])
+  }, [hasStarted])
 
-  return { ref, inView }
+  useEffect(() => {
+    if (!hasStarted) return
+    let start = 0
+    const step = target / (duration / 16)
+    const timer = setInterval(() => {
+      start += step
+      if (start >= target) { setCount(target); clearInterval(timer) }
+      else setCount(Math.floor(start))
+    }, 16)
+    return () => clearInterval(timer)
+  }, [hasStarted, target, duration])
+
+  return <span ref={ref}>{count}</span>
 }
 
-/* ── Animated skill progress bar ───────────────────────────── */
-function SkillBar({ label, level, delay = 0 }: { label: string; level: number; delay?: number }) {
-  const barRef = useRef<HTMLDivElement>(null)
-  const [started, setStarted] = useState(false)
-
-  useEffect(() => {
-    const el = barRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect() } },
-      { threshold: 0.4 },
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
+function GlowingOrb() {
   return (
-    <div ref={barRef} className="group">
-      <div className="flex justify-between items-center mb-1.5">
-        <span className="text-sm font-mono text-foreground/80 group-hover:text-primary transition-colors duration-200">
-          {label}
-        </span>
-        <span className="text-xs font-mono text-primary/70">{level}%</span>
-      </div>
-      <div className="h-1.5 rounded-full bg-muted overflow-hidden">
-        <div
-          className="h-full rounded-full transition-all duration-[1400ms] ease-out"
-          style={{
-            width: started ? `${level}%` : '0%',
-            background: 'linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 60%, var(--accent)))',
-            transitionDelay: `${delay}ms`,
-            boxShadow: started ? '0 0 8px color-mix(in srgb, var(--primary) 50%, transparent)' : 'none',
-          }}
-          role="progressbar"
-          aria-valuenow={level}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label={label}
-        />
-      </div>
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] pointer-events-none">
+      <div
+        className="absolute inset-0 rounded-full animate-pulse"
+        style={{ background: "radial-gradient(circle,rgba(217,70,239,0.08) 0%,rgba(217,70,239,0.02) 40%,transparent 70%)" }}
+      />
     </div>
   )
 }
 
-/* ── Skill levels per category — tweak to taste ───────────── */
-const SKILL_LEVELS: Record<string, number> = {
-  // Dev
-  'React': 92, 'TypeScript': 88, 'Node.js': 85, 'Next.js': 90, 'Python': 82,
-  'GraphQL': 75, 'Docker': 78, 'PostgreSQL': 80, 'MongoDB': 76,
-  // Security
-  'Penetration Testing': 88, 'SIEM/SOC': 84, 'OWASP': 90, 'ISO 27001': 82,
-  'Network Security': 86, 'Malware Analysis': 78, 'CTF': 85,
-  // AV
-  'Dante/AES67': 90, 'Q-SYS DSP': 88, 'Resolume': 85, 'NDI': 87,
-  'DMX/Artnet': 82, 'ONYX': 80, 'QLab': 78,
-}
-function getLevel(skill: string) {
-  return SKILL_LEVELS[skill] ?? Math.floor(70 + Math.random() * 20)
-}
-
-const CARD_COLORS = [
-  { border: 'border-primary/30', icon: 'text-primary', bg: 'bg-primary/5' },
-  { border: 'border-emerald-500/30', icon: 'text-emerald-400', bg: 'bg-emerald-500/5' },
-  { border: 'border-amber-500/30', icon: 'text-amber-400', bg: 'bg-amber-500/5' },
-  { border: 'border-rose-500/30', icon: 'text-rose-400', bg: 'bg-rose-500/5' },
-  { border: 'border-blue-500/30', icon: 'text-blue-400', bg: 'bg-blue-500/5' },
-  { border: 'border-purple-500/30', icon: 'text-purple-400', bg: 'bg-purple-500/5' },
+/* ── Skill datasets per profile ─────────────────────────── */
+const devCategories = (lang: 'en' | 'es') => [
+  {
+    title: lang === 'en' ? 'Frontend' : 'Frontend',
+    icon: <Code2 className="w-5 h-5" />,
+    skills: [
+      { name: "React", icon: <ReactIcon className="w-5 h-5" />, color: "#61dafb" },
+      { name: "Next.js", icon: <NextjsIcon className="w-5 h-5" />, color: "#e8e0f0" },
+      { name: "TypeScript", icon: <TypeScriptIcon className="w-5 h-5" />, color: "#3178c6" },
+      { name: "Tailwind CSS", icon: <TailwindIcon className="w-5 h-5" />, color: "#38bdf8" },
+      { name: "HTML5", icon: <Html5Icon className="w-5 h-5" />, color: "#e34f26" },
+      { name: "CSS3", icon: <Css3Icon className="w-5 h-5" />, color: "#264de4" },
+    ],
+  },
+  {
+    title: lang === 'en' ? 'Backend' : 'Backend',
+    icon: <Server className="w-5 h-5" />,
+    skills: [
+      { name: "Node.js", icon: <NodejsIcon className="w-5 h-5" />, color: "#68a063" },
+      { name: "Express", icon: <ExpressIcon className="w-5 h-5" />, color: "#e8e0f0" },
+      { name: "Prisma", icon: <PrismaIcon className="w-5 h-5" />, color: "#d946ef" },
+      { name: "PostgreSQL", icon: <PostgresIcon className="w-5 h-5" />, color: "#336791" },
+      { name: "MongoDB", icon: <MongoIcon className="w-5 h-5" />, color: "#47a248" },
+      { name: "REST API", icon: <ApiIcon className="w-5 h-5" />, color: "#06b6d4" },
+    ],
+  },
+  {
+    title: lang === 'en' ? 'Tools' : 'Herramientas',
+    icon: <Wrench className="w-5 h-5" />,
+    skills: [
+      { name: "VS Code", icon: <VscodeIcon className="w-5 h-5" />, color: "#007acc" },
+      { name: "Git", icon: <GitIcon className="w-5 h-5" />, color: "#f05032" },
+      { name: "Docker", icon: <DockerIcon className="w-5 h-5" />, color: "#2496ed" },
+      { name: "Figma", icon: <FigmaIcon className="w-5 h-5" />, color: "#a259ff" },
+    ],
+  },
 ]
 
-const ICONS = [Code2, Shield, Terminal, Cpu, Database, Globe, Box, Layers, PenTool]
+const secCategories = (lang: 'en' | 'es') => [
+  {
+    title: lang === 'en' ? 'Offensive' : 'Ofensivo',
+    icon: <Shield className="w-5 h-5" />,
+    skills: [
+      { name: "Kali Linux", icon: <TerminalIcon className="w-5 h-5" />, color: "#557c94" },
+      { name: "Metasploit", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
+      { name: "Burp Suite", icon: <TerminalIcon className="w-5 h-5" />, color: "#f97316" },
+      { name: "Wireshark", icon: <TerminalIcon className="w-5 h-5" />, color: "#1d6fa4" },
+      { name: "Nmap", icon: <TerminalIcon className="w-5 h-5" />, color: "#00ff88" },
+      { name: "SQLMap", icon: <TerminalIcon className="w-5 h-5" />, color: "#d946ef" },
+    ],
+  },
+  {
+    title: lang === 'en' ? 'Scripting' : 'Scripting',
+    icon: <Code2 className="w-5 h-5" />,
+    skills: [
+      { name: "Python", icon: <TerminalIcon className="w-5 h-5" />, color: "#3b7ebf" },
+      { name: "Bash", icon: <TerminalIcon className="w-5 h-5" />, color: "#4eaa25" },
+      { name: "PowerShell", icon: <TerminalIcon className="w-5 h-5" />, color: "#012456" },
+      { name: "C / C++", icon: <TerminalIcon className="w-5 h-5" />, color: "#00599c" },
+    ],
+  },
+  {
+    title: lang === 'en' ? 'Defensive' : 'Defensivo',
+    icon: <Wrench className="w-5 h-5" />,
+    skills: [
+      { name: "SIEM / Splunk", icon: <TerminalIcon className="w-5 h-5" />, color: "#65a30d" },
+      { name: "IDS / IPS", icon: <TerminalIcon className="w-5 h-5" />, color: "#f59e0b" },
+      { name: "Forensics", icon: <TerminalIcon className="w-5 h-5" />, color: "#06b6d4" },
+      { name: "OSINT", icon: <TerminalIcon className="w-5 h-5" />, color: "#a78bfa" },
+    ],
+  },
+]
+
+const avCategories = (lang: 'en' | 'es') => [
+  {
+    title: lang === 'en' ? 'Audio' : 'Audio',
+    icon: <Music className="w-5 h-5" />,
+    skills: [
+      { name: "Dante / AES67", icon: <TerminalIcon className="w-5 h-5" />, color: "#38bdf8" },
+      { name: "Q-SYS", icon: <TerminalIcon className="w-5 h-5" />, color: "#f97316" },
+      { name: "Yamaha CL/QL", icon: <TerminalIcon className="w-5 h-5" />, color: "#d946ef" },
+      { name: "NDI", icon: <TerminalIcon className="w-5 h-5" />, color: "#00ff88" },
+    ],
+  },
+  {
+    title: lang === 'en' ? 'Video' : 'Video',
+    icon: <Code2 className="w-5 h-5" />,
+    skills: [
+      { name: "Resolume", icon: <TerminalIcon className="w-5 h-5" />, color: "#f59e0b" },
+      { name: "OBS Studio", icon: <TerminalIcon className="w-5 h-5" />, color: "#6366f1" },
+      { name: "vMix", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
+      { name: "Blackmagic", icon: <TerminalIcon className="w-5 h-5" />, color: "#64748b" },
+    ],
+  },
+  {
+    title: lang === 'en' ? 'Tools' : 'Herramientas',
+    icon: <Wrench className="w-5 h-5" />,
+    skills: [
+      { name: "Onyx / MA", icon: <TerminalIcon className="w-5 h-5" />, color: "#fbbf24" },
+      { name: "Sketchup", icon: <TerminalIcon className="w-5 h-5" />, color: "#007acc" },
+      { name: "AutoCAD", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
+      { name: "Git", icon: <GitIcon className="w-5 h-5" />, color: "#f05032" },
+    ],
+  },
+]
+
+/* ── Stats per profile ──────────────────────────────────── */
+const STATS = {
+  dev: [
+    { label: { en: 'Technologies', es: 'Tecnologías' }, value: 16 },
+    { label: { en: 'Projects', es: 'Proyectos' }, value: 30 },
+    { label: { en: 'Commits', es: 'Commits' }, value: 2847 },
+  ],
+  sec: [
+    { label: { en: 'CTF Solved', es: 'CTF Resueltos' }, value: 45 },
+    { label: { en: 'CVEs Found', es: 'CVEs Hallados' }, value: 8 },
+    { label: { en: 'Tools Used', es: 'Herramientas' }, value: 20 },
+  ],
+  av: [
+    { label: { en: 'Events', es: 'Eventos' }, value: 120 },
+    { label: { en: 'AV Tools', es: 'Herramientas' }, value: 18 },
+    { label: { en: 'Years', es: 'Años' }, value: 5 },
+  ],
+}
+
+const SECTIONS = {
+  dev: { en: 'Development Skills', es: 'Habilidades de Desarrollo' },
+  sec: { en: 'Security Skills', es: 'Habilidades de Seguridad' },
+  av: { en: 'AV Engineering Skills', es: 'Habilidades AV' },
+}
+
+const SUBTITLES = {
+  dev: { en: 'A complete stack for modern web applications.', es: 'Un stack completo para aplicaciones web modernas.' },
+  sec: { en: 'Tools and techniques for offensive & defensive ops.', es: 'Herramientas para operaciones ofensivas y defensivas.' },
+  av: { en: 'End-to-end AV production and integration.', es: 'Producción e integración AV de punta a punta.' },
+}
 
 /* ═══════════════════════════════════════════════════════════
-   SKILLS COMPONENT
+   MAIN EXPORT
 ═══════════════════════════════════════════════════════════ */
 export function Skills() {
-  const { ref: sectionRef, inView } = useInView(0.08)
-  const { profile } = useProfile()
   const { language } = useLanguage()
-  const data = portfolioData[language][profile].skills
+  const { profile } = useProfile()
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
 
-  const label = language === 'en' ? 'SKILLS' : 'HABILIDADES'
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setIsVisible(true) },
+      { threshold: 0.1 }
+    )
+    if (sectionRef.current) observer.observe(sectionRef.current)
+    return () => observer.disconnect()
+  }, [])
+
+  const categories =
+    profile === 'sec' ? secCategories(language) :
+      profile === 'av' ? avCategories(language) :
+        devCategories(language)
+
+  const stats = STATS[profile]
+  const title = SECTIONS[profile][language]
+  const subtitle = SUBTITLES[profile][language]
 
   return (
     <section
-      ref={sectionRef as React.RefObject<HTMLElement>}
       id="skills"
-      aria-labelledby="skills-heading"
-      className="py-24 px-6 relative"
+      ref={sectionRef}
+      className="relative min-h-screen bg-background overflow-hidden py-20 px-4 md:px-8"
     >
-      {/* Subtle radial tint */}
+      {/* Backgrounds */}
+      <CircuitBackground />
+      <GlowingOrb />
+      {/* Grid overlay */}
       <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 60% 40% at 50% 0%, color-mix(in srgb, var(--primary) 5%, transparent), transparent 70%)',
-        }}
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
         aria-hidden="true"
+        style={{
+          backgroundImage: "linear-gradient(rgba(217,70,239,1) 1px,transparent 1px),linear-gradient(90deg,rgba(217,70,239,1) 1px,transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
       />
 
-      <div className="max-w-6xl mx-auto relative z-10">
-        {/* Section header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* ── Header ── */}
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
         >
-          <p className="text-primary font-mono text-sm mb-2 tracking-widest uppercase">
-            {'// '}{label}
-          </p>
-          <h2 id="skills-heading" className="text-3xl md:text-4xl font-bold mb-4">
-            {data.title}
+          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-neon/30 bg-neon/5">
+            <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
+            <span className="text-sm font-mono text-neon tracking-widest uppercase">
+              {"// Habilidades"}
+            </span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 text-balance">
+            {title}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            {data.description}
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto text-pretty">
+            {subtitle}
           </p>
-        </motion.div>
 
-        {/* Category cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {data.categories.map((category, index) => {
-            const Icon = ICONS[index % ICONS.length]
-            const style = CARD_COLORS[index % CARD_COLORS.length]
-            const skills = category.items
-
-            return (
-              <motion.div
-                key={category.title}
-                className={`group relative p-6 rounded-xl border ${style.border} ${style.bg} glass hover:glow-border transition-all duration-300`}
-                initial={{ opacity: 0, y: 28 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -3, transition: { duration: 0.2 } }}
-              >
-                {/* Ghost icon watermark */}
-                <div className="absolute top-2 right-2 w-20 h-20 opacity-[0.04] pointer-events-none" aria-hidden="true">
-                  <Icon className="w-full h-full" />
+          {/* Stats row */}
+          <div className="flex items-center justify-center gap-8 md:gap-12 mt-10">
+            {stats.map((stat) => (
+              <div key={stat.label.en} className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-neon font-mono">
+                  <AnimatedCounter target={stat.value} />
+                  <span className="text-neon/60">+</span>
                 </div>
-
-                <div className="relative z-10">
-                  {/* Card header */}
-                  <div className={`inline-flex items-center gap-2 mb-5 ${style.icon}`}>
-                    <div className={`p-2 rounded-lg ${style.bg} border ${style.border}`}>
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </div>
-                    <h3 className="font-semibold text-lg text-foreground">{category.title}</h3>
-                  </div>
-
-                  {/* Skill bars */}
-                  <div className="space-y-3">
-                    {skills.map((skill, si) => (
-                      <SkillBar
-                        key={skill}
-                        label={skill}
-                        level={getLevel(skill)}
-                        delay={index * 80 + si * 50}
-                      />
-                    ))}
-                  </div>
+                <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wider font-mono">
+                  {stat.label[language]}
                 </div>
-              </motion.div>
-            )
-          })}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Terminal JSON block */}
-        <motion.div
-          className="mt-12 rounded-xl border border-border overflow-hidden glass-strong"
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.55, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        >
-          {/* macOS traffic lights */}
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-border bg-muted/20" aria-hidden="true">
-            <div className="flex gap-1.5">
-              <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-              <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-              <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+        {/* ── Skills Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categories.map((category, index) => (
+            <div
+              key={category.title}
+              className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+                }`}
+              style={{ transitionDelay: `${300 + index * 200}ms` }}
+            >
+              <SkillCard
+                title={category.title}
+                icon={category.icon}
+                skills={category.skills}
+                index={index}
+              />
             </div>
-            <span className="text-xs text-muted-foreground font-mono ml-2">profile.json</span>
+          ))}
+        </div>
+
+        {/* Decorative bottom line */}
+        <div className="mt-16 flex items-center justify-center gap-4">
+          <div className="h-px flex-1 max-w-[100px] bg-gradient-to-r from-transparent to-neon/30" />
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-neon/40 animate-pulse" />
+            <span className="text-xs font-mono text-neon/40 tracking-widest">{"</>"}</span>
+            <div className="w-2 h-2 rounded-full bg-neon/40 animate-pulse" style={{ animationDelay: "500ms" }} />
           </div>
-          <div className="p-4 font-mono text-sm overflow-x-auto">
-            <pre className="text-muted-foreground leading-relaxed">
-              <code>
-                <span className="text-primary">const</span>{' '}
-                <span className="text-amber-400">profile</span>{' = {'}
-                {'\n'}{'  '}<span className="text-muted-foreground">name:</span>{' '}
-                <span className="text-emerald-400">&quot;Oscar Julián Osorio&quot;</span>,
-                {'\n'}{'  '}<span className="text-muted-foreground">profile:</span>{' '}
-                <span className="text-emerald-400">&quot;{profile === 'dev' ? 'Developer' : profile === 'sec' ? 'Security Specialist' : 'AV Engineer'}&quot;</span>,
-                {'\n'}{'  '}<span className="text-muted-foreground">status:</span>{' '}
-                <span className="text-rose-400">&quot;{language === 'en' ? 'Open for work' : 'Disponible'}&quot;</span>,
-                {'\n'}{'  '}<span className="text-muted-foreground">stack:</span>{' '}
-                <span className="text-emerald-400">&quot;{profile === 'dev' ? 'React, Next.js, TypeScript' : profile === 'sec' ? 'Kali Linux, Python, SIEM' : 'Dante, Q-SYS, NDI'}&quot;</span>
-                {'\n'}{'}'}
-                <span className="text-primary">;</span>
-              </code>
-            </pre>
-          </div>
-        </motion.div>
+          <div className="h-px flex-1 max-w-[100px] bg-gradient-to-l from-transparent to-neon/30" />
+        </div>
       </div>
     </section>
   )

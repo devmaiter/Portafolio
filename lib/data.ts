@@ -18,7 +18,10 @@ export interface ExperienceItem {
     company: string;
     role: string;
     period: string;
+    location?: string;
     description: string;
+    tags?: string[];
+    tagColor?: string;
 }
 
 export interface EducationItem {

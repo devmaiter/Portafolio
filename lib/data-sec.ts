@@ -50,7 +50,19 @@ export const secData: Record<'en' | 'es', ProfileData> = {
                     company: "SecureNet Systems",
                     role: "Security Analyst",
                     period: "2022 - Present",
-                    description: "Conducting vulnerability assessments and security audits."
+                    location: "Remote",
+                    description: "Conducting vulnerability assessments, penetration testing, and security audits for enterprise clients.",
+                    tags: ["Kali Linux", "Burp Suite", "Nmap", "Metasploit"],
+                    tagColor: "#ef4444"
+                },
+                {
+                    company: "CyberDefense Corp.",
+                    role: "SOC Analyst",
+                    period: "2021 - 2022",
+                    location: "Remote",
+                    description: "Monitoring security events, incident response, and threat analysis using SIEM tools and forensic techniques.",
+                    tags: ["Splunk", "Wireshark", "OSINT", "Python"],
+                    tagColor: "#f59e0b"
                 }
             ]
         },
@@ -124,7 +136,19 @@ export const secData: Record<'en' | 'es', ProfileData> = {
                     company: "SecureNet Systems",
                     role: "Analista de Seguridad",
                     period: "2022 - Presente",
-                    description: "Realizando evaluaciones de vulnerabilidad y auditorías de seguridad."
+                    location: "Remoto",
+                    description: "Realizando evaluaciones de vulnerabilidad, pruebas de penetración y auditorías de seguridad para clientes empresariales.",
+                    tags: ["Kali Linux", "Burp Suite", "Nmap", "Metasploit"],
+                    tagColor: "#ef4444"
+                },
+                {
+                    company: "CyberDefense Corp.",
+                    role: "Analista SOC",
+                    period: "2021 - 2022",
+                    location: "Remoto",
+                    description: "Monitoreo de eventos de seguridad, respuesta a incidentes y análisis de amenazas usando herramientas SIEM y técnicas forenses.",
+                    tags: ["Splunk", "Wireshark", "OSINT", "Python"],
+                    tagColor: "#f59e0b"
                 }
             ]
         },
