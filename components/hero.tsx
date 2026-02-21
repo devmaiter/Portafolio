@@ -1,154 +1,360 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, ChevronDown } from "lucide-react"
+import { Github, Linkedin, Mail, ChevronDown, Terminal, Shield, Radio } from "lucide-react"
+import { useProfile, useLanguage } from '@/app/providers'
+import { portfolioData } from '@/lib/data'
 
-export function Hero() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+/* ── Profile → particle colour map ────────────────────────── */
+const PROFILE_COLORS = {
+  dev: { r: 56, g: 189, b: 248 },  // cyan-400
+  sec: { r: 251, g: 113, b: 133 },  // rose-400
+  av: { r: 251, g: 191, b: 36 },  // amber-400
+} as const
 
+/* ── Profile → icon ────────────────────────────────────────── */
+const ProfileIcons = {
+  dev: Terminal,
+  sec: Shield,
+  av: Radio,
+} as const
+
+/* ── Typewriter hook — CSS-based (no JS setInterval) ─────────
+   Uses a stateful array of lines. Advances character-by-char at
+   50ms, backspaces at 30ms. Cycles through all taglines.
+──────────────────────────────────────────────────────────── */
+function useTypewriter(lines: string[], pause = 1800) {
+  const [displayed, setDisplayed] = useState('')
+  const [lineIdx, setLineIdx] = useState(0)
+  const [charIdx, setCharIdx] = useState(0)
+  const [deleting, setDeleting] = useState(false)
+  const reducedMotion = typeof window !== 'undefined'
+    && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  useEffect(() => {
+    // Skip animation for accessibility
+    if (reducedMotion) {
+      setDisplayed(lines[0] ?? '')
+      return
+    }
+
+    const current = lines[lineIdx] ?? ''
+    let timer: ReturnType<typeof setTimeout>
+
+    if (!deleting && charIdx < current.length) {
+      timer = setTimeout(() => {
+        setDisplayed(current.slice(0, charIdx + 1))
+        setCharIdx(c => c + 1)
+      }, 48)
+    } else if (!deleting && charIdx === current.length) {
+      timer = setTimeout(() => setDeleting(true), pause)
+    } else if (deleting && charIdx > 0) {
+      timer = setTimeout(() => {
+        setDisplayed(current.slice(0, charIdx - 1))
+        setCharIdx(c => c - 1)
+      }, 28)
+    } else if (deleting && charIdx === 0) {
+      setDeleting(false)
+      setLineIdx(l => (l + 1) % lines.length)
+    }
+
+    return () => clearTimeout(timer)
+  }, [charIdx, deleting, lineIdx, lines, pause, reducedMotion])
+
+  return displayed
+}
+
+/* ── Particle canvas (profile-aware colour) ─────────────────── */
+function useParticleCanvas(
+  canvasRef: React.RefObject<HTMLCanvasElement | null>,
+  profile: 'dev' | 'sec' | 'av',
+) {
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext("2d")
+    // Respect prefers-reduced-motion — no canvas at all
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) return
+
+    const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    const col = PROFILE_COLORS[profile]
+    const particleRgb = `${col.r}, ${col.g}, ${col.b}`
 
-    const particles: { x: number; y: number; vx: number; vy: number; size: number }[] = []
-    const particleCount = 80
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1,
-      })
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
     }
+    resize()
 
-    function animate() {
+    const COUNT = 70
+    type P = { x: number; y: number; vx: number; vy: number; size: number }
+    const pts: P[] = Array.from({ length: COUNT }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      size: Math.random() * 1.8 + 0.6,
+    }))
+
+    let rafId: number
+    const LINK_DIST = 140
+
+    const tick = () => {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      particles.forEach((particle, i) => {
-        particle.x += particle.vx
-        particle.y += particle.vy
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i]
+        p.x += p.vx
+        p.y += p.vy
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
 
         ctx.beginPath()
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = "rgba(56, 189, 248, 0.5)"
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(${particleRgb}, 0.55)`
         ctx.fill()
 
-        particles.slice(i + 1).forEach((p2) => {
-          const dx = particle.x - p2.x
-          const dy = particle.y - p2.y
+        for (let j = i + 1; j < pts.length; j++) {
+          const q = pts[j]
+          const dx = p.x - q.x
+          const dy = p.y - q.y
           const dist = Math.sqrt(dx * dx + dy * dy)
-
-          if (dist < 150) {
+          if (dist < LINK_DIST) {
             ctx.beginPath()
-            ctx.moveTo(particle.x, particle.y)
-            ctx.lineTo(p2.x, p2.y)
-            ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 - dist / 1000})`
+            ctx.moveTo(p.x, p.y)
+            ctx.lineTo(q.x, q.y)
+            ctx.strokeStyle = `rgba(${particleRgb}, ${0.18 - dist / (LINK_DIST * 6)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
-        })
-      })
-
-      requestAnimationFrame(animate)
+        }
+      }
+      rafId = requestAnimationFrame(tick)
     }
+    tick()
 
-    animate()
+    const ro = new ResizeObserver(resize)
+    ro.observe(canvas)
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+    return () => {
+      cancelAnimationFrame(rafId)
+      ro.disconnect()
     }
+  }, [canvasRef, profile])
+}
 
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
+/* ── Floating badge helper ─────────────────────────────────── */
+const STAGGER_DELAY = 0.12
+const floatingBadges = {
+  dev: ['React', 'TypeScript', 'Node.js', 'Next.js', 'Python'],
+  sec: ['ISO 27001', 'OWASP', 'Pentest', 'SOC 2', 'SIEM'],
+  av: ['NDI', 'Dante', 'Resolume', 'DMX', 'OSC'],
+} as const
+
+/* ═══════════════════════════════════════════════════════════
+   HERO COMPONENT
+═══════════════════════════════════════════════════════════ */
+export function Hero() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { profile } = useProfile()
+  const { language } = useLanguage()
+  const data = portfolioData[language][profile].hero
+
+  const taglines = [data.availableText, data.subtitle]
+  const typewriterText = useTypewriter(taglines)
+
+  useParticleCanvas(canvasRef, profile)
+
+  const ProfileIcon = ProfileIcons[profile]
+
+  const scrollToContact = useCallback(() => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+  }, [])
+
+  const scrollToProjects = useCallback(() => {
+    document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 z-0" />
-      
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background z-10" />
-      
-      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+    <section
+      id="hero"
+      aria-label="Hero section"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-mesh"
+    >
+      {/* ── Canvas background ── */}
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full z-0"
+        aria-hidden="true"
+      />
+
+      {/* ── Gradient vignette ── */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 30%, var(--background) 100%)',
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-40 z-10 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, var(--background))',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ── Main content ── */}
+      <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
+
+        {/* Status pill */}
+        <motion.div
+          className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-mono"
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
           </span>
-          Disponible para nuevos proyectos
-        </div>
+          <ProfileIcon className="h-3.5 w-3.5" aria-hidden="true" />
+          <span className="min-h-[1em]" aria-live="polite" aria-atomic="true">
+            {typewriterText}
+            <span
+              className="inline-block w-[2px] h-[0.85em] ml-0.5 bg-primary align-middle"
+              style={{ animation: 'caretBlink 1s step-end infinite' }}
+              aria-hidden="true"
+            />
+          </span>
+        </motion.div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance">
-          <span className="text-foreground">Oscar Julián</span>
-          <br />
-          <span className="text-primary">Osorio</span>
-        </h1>
+        {/* Heading */}
+        <motion.h1
+          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="text-foreground block">{data.title}</span>
+          <span
+            className="text-primary block"
+            style={{ textShadow: '0 0 30px color-mix(in srgb, var(--primary) 40%, transparent)' }}
+          >
+            {data.subtitle}
+          </span>
+        </motion.h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground mb-4 font-mono">
-          {"<"}<span className="text-primary">Desarrollador</span>{" /> + {"}<span className="text-primary">Ciberseguridad</span>{"}"}
-        </p>
+        {/* Description */}
+        <motion.p
+          className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {data.description}
+        </motion.p>
 
-        <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-          Ingeniero de Soporte y Desarrollador de Software con{" "}
-          <span className="text-foreground font-medium">3 años de experiencia</span> combinando el desarrollo frontend con la gestión de seguridad informática y soporte técnico avanzado.
-        </p>
+        {/* Floating tech badges */}
+        <motion.div
+          className="flex flex-wrap items-center justify-center gap-2 mb-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.4 }}
+          aria-label="Key technologies"
+        >
+          {floatingBadges[profile].map((badge, i) => (
+            <motion.span
+              key={`${profile}-${badge}`}
+              className="px-3 py-1 rounded-full text-xs font-mono border border-primary/20 bg-primary/5 text-primary/80"
+              style={{
+                animation: `floatY ${3.5 + i * 0.3}s ease-in-out ${i * 0.4}s infinite`,
+                willChange: 'transform',
+              }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.42 + i * STAGGER_DELAY, duration: 0.35 }}
+            >
+              {badge}
+            </motion.span>
+          ))}
+        </motion.div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <Button size="lg" className="group">
-            <Mail className="mr-2 h-4 w-4 group-hover:animate-pulse" />
-            Contáctame
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.52, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Button
+            size="lg"
+            className="group relative overflow-hidden glow-border"
+            onClick={scrollToContact}
+          >
+            <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: 'linear-gradient(90deg, var(--primary) 0%, color-mix(in srgb, var(--primary) 70%, var(--accent)) 100%)' }}
+              aria-hidden="true"
+            />
+            <Mail className="mr-2 h-4 w-4 relative z-10" aria-hidden="true" />
+            <span className="relative z-10">{data.contactButton}</span>
           </Button>
-          <Button size="lg" variant="outline" className="bg-transparent">
-            Ver Proyectos
-            <ChevronDown className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
 
-        <div className="flex items-center justify-center gap-4">
-          <a
-            href="https://github.com/oscar-julian-osorio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110"
-            aria-label="GitHub"
+          <Button
+            size="lg"
+            variant="outline"
+            className="bg-transparent hover:bg-primary/10 hover:border-primary/60 transition-all duration-300"
+            onClick={scrollToProjects}
           >
-            <Github className="h-5 w-5" />
-          </a>
-          <a
-            href="https://linkedin.com/in/oscar-julian-osorio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <Linkedin className="h-5 w-5" />
-          </a>
-          <a
-            href="mailto:contacto@oscarjulian.dev"
-            className="p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110"
-            aria-label="Email"
-          >
-            <Mail className="h-5 w-5" />
-          </a>
-        </div>
+            {language === 'en' ? 'View Projects' : 'Ver Proyectos'}
+            <ChevronDown className="ml-2 h-4 w-4" aria-hidden="true" />
+          </Button>
+        </motion.div>
+
+        {/* Social links */}
+        <motion.div
+          className="flex items-center justify-center gap-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.64 }}
+        >
+          {[
+            { href: 'https://github.com/oscar-julian-osorio', label: 'GitHub', Icon: Github },
+            { href: 'https://linkedin.com/in/oscar-julian-osorio', label: 'LinkedIn', Icon: Linkedin },
+            { href: 'mailto:contacto@oscarjulian.dev', label: 'Email', Icon: Mail },
+          ].map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('mailto') ? undefined : '_blank'}
+              rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+              className="p-3 rounded-full border border-border hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_0_16px_color-mix(in_srgb,var(--primary)_30%,transparent)]"
+              aria-label={label}
+            >
+              <Icon className="h-5 w-5" aria-hidden="true" />
+            </a>
+          ))}
+        </motion.div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-        <ChevronDown className="h-6 w-6 text-muted-foreground" />
-      </div>
+      {/* ── Scroll cue ── */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        aria-hidden="true"
+      >
+        <div style={{ animation: 'floatY 2s ease-in-out infinite' }}>
+          <ChevronDown className="h-6 w-6 text-muted-foreground" />
+        </div>
+      </motion.div>
     </section>
   )
 }
