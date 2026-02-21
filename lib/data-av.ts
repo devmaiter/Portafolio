@@ -50,7 +50,19 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     company: "AudioVisual Pro",
                     role: "System Integrator",
                     period: "2021 - Present",
-                    description: "Designing complex AV systems for corporate and event spaces."
+                    location: "Remote",
+                    description: "Designing complex AV systems for corporate and event spaces, integrating Dante, NDI and control protocols.",
+                    tags: ["Dante", "Q-SYS", "NDI", "Crestron"],
+                    tagColor: "#06b6d4"
+                },
+                {
+                    company: "Live Events Co.",
+                    role: "AV Technician",
+                    period: "2019 - 2021",
+                    location: "On-site",
+                    description: "Operating and maintaining audio-visual equipment for live events, corporate conferences, and broadcasting.",
+                    tags: ["Resolume", "Blackmagic", "Yamaha CL", "OBS"],
+                    tagColor: "#a259ff"
                 }
             ]
         },
@@ -124,7 +136,19 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     company: "AudioVisual Pro",
                     role: "Integrador de Sistemas",
                     period: "2021 - Presente",
-                    description: "Diseñando sistemas AV complejos para espacios corporativos y de eventos."
+                    location: "Remoto",
+                    description: "Diseñando sistemas AV complejos para espacios corporativos y de eventos, integrando Dante, NDI y protocolos de control.",
+                    tags: ["Dante", "Q-SYS", "NDI", "Crestron"],
+                    tagColor: "#06b6d4"
+                },
+                {
+                    company: "Live Events Co.",
+                    role: "Técnico AV",
+                    period: "2019 - 2021",
+                    location: "Presencial",
+                    description: "Operando y manteniendo equipos audiovisuales para eventos en vivo, conferencias corporativas y transmisiones.",
+                    tags: ["Resolume", "Blackmagic", "Yamaha CL", "OBS"],
+                    tagColor: "#a259ff"
                 }
             ]
         },

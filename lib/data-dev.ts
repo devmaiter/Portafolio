@@ -48,9 +48,39 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             items: [
                 {
                     company: "Tech Solutions Inc.",
-                    role: "Frontend Developer",
+                    role: "Senior Frontend Developer",
                     period: "2023 - Present",
-                    description: "Developing responsive web applications using Next.js and Tailwind CSS."
+                    location: "Remote",
+                    description: "Leading the development of high-performance web applications with modern architectures and immersive user experiences.",
+                    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+                    tagColor: "#d946ef"
+                },
+                {
+                    company: "Digital Agency Co.",
+                    role: "Full Stack Developer",
+                    period: "2021 - 2023",
+                    location: "Madrid, ES",
+                    description: "Developing e-commerce platforms and internal management systems with third-party API integrations and payment gateways.",
+                    tags: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
+                    tagColor: "#06b6d4"
+                },
+                {
+                    company: "Startup Labs",
+                    role: "Junior Frontend Developer",
+                    period: "2020 - 2021",
+                    location: "Barcelona, ES",
+                    description: "Building responsive and accessible user interfaces for SaaS applications, collaborating in multidisciplinary agile teams.",
+                    tags: ["React", "JavaScript", "SASS", "Git"],
+                    tagColor: "#8b5cf6"
+                },
+                {
+                    company: "Freelance",
+                    role: "Web Developer",
+                    period: "2019 - 2020",
+                    location: "Remote",
+                    description: "Designing and developing custom websites for local and international clients, from landing pages to online stores.",
+                    tags: ["HTML5", "CSS3", "JavaScript", "WordPress"],
+                    tagColor: "#f97316"
                 }
             ]
         },
@@ -123,9 +153,39 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             items: [
                 {
                     company: "Tech Solutions Inc.",
-                    role: "Desarrollador Frontend",
+                    role: "Desarrollador Frontend Senior",
                     period: "2023 - Presente",
-                    description: "Desarrollando aplicaciones web responsivas usando Next.js y Tailwind CSS."
+                    location: "Remoto",
+                    description: "Liderando el desarrollo de aplicaciones web de alto rendimiento con arquitecturas modernas y experiencias de usuario inmersivas.",
+                    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+                    tagColor: "#d946ef"
+                },
+                {
+                    company: "Digital Agency Co.",
+                    role: "Desarrollador Full Stack",
+                    period: "2021 - 2023",
+                    location: "Madrid, ES",
+                    description: "Desarrollo de plataformas e-commerce y sistemas de gestión internos con integraciones de APIs de terceros y pasarelas de pago.",
+                    tags: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
+                    tagColor: "#06b6d4"
+                },
+                {
+                    company: "Startup Labs",
+                    role: "Desarrollador Frontend Jr.",
+                    period: "2020 - 2021",
+                    location: "Barcelona, ES",
+                    description: "Construcción de interfaces de usuario responsivas y accesibles para aplicaciones SaaS, colaborando en equipos ágiles multidisciplinarios.",
+                    tags: ["React", "JavaScript", "SASS", "Git"],
+                    tagColor: "#8b5cf6"
+                },
+                {
+                    company: "Freelance",
+                    role: "Desarrollador Web",
+                    period: "2019 - 2020",
+                    location: "Remoto",
+                    description: "Diseño y desarrollo de sitios web personalizados para clientes locales e internacionales, desde landing pages hasta tiendas online.",
+                    tags: ["HTML5", "CSS3", "JavaScript", "WordPress"],
+                    tagColor: "#f97316"
                 }
             ]
         },
