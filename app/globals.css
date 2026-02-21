@@ -39,6 +39,213 @@
   --sidebar-ring: oklch(0.7 0.18 180);
 }
 
+
+
+/* VS Code Dark Theme */
+[data-theme='vscode-dark'] {
+  --background: oklch(0.14 0.01 260);
+  /* #1e1e1e */
+  --foreground: oklch(0.9 0.01 240);
+  /* #d4d4d4 */
+  --card: oklch(0.16 0.01 260);
+  /* #252526 */
+  --card-foreground: oklch(0.9 0.01 240);
+  --popover: oklch(0.16 0.01 260);
+  --popover-foreground: oklch(0.9 0.01 240);
+  --primary: oklch(0.55 0.2 260);
+  /* #007acc blue */
+  --primary-foreground: oklch(1 0 0);
+  /* white */
+  --secondary: oklch(0.2 0.02 260);
+  --secondary-foreground: oklch(0.9 0.01 240);
+  --muted: oklch(0.25 0.02 260);
+  --muted-foreground: oklch(0.7 0.02 240);
+  /* #a6a6a6 */
+  --accent: oklch(0.55 0.2 260);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.2 30);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.25 0.01 260);
+  /* #3e3e42 */
+  --input: oklch(0.25 0.01 260);
+  /* #3c3c3c */
+  --ring: oklch(0.55 0.2 260);
+  --radius: 0rem;
+  /* VS Code is square-ish */
+}
+
+/* VS Code Light Theme */
+[data-theme='vscode-light'] {
+  --background: oklch(0.98 0 0);
+  /* #ffffff */
+  --foreground: oklch(0.2 0.01 260);
+  /* #3b3b3b */
+  --card: oklch(0.96 0 0);
+  /* #f3f3f3 */
+  --card-foreground: oklch(0.2 0.01 260);
+  --popover: oklch(0.96 0 0);
+  --popover-foreground: oklch(0.2 0.01 260);
+  --primary: oklch(0.55 0.2 260);
+  /* #007acc */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9 0.01 260);
+  --secondary-foreground: oklch(0.2 0.01 260);
+  --muted: oklch(0.9 0.01 260);
+  --muted-foreground: oklch(0.5 0.01 260);
+  --accent: oklch(0.55 0.2 260);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.2 30);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.9 0.01 260);
+  --input: oklch(0.9 0.01 260);
+  --ring: oklch(0.55 0.2 260);
+  --radius: 0rem;
+}
+
+/* ─── Dracula ─────────────────────────────────────────── */
+[data-theme='dracula'] {
+  --background: oklch(0.19 0.02 285);
+  --foreground: oklch(0.97 0.01 80);
+  --card: oklch(0.16 0.02 285);
+  --card-foreground: oklch(0.97 0.01 80);
+  --popover: oklch(0.16 0.02 285);
+  --popover-foreground: oklch(0.97 0.01 80);
+  --primary: oklch(0.72 0.22 305);
+  --primary-foreground: oklch(0.19 0.02 285);
+  --secondary: oklch(0.24 0.02 285);
+  --secondary-foreground: oklch(0.97 0.01 80);
+  --muted: oklch(0.24 0.02 285);
+  --muted-foreground: oklch(0.7 0.04 285);
+  --accent: oklch(0.85 0.18 150);
+  --accent-foreground: oklch(0.19 0.02 285);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.28 0.03 285);
+  --input: oklch(0.28 0.03 285);
+  --ring: oklch(0.72 0.22 305);
+  --radius: 0.5rem;
+}
+
+/* ─── Monokai ──────────────────────────────────────────── */
+[data-theme='monokai'] {
+  --background: oklch(0.19 0.01 100);
+  --foreground: oklch(0.97 0.01 80);
+  --card: oklch(0.16 0.01 100);
+  --card-foreground: oklch(0.97 0.01 80);
+  --popover: oklch(0.16 0.01 100);
+  --popover-foreground: oklch(0.97 0.01 80);
+  --primary: oklch(0.65 0.25 10);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.24 0.01 100);
+  --secondary-foreground: oklch(0.97 0.01 80);
+  --muted: oklch(0.24 0.01 100);
+  --muted-foreground: oklch(0.65 0.03 100);
+  --accent: oklch(0.8 0.2 80);
+  --accent-foreground: oklch(0.19 0.01 100);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.28 0.01 100);
+  --input: oklch(0.28 0.01 100);
+  --ring: oklch(0.65 0.25 10);
+  --radius: 0.25rem;
+}
+
+/* ─── GitHub Dark ──────────────────────────────────────── */
+[data-theme='github-dark'] {
+  --background: oklch(0.13 0.01 255);
+  --foreground: oklch(0.88 0.01 240);
+  --card: oklch(0.15 0.01 255);
+  --card-foreground: oklch(0.88 0.01 240);
+  --popover: oklch(0.15 0.01 255);
+  --popover-foreground: oklch(0.88 0.01 240);
+  --primary: oklch(0.65 0.18 240);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.18 0.01 255);
+  --secondary-foreground: oklch(0.88 0.01 240);
+  --muted: oklch(0.18 0.01 255);
+  --muted-foreground: oklch(0.6 0.02 240);
+  --accent: oklch(0.65 0.18 240);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.22 0.01 255);
+  --input: oklch(0.22 0.01 255);
+  --ring: oklch(0.65 0.18 240);
+  --radius: 0.375rem;
+}
+
+/* ─── Nord ─────────────────────────────────────────────── */
+[data-theme='nord'] {
+  --background: oklch(0.23 0.02 235);
+  --foreground: oklch(0.96 0.01 210);
+  --card: oklch(0.27 0.02 235);
+  --card-foreground: oklch(0.96 0.01 210);
+  --popover: oklch(0.27 0.02 235);
+  --popover-foreground: oklch(0.96 0.01 210);
+  --primary: oklch(0.75 0.12 200);
+  --primary-foreground: oklch(0.23 0.02 235);
+  --secondary: oklch(0.32 0.02 235);
+  --secondary-foreground: oklch(0.96 0.01 210);
+  --muted: oklch(0.32 0.02 235);
+  --muted-foreground: oklch(0.68 0.03 220);
+  --accent: oklch(0.7 0.12 220);
+  --accent-foreground: oklch(0.23 0.02 235);
+  --destructive: oklch(0.6 0.18 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.32 0.02 235);
+  --input: oklch(0.32 0.02 235);
+  --ring: oklch(0.75 0.12 200);
+  --radius: 0.5rem;
+}
+
+/* ─── Synthwave '84 ────────────────────────────────────── */
+[data-theme='synthwave'] {
+  --background: oklch(0.14 0.05 290);
+  --foreground: oklch(0.97 0.02 60);
+  --card: oklch(0.17 0.05 290);
+  --card-foreground: oklch(0.97 0.02 60);
+  --popover: oklch(0.17 0.05 290);
+  --popover-foreground: oklch(0.97 0.02 60);
+  --primary: oklch(0.65 0.33 355);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.22 0.05 290);
+  --secondary-foreground: oklch(0.97 0.02 60);
+  --muted: oklch(0.22 0.05 290);
+  --muted-foreground: oklch(0.65 0.06 290);
+  --accent: oklch(0.8 0.25 290);
+  --accent-foreground: oklch(0.14 0.05 290);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.28 0.07 290);
+  --input: oklch(0.28 0.07 290);
+  --ring: oklch(0.65 0.33 355);
+  --radius: 0rem;
+}
+
+/* ─── Solarized Light ──────────────────────────────────── */
+[data-theme='solarized-light'] {
+  --background: oklch(0.98 0.04 95);
+  --foreground: oklch(0.4 0.04 200);
+  --card: oklch(0.94 0.04 90);
+  --card-foreground: oklch(0.4 0.04 200);
+  --popover: oklch(0.94 0.04 90);
+  --popover-foreground: oklch(0.4 0.04 200);
+  --primary: oklch(0.53 0.18 240);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.9 0.04 90);
+  --secondary-foreground: oklch(0.4 0.04 200);
+  --muted: oklch(0.9 0.04 90);
+  --muted-foreground: oklch(0.55 0.04 200);
+  --accent: oklch(0.6 0.18 185);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.58 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.88 0.04 90);
+  --input: oklch(0.88 0.04 90);
+  --ring: oklch(0.53 0.18 240);
+  --radius: 0.5rem;
+}
+
 .dark {
   --background: oklch(0.12 0.01 240);
   --foreground: oklch(0.95 0.01 200);
@@ -75,8 +282,9 @@
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: 'Inter', 'Geist', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-display: 'Inter', 'Geist', sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -115,11 +323,357 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ══════════════════════════════════════════════════════════
+   BASE LAYER
+══════════════════════════════════════════════════════════ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar — monochrome technical feel */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--primary) 40%, transparent);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--primary) 70%, transparent);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   GPU-TIER ANIMATION KEYFRAMES
+   Only animates: transform, opacity, filter (Compositor thread)
+   Reference: Web Animation Performance Tier List — S-Tier
+══════════════════════════════════════════════════════════ */
+
+/* Entrance: fade up from below */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Entrance: scale + fade */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Entrance: slide from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Entrance: slide from right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Ambient float (hero badges) */
+@keyframes floatY {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-10px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+/* Glow pulse on accent elements */
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 4px color-mix(in srgb, var(--primary) 40%, transparent));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 16px color-mix(in srgb, var(--primary) 80%, transparent));
+  }
+}
+
+/* Shimmer loading skeleton */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Progress bar fill */
+@keyframes fillBar {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Typewriter cursor blink */
+@keyframes caretBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* CSS-only glitch effect on pseudo-elements */
+@keyframes glitch1 {
+  0% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%);
+    transform: translateX(-3px);
+  }
+
+  20% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+    transform: translateX(3px);
+  }
+
+  40% {
+    clip-path: polygon(0 40%, 100% 40%, 100% 55%, 0 55%);
+    transform: translateX(-2px);
+  }
+
+  60% {
+    clip-path: polygon(0 80%, 100% 80%, 100% 95%, 0 95%);
+    transform: translateX(2px);
+  }
+
+  80% {
+    clip-path: polygon(0 5%, 100% 5%, 100% 20%, 0 20%);
+    transform: translateX(-3px);
+  }
+
+  100% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 85%, 0 85%);
+    transform: translateX(0);
+  }
+}
+
+@keyframes glitch2 {
+  0% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 65%, 0 65%);
+    transform: translateX(3px);
+  }
+
+  25% {
+    clip-path: polygon(0 25%, 100% 25%, 100% 40%, 0 40%);
+    transform: translateX(-3px);
+  }
+
+  50% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 85%, 0 85%);
+    transform: translateX(2px);
+  }
+
+  75% {
+    clip-path: polygon(0 10%, 100% 10%, 100% 25%, 0 25%);
+    transform: translateX(-2px);
+  }
+
+  100% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
+    transform: translateX(0);
+  }
+}
+
+/* Radar sweep */
+@keyframes radarSweep {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Timeline dot pulse */
+@keyframes dotPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.6);
+    opacity: 0.4;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   GLASSMORPHISM UTILITY CLASSES
+══════════════════════════════════════════════════════════ */
+
+.glass {
+  background: color-mix(in srgb, var(--card) 60%, transparent);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.glass-strong {
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+}
+
+/* Gradient mesh background overlay */
+.gradient-mesh {
+  background-image:
+    radial-gradient(ellipse 60% 40% at 20% 10%, color-mix(in srgb, var(--primary) 8%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 90%, color-mix(in srgb, var(--accent) 6%, transparent) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 60% 30%, color-mix(in srgb, var(--primary) 4%, transparent) 0%, transparent 60%);
+}
+
+/* Noise texture overlay (authentic technical feel) */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.03;
+  border-radius: inherit;
+}
+
+/* Glow border helper */
+.glow-border {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 30%, transparent),
+    0 0 20px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.glow-border:hover {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary) 60%, transparent),
+    0 0 30px color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* Glitch text effect */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.glitch::before {
+  color: #0ffbf9;
+  animation: glitch1 3s infinite steps(1);
+  opacity: 0;
+}
+
+.glitch::after {
+  color: #cc0f39;
+  animation: glitch2 3s infinite steps(1) 0.1s;
+  opacity: 0;
+}
+
+.glitch:hover::before,
+.glitch:hover::after {
+  opacity: 0.8;
+}
+
+/* Section entrance animation class (used by IntersectionObserver) */
+.animate-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale {
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ══════════════════════════════════════════════════════════
+   ACCESSIBILITY — WCAG 2.2 Criterion 2.2.2 & 2.3.3
+   Universally disables animations for users who request it
+   WITHOUT breaking JS animationend event handlers
+   (uses 0.01ms instead of 'none' to preserve event firing)
+══════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

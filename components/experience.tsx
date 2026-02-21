@@ -1,134 +1,152 @@
 "use client"
 
-import { Building2, Calendar, ExternalLink, ChevronRight } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { motion } from "framer-motion"
+import { Building2, Calendar, MapPin } from "lucide-react"
+import { useProfile, useLanguage } from '@/app/providers'
+import { portfolioData } from '@/lib/data'
 
-const experiences = [
-  {
-    title: "Ingeniero de Soporte / Desarrollador Full Stack",
-    company: "Integral IT",
-    period: "2025 – Actualidad",
-    description: [
-      "Lideré la implementación y configuración de políticas de seguridad en Bitdefender GravityZone, gestionando el módulo de Patch Management para asegurar la integridad de la infraestructura.",
-      "Desarrollé scripts en PowerShell para la automatización de tareas administrativas y renombrado masivo de archivos, reduciendo el tiempo operativo manual.",
-      "Colaboré en proyectos de integración de hardware y software, incluyendo la conexión de sistemas de aire acondicionado mediante protocolo Modbus con ecosistemas Q-SYS.",
-    ],
-    tags: ["Bitdefender", "PowerShell", "Q-SYS", "Modbus", "IoT"],
-    highlight: "Caso de éxito: Universidad de La Sabana",
-    current: true,
-  },
-  {
-    title: "Desarrollador Frontend & Soporte TI",
-    company: "Konrradf SAS",
-    period: "2019 – 2024",
-    description: [
-      "Desarrollé interfaces de usuario dinámicas y responsivas utilizando React y Angular, asegurando una experiencia de usuario (UX) fluida.",
-      "Brindé soporte técnico integral, diagnosticando y resolviendo incidencias de hardware y software para minimizar el tiempo de inactividad.",
-      "Participé en el ciclo completo de desarrollo de software, desde la toma de requerimientos hasta el despliegue y mantenimiento.",
-    ],
-    tags: ["React", "Angular", "HTML5", "CSS3", "JavaScript"],
-    current: false,
-  },
-]
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLElement>(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect() } },
+      { threshold },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [threshold])
+  return { ref, inView }
+}
 
 export function Experience() {
+  const { ref: sectionRef, inView } = useInView(0.05)
+  const { profile } = useProfile()
+  const { language } = useLanguage()
+  const data = portfolioData[language][profile].experience
+
+  const label = language === 'en' ? 'EXPERIENCE' : 'EXPERIENCIA'
+
   return (
-    <section id="experience" className="py-24 px-6 relative">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <p className="text-primary font-mono text-sm mb-2">{"// EXPERIENCIA"}</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-balance">
-            Trayectoria Profesional
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Construyendo soluciones que combinan desarrollo de software con seguridad informática.
+    <section
+      ref={sectionRef as React.RefObject<HTMLElement>}
+      id="experience"
+      aria-labelledby="experience-heading"
+      className="py-24 px-6 relative"
+    >
+      {/* Gradient background tint */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 50% 50% at 100% 50%, color-mix(in srgb, var(--primary) 4%, transparent), transparent 70%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <p className="text-primary font-mono text-sm mb-2 tracking-widest uppercase">
+            {'// '}{label}
           </p>
-        </div>
+          <h2 id="experience-heading" className="text-3xl md:text-4xl font-bold mb-4">
+            {data.title}
+          </h2>
+        </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/50 to-transparent md:-translate-x-1/2" />
+        {/* Timeline */}
+        <div className="relative" role="list">
+          {/* Vertical line */}
+          <div
+            className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, var(--primary), color-mix(in srgb, var(--primary) 20%, transparent))',
+            }}
+            aria-hidden="true"
+          />
 
-          {experiences.map((exp, index) => (
-            <div
-              key={exp.company}
-              className={`relative mb-12 last:mb-0 ${
-                index % 2 === 0 ? "md:pr-[50%] md:text-right" : "md:pl-[50%] md:ml-auto"
-              }`}
-            >
-              {/* Timeline dot */}
-              <div
-                className={`absolute top-0 w-4 h-4 rounded-full border-2 ${
-                  exp.current
-                    ? "bg-primary border-primary shadow-lg shadow-primary/50"
-                    : "bg-background border-primary/50"
-                } ${index % 2 === 0 ? "left-0 md:left-1/2 md:-translate-x-1/2" : "left-0 md:left-1/2 md:-translate-x-1/2"}`}
+          {data.items.map((exp, index) => {
+            const isLeft = index % 2 === 0
+            return (
+              <motion.div
+                key={index}
+                role="listitem"
+                className={`relative mb-12 last:mb-0 ${isLeft ? 'md:pr-[52%] md:text-right' : 'md:pl-[52%]'}`}
+                initial={{ opacity: 0, x: isLeft ? -32 : 32 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.55, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
               >
-                {exp.current && (
-                  <span className="absolute inset-0 rounded-full animate-ping bg-primary/50" />
-                )}
-              </div>
-
-              <div
-                className={`ml-8 md:ml-0 ${
-                  index % 2 === 0 ? "md:mr-8" : "md:ml-8"
-                }`}
-              >
-                <div className="group p-6 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:border-primary/50 transition-all duration-300">
-                  {exp.current && (
-                    <div className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium mb-3">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
-                      </span>
-                      Actual
-                    </div>
-                  )}
-
-                  <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {exp.title}
-                  </h3>
-
-                  <div className={`flex items-center gap-4 text-sm text-muted-foreground mb-4 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
-                    <span className="flex items-center gap-1.5">
-                      <Building2 className="h-4 w-4" />
-                      {exp.company}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Calendar className="h-4 w-4" />
-                      {exp.period}
-                    </span>
-                  </div>
-
-                  <ul className={`space-y-2 mb-4 ${index % 2 === 0 ? "md:text-right" : ""}`}>
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                        <ChevronRight className={`h-4 w-4 text-primary shrink-0 mt-0.5 ${index % 2 === 0 ? "md:order-last" : ""}`} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {exp.highlight && (
-                    <div className={`flex items-center gap-2 text-sm text-primary mb-4 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
-                      <ExternalLink className="h-4 w-4" />
-                      <span className="font-medium">{exp.highlight}</span>
-                    </div>
-                  )}
-
-                  <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? "md:justify-end" : ""}`}>
-                    {exp.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 text-xs rounded-md bg-primary/10 text-primary border border-primary/20"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                {/* Timeline dot with pulse ring */}
+                <div
+                  className="absolute top-3 left-0 md:left-1/2 md:-translate-x-1/2 z-10"
+                  aria-hidden="true"
+                >
+                  {/* Pulse ring */}
+                  <span
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: 'var(--primary)',
+                      animation: `dotPulse ${2.5 + index * 0.3}s ease-in-out infinite`,
+                      opacity: 0.3,
+                    }}
+                  />
+                  <span
+                    className="relative flex h-4 w-4 rounded-full border-2 border-primary bg-background"
+                    style={{ boxShadow: '0 0 10px color-mix(in srgb, var(--primary) 50%, transparent)' }}
+                  />
                 </div>
-              </div>
-            </div>
-          ))}
+
+                {/* Card */}
+                <div className={`ml-8 md:ml-0 ${isLeft ? 'md:mr-8' : 'md:ml-8'}`}>
+                  <motion.article
+                    className="group p-6 rounded-xl border border-border glass hover:border-primary/50 hover:glow-border transition-all duration-300"
+                    whileHover={{ y: -2, transition: { duration: 0.2 } }}
+                  >
+                    <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-200">
+                      {exp.role}
+                    </h3>
+
+                    <div className={`flex flex-wrap items-center gap-3 text-sm text-muted-foreground mb-4 ${isLeft ? 'md:justify-end' : ''}`}>
+                      <span className="flex items-center gap-1.5">
+                        <Building2 className="h-3.5 w-3.5 text-primary/60" aria-hidden="true" />
+                        {exp.company}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="h-3.5 w-3.5 text-primary/60" aria-hidden="true" />
+                        {exp.period}
+                      </span>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {exp.description}
+                    </p>
+
+                    {/* Shimmer overlay on hover */}
+                    <div
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden"
+                      aria-hidden="true"
+                    >
+                      <div
+                        className="absolute inset-y-0 w-1/3 skew-x-[-20deg]"
+                        style={{
+                          background: 'linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary) 5%, transparent), transparent)',
+                          animation: 'shimmer 1.4s ease-in-out infinite',
+                        }}
+                      />
+                    </div>
+                  </motion.article>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
     </section>
