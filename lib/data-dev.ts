@@ -79,6 +79,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     description: "Online courses catalog built with React 18, TypeScript, Vite and TanStack Query v5. Demonstrates modern server-state management: debounced search, combined filters by level and category, pagination with useTransition, lazy-loaded components with Suspense, skeleton loaders and a polished dark theme. Production-ready and fully responsive.",
                     tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
                     github: "https://github.com/devmaiter/tanstack-query-courses",
+                    link: "https://tanstack-query-courses.vercel.app",
                     featured: true
                 }
             ]
@@ -224,6 +225,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     description: "Catálogo de cursos online construido con React 18, TypeScript, Vite y TanStack Query v5. Demuestra manejo moderno de server state: búsqueda con debounce, filtros combinados por nivel y categoría, paginación con useTransition, componentes lazy con Suspense, skeleton loaders y un dark theme cuidado. Listo para producción y responsive.",
                     tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
                     github: "https://github.com/devmaiter/tanstack-query-courses",
+                    link: "https://tanstack-query-courses.vercel.app",
                     featured: true
                 }
             ]
