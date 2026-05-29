@@ -6,6 +6,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             items: [
                 { label: "Home", href: "#hero" },
                 { label: "Skills", href: "#skills" },
+                { label: "Projects", href: "#projects" },
                 { label: "Experience", href: "#experience" },
                 { label: "Education", href: "#education" },
                 { label: "Contact", href: "#contact" },
@@ -40,6 +41,45 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                 {
                     title: "Tools",
                     items: ["Git", "VS Code", "Figma", "Docker"]
+                }
+            ]
+        },
+        projects: {
+            title: "Featured Projects",
+            description: "Production-ready solutions designed to automate business operations and solve real problems.",
+            items: [
+                {
+                    title: "Waly-Connect",
+                    description: "A comprehensive WhatsApp Automation Gateway & CRM Handoff Platform for SMBs in LATAM. Connects Evolution API with a custom Node.js/Express backend and a React manager panel. Handles auto-replies, business hours verification, and live human takeover with active session management.",
+                    tags: ["React", "Node.js", "Evolution API", "PostgreSQL", "Redis", "Docker"],
+                    github: "https://github.com/oscar-julian/waly-connect",
+                    featured: true
+                },
+                {
+                    title: "AI Email Assistant",
+                    description: "An autonomous agent that processes, categorizes, and generates draft responses for business emails. Orchestrated via n8n with OpenAI's GPT-4, utilizing Outlook/Gmail webhooks to classify intent and retrieve context, reducing manual support workload by 70%.",
+                    tags: ["n8n", "OpenAI API", "Node.js", "Google APIs", "Automation"],
+                    featured: true
+                },
+                {
+                    title: "Lead Harvester & Smart Outreach",
+                    description: "High-performance Python lead scraper built with Playwright that extracts local business leads. Automatically enriches data using GPT models, saves results to PostgreSQL/Supabase, and schedules personalized outreach workflows.",
+                    tags: ["Python", "Playwright", "PostgreSQL", "Supabase", "OpenAI"],
+                    featured: true
+                },
+                {
+                    title: "DevBlog - Interactive Router Platform",
+                    description: "An interactive, portfolio-ready developer blogging platform built to demonstrate advanced React concepts. Features React Router v6 nested routes and layout frames, client-side route guards (authentication), state persistence using custom localStorage hooks, comment threads, and a post creation/edit editor.",
+                    tags: ["React", "React Router v6", "CSS Modules", "Framer Motion", "LocalStorage"],
+                    github: "https://github.com/oscar-julian/devblog-react-router",
+                    featured: true
+                },
+                {
+                    title: "TanStack Query Courses",
+                    description: "Online courses catalog built with React 18, TypeScript, Vite and TanStack Query v5. Demonstrates modern server-state management: debounced search, combined filters by level and category, pagination with useTransition, lazy-loaded components with Suspense, skeleton loaders and a polished dark theme. Production-ready and fully responsive.",
+                    tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
+                    github: "https://github.com/devmaiter/tanstack-query-courses",
+                    featured: true
                 }
             ]
         },
@@ -111,6 +151,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             items: [
                 { label: "Inicio", href: "#hero" },
                 { label: "Habilidades", href: "#skills" },
+                { label: "Proyectos", href: "#projects" },
                 { label: "Experiencia", href: "#experience" },
                 { label: "Educación", href: "#education" },
                 { label: "Contacto", href: "#contact" },
@@ -145,6 +186,45 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                 {
                     title: "Herramientas",
                     items: ["Git", "VS Code", "Figma", "Docker"]
+                }
+            ]
+        },
+        projects: {
+            title: "Proyectos Destacados",
+            description: "Soluciones listas para producción diseñadas para automatizar operaciones comerciales y resolver problemas reales.",
+            items: [
+                {
+                    title: "Waly-Connect",
+                    description: "Un sistema modular de automatización de WhatsApp y panel de administración para PyMEs en LATAM. Conecta la API de Evolution con un backend en Node.js/Express y una interfaz React. Maneja respuestas automáticas, horarios de atención y pausa del bot para atención humana.",
+                    tags: ["React", "Node.js", "Evolution API", "PostgreSQL", "Redis", "Docker"],
+                    github: "https://github.com/oscar-julian/waly-connect",
+                    featured: true
+                },
+                {
+                    title: "Agente IA de Correos",
+                    description: "Agente autónomo que procesa, clasifica y genera borradores de respuesta para correos comerciales. Orquestado con n8n y GPT-4 de OpenAI, utilizando webhooks de Gmail para clasificar intenciones y recuperar contexto de clientes, reduciendo el soporte manual en un 70%.",
+                    tags: ["n8n", "OpenAI API", "Node.js", "APIs de Google", "Automatización"],
+                    featured: true
+                },
+                {
+                    title: "Lead Harvester & Smart Outreach",
+                    description: "Scraper de leads de alto rendimiento desarrollado en Python y Playwright. Extrae prospectos comerciales locales, los enriquece automáticamente usando modelos GPT, los almacena en PostgreSQL y programa envíos de contacto inicial personalizados.",
+                    tags: ["Python", "Playwright", "PostgreSQL", "Supabase", "OpenAI"],
+                    featured: true
+                },
+                {
+                    title: "DevBlog - Plataforma Interactiva de Router",
+                    description: "Plataforma interactiva de blogs técnicos diseñada para portafolio. Implementa vistas anidadas y layouts con React Router v6, guards de navegación y autenticación del lado del cliente, persistencia de datos (artículos, comentarios, perfiles de usuario) en localStorage, y un editor de publicaciones interactivo.",
+                    tags: ["React", "React Router v6", "CSS Modules", "Framer Motion", "LocalStorage"],
+                    github: "https://github.com/oscar-julian/devblog-react-router",
+                    featured: true
+                },
+                {
+                    title: "TanStack Query Courses",
+                    description: "Catálogo de cursos online construido con React 18, TypeScript, Vite y TanStack Query v5. Demuestra manejo moderno de server state: búsqueda con debounce, filtros combinados por nivel y categoría, paginación con useTransition, componentes lazy con Suspense, skeleton loaders y un dark theme cuidado. Listo para producción y responsive.",
+                    tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
+                    github: "https://github.com/devmaiter/tanstack-query-courses",
+                    featured: true
                 }
             ]
         },

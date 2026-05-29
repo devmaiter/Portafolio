@@ -15,6 +15,11 @@ interface LanguageContextType {
     setLanguage: (language: Language) => void;
 }
 
+interface SkillFilterContextType {
+    skillFilter: string;
+    setSkillFilter: (tag: string) => void;
+}
+
 const ProfileContext = createContext<ProfileContextType>({
     profile: 'dev',
     setProfile: () => { },
@@ -25,15 +30,23 @@ const LanguageContext = createContext<LanguageContextType>({
     setLanguage: () => { },
 });
 
+const SkillFilterContext = createContext<SkillFilterContextType>({
+    skillFilter: 'All',
+    setSkillFilter: () => { },
+});
+
 export function Providers({ children, ...props }: ThemeProviderProps) {
     const [profile, setProfile] = useState<Profile>('dev');
     const [language, setLanguage] = useState<Language>('es');
+    const [skillFilter, setSkillFilter] = useState<string>('All');
 
     return (
         <NextThemesProvider {...props}>
             <LanguageContext.Provider value={{ language, setLanguage }}>
                 <ProfileContext.Provider value={{ profile, setProfile }}>
-                    {children}
+                    <SkillFilterContext.Provider value={{ skillFilter, setSkillFilter }}>
+                        {children}
+                    </SkillFilterContext.Provider>
                 </ProfileContext.Provider>
             </LanguageContext.Provider>
         </NextThemesProvider>
@@ -46,4 +59,8 @@ export function useProfile() {
 
 export function useLanguage() {
     return useContext(LanguageContext);
+}
+
+export function useSkillFilter() {
+    return useContext(SkillFilterContext);
 }
