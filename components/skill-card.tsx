@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import type { ReactNode } from "react"
+import { useSkillFilter, useLanguage } from "@/app/providers"
 
 interface Skill { name: string; icon: ReactNode; color: string }
 interface SkillCardProps { title: string; icon: ReactNode; skills: Skill[]; index: number }
@@ -9,6 +10,16 @@ interface SkillCardProps { title: string; icon: ReactNode; skills: Skill[]; inde
 export function SkillCard({ title, icon, skills, index }: SkillCardProps) {
     const [hoveredSkill, setHoveredSkill] = useState<number | null>(null)
     const [isCardHovered, setIsCardHovered] = useState(false)
+    const { setSkillFilter } = useSkillFilter()
+    const { language } = useLanguage()
+
+    const handleSkillClick = (name: string) => {
+        setSkillFilter(name)
+        const el = document.getElementById("projects")
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+
+    const tooltipText = language === "en" ? "View projects" : "Ver proyectos"
 
     return (
         <div
@@ -55,11 +66,14 @@ export function SkillCard({ title, icon, skills, index }: SkillCardProps) {
                 {/* Skills grid */}
                 <div className="grid grid-cols-2 gap-3">
                     {skills.map((skill, i) => (
-                        <div
+                        <button
                             key={skill.name}
-                            className="relative cursor-pointer"
+                            type="button"
+                            onClick={() => handleSkillClick(skill.name)}
                             onMouseEnter={() => setHoveredSkill(i)}
                             onMouseLeave={() => setHoveredSkill(null)}
+                            aria-label={`${skill.name} — ${tooltipText}`}
+                            className="relative cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neon/50 rounded-lg"
                         >
                             <div
                                 className="flex items-center gap-2.5 p-2.5 rounded-lg border transition-all duration-300"
@@ -80,13 +94,26 @@ export function SkillCard({ title, icon, skills, index }: SkillCardProps) {
                                     {skill.icon}
                                 </div>
                                 <span
-                                    className="text-sm font-medium transition-colors duration-300 truncate"
+                                    className="text-sm font-medium transition-colors duration-300 truncate flex-1"
                                     style={{ color: hoveredSkill === i ? skill.color : "var(--foreground)" }}
                                 >
                                     {skill.name}
                                 </span>
                             </div>
-                        </div>
+                            {hoveredSkill === i && (
+                                <span
+                                    className="pointer-events-none absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-1 rounded-md text-[10px] font-mono whitespace-nowrap border z-20"
+                                    style={{
+                                        color: skill.color,
+                                        borderColor: `${skill.color}55`,
+                                        backgroundColor: "rgba(11,13,18,0.95)",
+                                        boxShadow: `0 0 12px ${skill.color}30`,
+                                    }}
+                                >
+                                    → {tooltipText}
+                                </span>
+                            )}
+                        </button>
                     ))}
                 </div>
             </div>
