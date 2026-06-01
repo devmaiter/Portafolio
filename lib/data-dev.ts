@@ -68,10 +68,18 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
+                    title: "auth-starter — Passkeys + JWT Rotation",
+                    description: "Modern authentication starter on Next.js 15 + TypeScript + Prisma + PostgreSQL. Implements JWT access tokens, opaque refresh tokens with rotation and reuse-detection cascade, and Passkeys (WebAuthn) for password-less login via Touch ID / Windows Hello / Android biometrics. Ships with a built-in ES/EN i18n module. Deployed on Vercel with Neon Postgres.",
+                    tags: ["TypeScript", "Next.js 15", "Prisma", "WebAuthn / Passkeys", "JWT", "PostgreSQL"],
+                    github: "https://github.com/devmaiter/auth-starter",
+                    link: "https://auth-starter-api.vercel.app",
+                    featured: true
+                },
+                {
                     title: "DevBlog - Interactive Router Platform",
-                    description: "An interactive, portfolio-ready developer blogging platform built to demonstrate advanced React concepts. Features React Router v6 nested routes and layout frames, client-side route guards (authentication), state persistence using custom localStorage hooks, comment threads, and a post creation/edit editor.",
-                    tags: ["React", "React Router v6", "CSS Modules", "Framer Motion", "LocalStorage"],
-                    github: "https://github.com/oscar-julian/devblog-react-router",
+                    description: "An interactive, portfolio-ready developer blogging platform built to demonstrate advanced React concepts. Features React Router v6 nested routes and layout frames, client-side route guards (authentication), state persistence using custom localStorage hooks, comment threads, a post creation/edit editor, and a reusable ES/EN i18n module.",
+                    tags: ["React 19", "React Router", "CSS Modules", "Framer Motion", "i18n", "LocalStorage"],
+                    github: "https://github.com/devmaiter/react-router-blog",
                     featured: true
                 },
                 {
@@ -80,6 +88,22 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
                     github: "https://github.com/devmaiter/tanstack-query-courses",
                     link: "https://tanstack-query-courses.vercel.app",
+                    featured: true
+                },
+                {
+                    title: "RecipeDux — Redux Showcase",
+                    description: "Recipe finder and bookmark app built with React 18 and Redux as core state manager. Demonstrates professional Redux patterns: Redux Toolkit createSlice, createAsyncThunk for async API calls, custom curried middleware (logger), combineReducers, and modern React-Redux hooks (useSelector with shallowEqual, useDispatch). Features a live interactive demo with a real-time Redux state viewer and action log.",
+                    tags: ["React", "Redux", "Redux Toolkit", "Redux Thunk", "Middleware", "React-Redux"],
+                    github: "https://github.com/oscar-julian/recipedux",
+                    link: "https://recipedux.vercel.app",
+                    featured: true
+                },
+                {
+                    title: "Stellar SSR Portal",
+                    description: "Custom React 18 Server-Side Rendering setup built from scratch with Node/Express, Webpack 5, SWC, and Styled Components. Features a dual-pipeline data flow (server-rendered initial page and seamless client-side hydration context for SPA transitions), dynamic SEO metadata injection based on routes, rate-limit resilience with network caching and fallbacks, and a cyberpunk telemetry space control room UI displaying real-time NASA APIs.",
+                    tags: ["React 18", "Node.js", "Express", "Webpack 5", "SWC", "Server-Side Rendering", "Styled Components"],
+                    github: "https://github.com/devmaiter/stellar-ssr-portal",
+                    link: "https://stellar-ssr-portal.vercel.app",
                     featured: true
                 }
             ]
@@ -214,10 +238,18 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
+                    title: "auth-starter — Passkeys + JWT con rotación",
+                    description: "Starter de autenticación moderno sobre Next.js 15 + TypeScript + Prisma + PostgreSQL. Implementa JWT access tokens, refresh tokens opacos con rotación y reuse-detection en cascada, y Passkeys (WebAuthn) para login sin contraseña con Touch ID / Windows Hello / biometría Android. Incluye módulo i18n ES/EN propio. Desplegado en Vercel con Neon Postgres.",
+                    tags: ["TypeScript", "Next.js 15", "Prisma", "WebAuthn / Passkeys", "JWT", "PostgreSQL"],
+                    github: "https://github.com/devmaiter/auth-starter",
+                    link: "https://auth-starter-api.vercel.app",
+                    featured: true
+                },
+                {
                     title: "DevBlog - Plataforma Interactiva de Router",
-                    description: "Plataforma interactiva de blogs técnicos diseñada para portafolio. Implementa vistas anidadas y layouts con React Router v6, guards de navegación y autenticación del lado del cliente, persistencia de datos (artículos, comentarios, perfiles de usuario) en localStorage, y un editor de publicaciones interactivo.",
-                    tags: ["React", "React Router v6", "CSS Modules", "Framer Motion", "LocalStorage"],
-                    github: "https://github.com/oscar-julian/devblog-react-router",
+                    description: "Plataforma interactiva de blogs técnicos diseñada para portafolio. Implementa vistas anidadas y layouts con React Router, guards de navegación y autenticación del lado del cliente, persistencia de datos (artículos, comentarios, perfiles de usuario) en localStorage, editor de publicaciones interactivo y módulo i18n ES/EN reutilizable.",
+                    tags: ["React 19", "React Router", "CSS Modules", "Framer Motion", "i18n", "LocalStorage"],
+                    github: "https://github.com/devmaiter/react-router-blog",
                     featured: true
                 },
                 {
@@ -226,6 +258,22 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
                     github: "https://github.com/devmaiter/tanstack-query-courses",
                     link: "https://tanstack-query-courses.vercel.app",
+                    featured: true
+                },
+                {
+                    title: "RecipeDux — Showcase de Redux",
+                    description: "Buscador y guardador de recetas construido con React 18 y Redux como gestor de estado central. Demuestra patrones profesionales de Redux: createSlice y createAsyncThunk de Redux Toolkit, middleware personalizado con patrón curried (logger), combineReducers, y hooks modernos de React-Redux (useSelector con shallowEqual, useDispatch). Incluye demo interactiva con visor de estado Redux en tiempo real y log de acciones.",
+                    tags: ["React", "Redux", "Redux Toolkit", "Redux Thunk", "Middleware", "React-Redux"],
+                    github: "https://github.com/oscar-julian/recipedux",
+                    link: "https://recipedux.vercel.app",
+                    featured: true
+                },
+                {
+                    title: "Stellar SSR Portal",
+                    description: "Implementación de Server-Side Rendering (SSR) personalizado desde cero utilizando React 18, Express, Webpack 5, SWC y Styled Components. Cuenta con flujo de datos de doble pipeline (página inicial renderizada en servidor e hidratación en cliente con contexto para transiciones SPA), inyección dinámica de metadatos SEO por ruta, resiliencia ante límites de tasa de API con mocks de alta fidelidad, y una interfaz de telemetría cyberpunk con APIs de la NASA.",
+                    tags: ["React 18", "Node.js", "Express", "Webpack 5", "SWC", "Server-Side Rendering", "Styled Components"],
+                    github: "https://github.com/devmaiter/stellar-ssr-portal",
+                    link: "https://stellar-ssr-portal.vercel.app",
                     featured: true
                 }
             ]
