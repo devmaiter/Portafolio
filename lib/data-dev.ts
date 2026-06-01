@@ -56,6 +56,14 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
+                    title: "Julian Store — Full-stack E-commerce Demo",
+                    description: "Production-ready e-commerce split into two services. Storefront in Next.js 16 + React 19 with persistent Zustand cart, JWT-authenticated checkout and a role-aware admin panel; REST API in Express + Sequelize + Postgres with Zod validation, JWT + role middleware, transactional orders, Swagger UI docs and a Docker multi-stage build. Frontend on Vercel, API + Postgres on Railway. Admins manage products and categories inline from the catalog and watch live Postgres tables refresh every 5 seconds.",
+                    tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Zustand", "Node.js", "Express", "Sequelize", "PostgreSQL", "JWT", "Zod", "Docker", "Railway", "Vercel"],
+                    github: "https://github.com/devmaiter/my-store-v2-web",
+                    link: "https://my-store-v2-web.vercel.app",
+                    featured: true
+                },
+                {
                     title: "AI Email Assistant",
                     description: "An autonomous agent that processes, categorizes, and generates draft responses for business emails. Orchestrated via n8n with OpenAI's GPT-4, utilizing Outlook/Gmail webhooks to classify intent and retrieve context, reducing manual support workload by 70%.",
                     tags: ["n8n", "OpenAI API", "Node.js", "Google APIs", "Automation"],
@@ -223,6 +231,14 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     description: "Un sistema modular de automatización de WhatsApp y panel de administración para PyMEs en LATAM. Conecta la API de Evolution con un backend en Node.js/Express y una interfaz React. Maneja respuestas automáticas, horarios de atención y pausa del bot para atención humana.",
                     tags: ["React", "Node.js", "Evolution API", "PostgreSQL", "Redis", "Docker"],
                     github: "https://github.com/oscar-julian/waly-connect",
+                    featured: true
+                },
+                {
+                    title: "Julian Store — E-commerce Full-stack",
+                    description: "Demo de e-commerce lista para producción dividida en dos servicios. Storefront en Next.js 16 + React 19 con carrito persistente con Zustand, checkout autenticado con JWT y panel admin sensible al rol; API REST en Express + Sequelize + Postgres con validación Zod, middleware JWT + roles, órdenes en transacción, documentación interactiva en Swagger UI y Dockerfile multi-stage. Frontend en Vercel, API y Postgres en Railway. El admin gestiona productos y categorías inline desde el catálogo y observa las tablas de Postgres refrescándose cada 5 segundos.",
+                    tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Zustand", "Node.js", "Express", "Sequelize", "PostgreSQL", "JWT", "Zod", "Docker", "Railway", "Vercel"],
+                    github: "https://github.com/devmaiter/my-store-v2-web",
+                    link: "https://my-store-v2-web.vercel.app",
                     featured: true
                 },
                 {
