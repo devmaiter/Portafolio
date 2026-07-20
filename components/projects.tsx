@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useCallback, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { FolderGit2, Github, ExternalLink, Filter } from "lucide-react"
 import { useLanguage, useProfile, useSkillFilter } from "@/app/providers"
@@ -19,10 +19,18 @@ export function Projects() {
   const selectedTag = skillFilter
   const setSelectedTag = setSkillFilter
 
+  // Cursor-following spotlight: write CSS vars directly on the card,
+  // no React re-render per mousemove
+  const handleSpotlight = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    e.currentTarget.style.setProperty('--spot-x', `${e.clientX - rect.left}px`)
+    e.currentTarget.style.setProperty('--spot-y', `${e.clientY - rect.top}px`)
+  }, [])
+
   // Collect all unique tags for filter buttons
   const allTags = useMemo(() => {
     const tagsSet = new Set<string>()
-    projectsData.items.forEach(project => {
+    projectsData?.items.forEach(project => {
       project.tags.forEach(tag => tagsSet.add(tag))
     })
     return ["All", ...Array.from(tagsSet)]
@@ -30,9 +38,13 @@ export function Projects() {
 
   // Filter projects by selected tag
   const filteredProjects = useMemo(() => {
+    if (!projectsData) return []
     if (selectedTag === "All") return projectsData.items
     return projectsData.items.filter(project => project.tags.includes(selectedTag))
   }, [projectsData, selectedTag])
+
+  // Profiles without a projects dataset (sec/av) simply hide the section
+  if (!projectsData) return null
 
   // Profile-specific color accents
   const borderGlowColor = {
@@ -175,8 +187,10 @@ export function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
+                whileHover={{ y: -6 }}
                 viewport={{ once: true }}
-                className={`group flex flex-col justify-between rounded-xl border border-border/40 bg-card/40 p-6 glass-strong transition-all duration-300 ${borderGlowColor}`}
+                onMouseMove={handleSpotlight}
+                className={`group spotlight-card shine flex flex-col justify-between rounded-xl border border-border/40 bg-card/40 p-6 glass-strong transition-colors duration-300 will-change-transform ${borderGlowColor}`}
               >
                 <div>
                   {/* Card Glowing Line */}

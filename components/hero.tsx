@@ -85,17 +85,25 @@ function useParticleCanvas(
     const col = PROFILE_COLORS[profile]
     const particleRgb = `${col.r}, ${col.g}, ${col.b}`
 
+    // Render at device resolution (capped at 2x) so particles stay crisp on
+    // hi-DPI screens; logical coordinates remain in CSS pixels.
+    const dpr = Math.min(window.devicePixelRatio || 1, 2)
+    let W = 0
+    let H = 0
     const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
+      W = canvas.offsetWidth
+      H = canvas.offsetHeight
+      canvas.width = W * dpr
+      canvas.height = H * dpr
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
     resize()
 
     const COUNT = 70
     type P = { x: number; y: number; vx: number; vy: number; size: number }
     const pts: P[] = Array.from({ length: COUNT }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
+      x: Math.random() * W,
+      y: Math.random() * H,
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
       size: Math.random() * 1.8 + 0.6,
@@ -106,14 +114,14 @@ function useParticleCanvas(
 
     const tick = () => {
       if (!ctx || !canvas) return
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.clearRect(0, 0, W, H)
 
       for (let i = 0; i < pts.length; i++) {
         const p = pts[i]
         p.x += p.vx
         p.y += p.vy
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
+        if (p.x < 0 || p.x > W) p.vx *= -1
+        if (p.y < 0 || p.y > H) p.vy *= -1
 
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
@@ -178,7 +186,9 @@ export function Hero() {
   }, [])
 
   const scrollToProjects = useCallback(() => {
-    document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' })
+    // sec/av profiles have no #projects section — fall back to #skills
+    const el = document.getElementById('projects') ?? document.getElementById('skills')
+    el?.scrollIntoView({ behavior: 'smooth' })
   }, [])
 
   return (
@@ -187,6 +197,25 @@ export function Hero() {
       aria-label="Hero section"
       className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-mesh"
     >
+      {/* ── Aurora blobs — slow GPU drift behind everything ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+        <div
+          className="aurora absolute -top-1/4 -left-1/4 w-[70%] h-[70%] rounded-full opacity-30"
+          style={{
+            background: 'radial-gradient(circle, color-mix(in srgb, var(--primary) 18%, transparent), transparent 65%)',
+            filter: 'blur(60px)',
+          }}
+        />
+        <div
+          className="aurora absolute -bottom-1/4 -right-1/4 w-[60%] h-[60%] rounded-full opacity-25"
+          style={{
+            background: 'radial-gradient(circle, color-mix(in srgb, var(--accent) 14%, transparent), transparent 65%)',
+            filter: 'blur(70px)',
+            animationDelay: '-9s',
+          }}
+        />
+      </div>
+
       {/* ── Canvas background ── */}
       <canvas
         ref={canvasRef}
@@ -242,7 +271,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="text-foreground block">{data.title}</span>
+          <span className="text-gradient block">{data.title}</span>
           <span
             className="text-primary block"
             style={{ textShadow: '0 0 30px color-mix(in srgb, var(--primary) 40%, transparent)' }}
@@ -295,7 +324,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            className="group relative overflow-hidden glow-border"
+            className="group relative overflow-hidden glow-border transition-transform duration-300 hover:scale-[1.04] active:scale-95"
             onClick={scrollToContact}
           >
             <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -309,7 +338,7 @@ export function Hero() {
           <Button
             size="lg"
             variant="outline"
-            className="bg-transparent hover:bg-primary/10 hover:border-primary/60 transition-all duration-300"
+            className="bg-transparent hover:bg-primary/10 hover:border-primary/60 transition-all duration-300 hover:scale-[1.04] active:scale-95"
             onClick={scrollToProjects}
           >
             {language === 'en' ? 'View Projects' : 'Ver Proyectos'}
