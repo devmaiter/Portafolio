@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { useState, useEffect } from 'react'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { Monitor, Shield, Speaker, ChevronDown } from 'lucide-react'
 import {
   DropdownMenu,
@@ -18,6 +19,10 @@ export function Navbar() {
   const { language, setLanguage } = useLanguage()
   const data = portfolioData[language][profile]
   const [scrolled, setScrolled] = useState(false)
+
+  // Page scroll progress — springy, compositor-only (scaleX)
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 24, mass: 0.4 })
 
   // Scroll shadow via IntersectionObserver on the hero section (no scroll listener = better perf)
   useEffect(() => {
@@ -57,6 +62,12 @@ export function Navbar() {
         }`}
       aria-label="Main navigation"
     >
+      {/* Scroll progress bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-primary via-primary to-accent"
+        style={{ scaleX: progress, boxShadow: '0 0 8px color-mix(in srgb, var(--primary) 60%, transparent)' }}
+        aria-hidden="true"
+      />
       <div className="container flex h-16 items-center justify-between px-4 gap-4">
 
         {/* ── Left: Glitch logo + Profile Switcher ── */}

@@ -31,7 +31,7 @@ export function SkillCard({ title, icon, skills, index }: SkillCardProps) {
             {/* Glow border */}
             <div
                 className="absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ background: "linear-gradient(135deg,rgba(217,70,239,0.4),transparent 50%,rgba(217,70,239,0.2))" }}
+                style={{ background: "linear-gradient(135deg,color-mix(in srgb, var(--primary) 40%, transparent),transparent 50%,color-mix(in srgb, var(--primary) 20%, transparent))" }}
             />
             {/* Card */}
             <div className="relative bg-card/80 backdrop-blur-sm border border-border rounded-xl p-6 transition-all duration-500 hover:border-neon/30 overflow-hidden">
@@ -43,7 +43,7 @@ export function SkillCard({ title, icon, skills, index }: SkillCardProps) {
                 {/* BG glow */}
                 <div
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-                    style={{ background: "radial-gradient(circle at 50% 50%,rgba(217,70,239,0.05),transparent 70%)" }}
+                    style={{ background: "radial-gradient(circle at 50% 50%,color-mix(in srgb, var(--primary) 5%, transparent),transparent 70%)" }}
                 />
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-6">

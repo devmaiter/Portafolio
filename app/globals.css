@@ -29,6 +29,9 @@
   --chart-4: oklch(0.65 0.16 160);
   --chart-5: oklch(0.55 0.14 190);
   --radius: 0.625rem;
+  /* Neon accent — follows the active theme's primary */
+  --neon: var(--primary);
+  --neon-dim: color-mix(in srgb, var(--primary) 35%, transparent);
   --sidebar: oklch(0.1 0.01 240);
   --sidebar-foreground: oklch(0.95 0.01 200);
   --sidebar-primary: oklch(0.7 0.18 180);
@@ -304,6 +307,7 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-neon: var(--neon);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -331,9 +335,18 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "liga" 1, "calt" 1;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 30%, transparent);
+    color: var(--foreground);
   }
 
   /* Custom scrollbar — monochrome technical feel */
@@ -641,6 +654,98 @@
 .glitch:hover::before,
 .glitch:hover::after {
   opacity: 0.8;
+}
+
+/* ══════════════════════════════════════════════════════════
+   PREMIUM POLISH — spotlight, shine, aurora
+   All compositor-thread only (transform / opacity)
+══════════════════════════════════════════════════════════ */
+
+/* Cursor-following spotlight: JS sets --spot-x / --spot-y per card */
+.spotlight-card {
+  position: relative;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(360px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+      color-mix(in srgb, var(--primary) 10%, transparent), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Diagonal shine sweep across a card on hover */
+@keyframes shineSweep {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+
+  to {
+    transform: translateX(240%) skewX(-18deg);
+  }
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent,
+      color-mix(in srgb, var(--foreground) 7%, transparent), transparent);
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+}
+
+.shine:hover::after {
+  animation: shineSweep 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slow aurora drift for hero backdrop (transform-only) */
+@keyframes auroraDrift {
+
+  0%,
+  100% {
+    transform: translate3d(-4%, -2%, 0) scale(1);
+  }
+
+  33% {
+    transform: translate3d(4%, 3%, 0) scale(1.08);
+  }
+
+  66% {
+    transform: translate3d(-2%, 4%, 0) scale(1.04);
+  }
+}
+
+.aurora {
+  animation: auroraDrift 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Gradient headline text */
+.text-gradient {
+  background: linear-gradient(120deg, var(--foreground) 30%,
+      color-mix(in srgb, var(--primary) 80%, var(--foreground)) 55%,
+      var(--foreground) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Section entrance animation class (used by IntersectionObserver) */

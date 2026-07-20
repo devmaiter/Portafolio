@@ -213,7 +213,7 @@ export function Experience() {
         className="absolute inset-0 pointer-events-none opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(217,70,239,1) 1px, transparent 1px), linear-gradient(90deg, rgba(217,70,239,1) 1px, transparent 1px)",
+            "linear-gradient(var(--primary) 1px, transparent 1px), linear-gradient(90deg, var(--primary) 1px, transparent 1px)",
           backgroundSize: "60px 60px",
         }}
         aria-hidden="true"
@@ -225,7 +225,7 @@ export function Experience() {
           className="absolute inset-0 rounded-full animate-pulse"
           style={{
             background:
-              "radial-gradient(circle, rgba(217,70,239,0.06) 0%, rgba(217,70,239,0.01) 40%, transparent 70%)",
+              "radial-gradient(circle, color-mix(in srgb, var(--primary) 6%, transparent) 0%, color-mix(in srgb, var(--primary) 1%, transparent) 40%, transparent 70%)",
           }}
         />
       </div>
