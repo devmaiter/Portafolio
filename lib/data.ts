@@ -14,6 +14,15 @@ export interface Skill {
     category?: string;
 }
 
+export interface ProjectItem {
+    title: string;
+    description: string;
+    tags: string[];
+    github?: string;
+    link?: string;
+    featured?: boolean;
+}
+
 export interface ExperienceItem {
     company: string;
     role: string;
@@ -47,6 +56,11 @@ export interface ProfileData {
             title: string;
             items: string[];
         }[];
+    };
+    projects?: {
+        title: string;
+        description: string;
+        items: ProjectItem[];
     };
     experience: {
         title: string;
