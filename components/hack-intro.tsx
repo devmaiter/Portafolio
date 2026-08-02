@@ -12,16 +12,16 @@ interface TerminalLine {
 }
 
 const SEQUENCE: TerminalLine[] = [
-    { text: 'oscar@portfolio:~$ sudo nmap -sV target.sys', type: 'command', delay: 100, duration: 340 },
-    { text: '22/tcp open ssh  443/tcp open https  8443/tcp [REDACTED]', type: 'warning', delay: 50, duration: 140 },
-    { text: 'oscar@portfolio:~$ python3 exploit.py --target 192.168.1.1', type: 'command', delay: 150, duration: 380 },
-    { text: '[!] Firewall triggered — applying polymorphic bypass...', type: 'error', delay: 40, duration: 190 },
-    { text: '[*] Shellcode injected (1337 bytes) ✓', type: 'output', delay: 50, duration: 140 },
-    { text: 'oscar@portfolio:~$ hashcat -m 1800 hashes.txt rockyou.txt', type: 'command', delay: 140, duration: 360 },
-    { text: 'Progress.........: 14823492/14344391 (100.0%)', type: 'progress', delay: 55, duration: 150 },
-    { text: 'oscar@portfolio:~$ ssh -i id_rsa root@target.sys', type: 'command', delay: 150, duration: 310 },
-    { text: 'Authenticated.', type: 'success', delay: 190, duration: 110 },
-    { text: '████  ACCESS GRANTED  ████', type: 'success', delay: 100, duration: 90 },
+    { text: 'oscar@portfolio:~$ glab issue view 370', type: 'command', delay: 100, duration: 320 },
+    { text: '#370 · feat: nueva entrega a producción [P1]', type: 'output', delay: 50, duration: 140 },
+    { text: 'oscar@portfolio:~$ claude agent run --issue 370', type: 'command', delay: 150, duration: 360 },
+    { text: '[*] plan → implementar → revisar → probar (supervisión humana)', type: 'warning', delay: 40, duration: 180 },
+    { text: '[*] rama MINI_370 lista · convenciones del equipo aplicadas ✓', type: 'output', delay: 50, duration: 150 },
+    { text: 'oscar@portfolio:~$ npx playwright test', type: 'command', delay: 140, duration: 300 },
+    { text: 'Progress.........: 14/14 passed (100.0%)', type: 'progress', delay: 55, duration: 150 },
+    { text: 'oscar@portfolio:~$ glab mr merge 370 --when-pipeline-succeeds', type: 'command', delay: 150, duration: 340 },
+    { text: 'MR !370 merged → main · 6354 commits · 97% merge rate', type: 'success', delay: 190, duration: 150 },
+    { text: '████  DEPLOY: PRODUCTION  ████', type: 'success', delay: 100, duration: 90 },
 ]
 
 const GLITCH_CHARS = '!@#$%^&*<>[]{}|\\/?~`ÅΩ∑∂ƒ©√∫≈01'
@@ -69,7 +69,7 @@ export function HackIntro({ onComplete }: { onComplete: () => void }) {
     const [typing, setTyping] = useState('')
     const [phase, setPhase] = useState<'typing' | 'granted' | 'glitch'>('typing')
     const [progress, setProgress] = useState(0)
-    const [glitchText, setGlitchText] = useState('████  ACCESS GRANTED  ████')
+    const [glitchText, setGlitchText] = useState('████  DEPLOY: PRODUCTION  ████')
     const termRef = useRef<HTMLDivElement>(null)
     const lineIdx = useRef(0)
     const cancelled = useRef(false)
@@ -101,7 +101,7 @@ export function HackIntro({ onComplete }: { onComplete: () => void }) {
         if (cancelled.current) return
         await new Promise(r => setTimeout(r, 200))
         setPhase('granted')
-        const base = '████  ACCESS GRANTED  ████'; let n = 0
+        const base = '████  DEPLOY: PRODUCTION  ████'; let n = 0
         const iv = setInterval(() => {
             n++
             setGlitchText(n < 7 ? glitch(base) : base)
@@ -161,7 +161,7 @@ export function HackIntro({ onComplete }: { onComplete: () => void }) {
                     {lines.map((line, i) => (
                         <div key={i} style={{ color: color(line.type) }}>
                             {line.type === 'command' && <span style={{ color: '#00ff88' }}>❯ </span>}
-                            {line.type === 'success' && line.text.includes('ACCESS GRANTED') ? (
+                            {line.type === 'success' && line.text.includes('DEPLOY: PRODUCTION') ? (
                                 <motion.span style={{
                                     color: '#00ff88', fontWeight: 'bold', letterSpacing: '0.18em',
                                     textShadow: '0 0 24px #00ff88, 0 0 60px rgba(0,255,136,0.4)',

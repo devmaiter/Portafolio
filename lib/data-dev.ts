@@ -14,8 +14,8 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         },
         hero: {
             title: "Oscar Julián Osorio",
-            subtitle: "Software Developer",
-            description: "Specialized in React, Next.js, and modern web technologies. Building scalable and performant applications.",
+            subtitle: "Full-Stack Developer",
+            description: "3+ years keeping a commercial platform in production: 6,354 commits, 369 merged MRs with a 97% merge rate — and an AI-agent SDLC pipeline with human review on every delivery.",
             availableText: "Available for new projects",
             contactButton: "Contact Me"
         },
@@ -48,6 +48,12 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             title: "Featured Projects",
             description: "Production-ready solutions designed to automate business operations and solve real problems.",
             items: [
+                {
+                    title: "AI-Agent SDLC Pipeline",
+                    description: "The system I design and maintain so a small team automates the full lifecycle of a GitLab issue with AI agents: a central repository of shared skills, agents and CI where agents read the issue, propose a plan, implement on a branch following team conventions, review each other and run Playwright tests — with human review before every merge. Delivery went from 101 merged MRs in 2024 to 135 in 2025 (+34%) holding a 97% merge rate. Verified GitLab metrics in the case study.",
+                    tags: ["Claude Code", "AI Agents", "GitLab CI/CD", "Playwright", "SDLC"],
+                    featured: true
+                },
                 {
                     title: "Julian Store — Full-stack E-commerce Demo",
                     description: "Production-ready e-commerce split into two services. Storefront in Next.js 16 + React 19 with persistent Zustand cart, JWT-authenticated checkout and a role-aware admin panel; REST API in Express + Sequelize + Postgres with Zod validation, JWT + role middleware, transactional orders, Swagger UI docs and a Docker multi-stage build. Frontend on Vercel, API + Postgres on Railway. Admins manage products and categories inline from the catalog and watch live Postgres tables refresh every 5 seconds.",
@@ -112,10 +118,16 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             title: "Education",
             items: [
                 {
-                    institution: "University of Technology",
-                    degree: "B.S. in Computer Science",
-                    period: "2019 - 2023",
-                    description: "Focus on Software Engineering and Web Development."
+                    institution: "Production as classroom — self-taught engineering",
+                    degree: "Continuous software engineering training",
+                    period: "2019 - Present",
+                    description: "Learning proven in production: 3+ years sustaining a commercial platform, a proprietary architecture mastered layer by layer, and an AI-agent SDLC pipeline designed from scratch."
+                },
+                {
+                    institution: "Open source as school",
+                    degree: "Merged contributions to third-party projects",
+                    period: "2026",
+                    description: "PRs merged in terraform-provider-minio (Go) and zerocode (Java) — other teams' codebases, their conventions, their code reviews."
                 }
             ]
         },
@@ -143,8 +155,8 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         },
         hero: {
             title: "Oscar Julián Osorio",
-            subtitle: "Desarrollador de Software",
-            description: "Especializado en React, Next.js y tecnologías web modernas. Construyendo aplicaciones escalables y performantes.",
+            subtitle: "Desarrollador Full-Stack",
+            description: "3+ años sosteniendo una plataforma comercial en producción: 6 354 commits, 369 MRs fusionados con 97 % de aceptación — y un pipeline SDLC con agentes de IA y revisión humana en cada entrega.",
             availableText: "Disponible para nuevos proyectos",
             contactButton: "Contáctame"
         },
@@ -177,6 +189,12 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             title: "Proyectos Destacados",
             description: "Soluciones listas para producción diseñadas para automatizar operaciones comerciales y resolver problemas reales.",
             items: [
+                {
+                    title: "Pipeline SDLC con Agentes de IA",
+                    description: "El sistema que diseño y mantengo para que un equipo pequeño automatice el ciclo de vida completo de un issue de GitLab con agentes de IA: un repositorio central de skills, agentes y CI compartidos donde los agentes leen el issue, proponen un plan, implementan en una rama con las convenciones del equipo, se revisan entre sí y ejecutan pruebas Playwright — con revisión humana antes de cada merge. La entrega pasó de 101 MRs fusionados en 2024 a 135 en 2025 (+34 %) manteniendo 97 % de aceptación. Métricas de GitLab verificadas en el caso de estudio.",
+                    tags: ["Claude Code", "Agentes IA", "GitLab CI/CD", "Playwright", "SDLC"],
+                    featured: true
+                },
                 {
                     title: "Julian Store — E-commerce Full-stack",
                     description: "Demo de e-commerce lista para producción dividida en dos servicios. Storefront en Next.js 16 + React 19 con carrito persistente con Zustand, checkout autenticado con JWT y panel admin sensible al rol; API REST en Express + Sequelize + Postgres con validación Zod, middleware JWT + roles, órdenes en transacción, documentación interactiva en Swagger UI y Dockerfile multi-stage. Frontend en Vercel, API y Postgres en Railway. El admin gestiona productos y categorías inline desde el catálogo y observa las tablas de Postgres refrescándose cada 5 segundos.",
@@ -241,10 +259,16 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             title: "Educación",
             items: [
                 {
-                    institution: "Universidad de Tecnología",
-                    degree: "Ingeniería en Sistemas",
-                    period: "2019 - 2023",
-                    description: "Enfoque en Ingeniería de Software y Desarrollo Web."
+                    institution: "La producción como aula — ingeniería autodidacta",
+                    degree: "Formación continua en ingeniería de software",
+                    period: "2019 - Presente",
+                    description: "Aprendizaje probado en producción: 3+ años sosteniendo una plataforma comercial, una arquitectura propia dominada capa por capa y un pipeline SDLC con agentes de IA diseñado desde cero."
+                },
+                {
+                    institution: "El open source como escuela",
+                    degree: "Contribuciones fusionadas en proyectos de terceros",
+                    period: "2026",
+                    description: "PRs mergeados en terraform-provider-minio (Go) y zerocode (Java) — código ajeno, sus convenciones y sus code reviews."
                 }
             ]
         },

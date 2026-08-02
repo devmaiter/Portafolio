@@ -26,11 +26,17 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Oscar Julián Osorio | Dev · Security · AV Engineering',
+  title: 'Oscar Julián Osorio | Desarrollador Full-Stack · IA aplicada al SDLC',
   description:
-    'Portfolio de Oscar Julián Osorio — Desarrollador de Software, Especialista en Ciberseguridad e Ingeniero de Sistemas AV. Basado en Colombia.',
-  keywords: ['portfolio', 'developer', 'cybersecurity', 'AV engineering', 'fullstack', 'Colombia'],
+    'Desarrollador full-stack con 3+ años sosteniendo una plataforma en producción: 6 354 commits, 369 MRs fusionados (97 % de aceptación) y un pipeline SDLC con agentes de IA. Colombia, remoto.',
+  keywords: ['desarrollador full-stack', 'AI-assisted development', 'agentes IA', 'Claude Code', 'SDLC', 'GitLab CI/CD', 'Playwright', 'TypeScript', 'React', 'Colombia', 'remoto'],
   authors: [{ name: 'Oscar Julián Osorio' }],
+  openGraph: {
+    title: 'Oscar Julián Osorio — Desarrollador Full-Stack',
+    description: '6 354 commits · 369 MRs fusionados · 97 % de aceptación · pipeline SDLC con agentes de IA. Métricas verificadas de GitLab, 2022–2026.',
+    type: 'website',
+    locale: 'es_CO',
+  },
   icons: {
     icon: [
       { url: '/icon-dark-32x32.png', media: '(prefers-color-scheme: dark)' },

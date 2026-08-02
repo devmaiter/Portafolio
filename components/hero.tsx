@@ -160,7 +160,7 @@ function useParticleCanvas(
 /* ── Floating badge helper ─────────────────────────────────── */
 const STAGGER_DELAY = 0.12
 const floatingBadges = {
-  dev: ['React', 'TypeScript', 'Node.js', 'Next.js', 'Python'],
+  dev: ['TypeScript', 'React', 'Elm', 'CI/CD', 'Claude Code'],
   sec: ['ISO 27001', 'OWASP', 'Pentest', 'SOC 2', 'SIEM'],
   av: ['NDI', 'Dante', 'Resolume', 'DMX', 'OSC'],
 } as const

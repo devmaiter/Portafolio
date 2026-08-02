@@ -3,11 +3,11 @@
 import { useEffect, useState, useRef } from "react"
 import { CircuitBackground } from "@/components/circuit-background"
 import { SkillCard } from "@/components/skill-card"
-import { Code2, Server, Wrench, Shield, Music } from "lucide-react"
+import { Code2, Server, Wrench, Shield, Music, Bot } from "lucide-react"
 import {
-  ReactIcon, NextjsIcon, TailwindIcon, Html5Icon, TypeScriptIcon, Css3Icon,
-  NodejsIcon, ExpressIcon, PrismaIcon, PostgresIcon, MongoIcon, ApiIcon,
-  VscodeIcon, GitIcon, FigmaIcon, TerminalIcon, DockerIcon,
+  ReactIcon, NextjsIcon, TailwindIcon, TypeScriptIcon, Css3Icon,
+  NodejsIcon, ExpressIcon, PostgresIcon, ApiIcon,
+  GitIcon, TerminalIcon, DockerIcon,
 } from "@/components/tech-icons"
 import { useLanguage, useProfile } from "@/app/providers"
 
@@ -58,34 +58,36 @@ const devCategories = (lang: 'en' | 'es') => [
     title: lang === 'en' ? 'Frontend' : 'Frontend',
     icon: <Code2 className="w-5 h-5" />,
     skills: [
+      { name: "TypeScript", icon: <TypeScriptIcon className="w-5 h-5" />, color: "#3178c6" },
       { name: "React", icon: <ReactIcon className="w-5 h-5" />, color: "#61dafb" },
       { name: "Next.js", icon: <NextjsIcon className="w-5 h-5" />, color: "#e8e0f0" },
-      { name: "TypeScript", icon: <TypeScriptIcon className="w-5 h-5" />, color: "#3178c6" },
+      { name: "Elm", icon: <TerminalIcon className="w-5 h-5" />, color: "#60b5cc" },
       { name: "Tailwind CSS", icon: <TailwindIcon className="w-5 h-5" />, color: "#38bdf8" },
-      { name: "HTML5", icon: <Html5Icon className="w-5 h-5" />, color: "#e34f26" },
-      { name: "CSS3", icon: <Css3Icon className="w-5 h-5" />, color: "#264de4" },
+      { name: "SASS", icon: <Css3Icon className="w-5 h-5" />, color: "#cf649a" },
     ],
   },
   {
-    title: lang === 'en' ? 'Backend' : 'Backend',
+    title: lang === 'en' ? 'Backend & Data' : 'Backend y Datos',
     icon: <Server className="w-5 h-5" />,
     skills: [
+      { name: "PHP", icon: <TerminalIcon className="w-5 h-5" />, color: "#777bb4" },
+      { name: "MySQL", icon: <TerminalIcon className="w-5 h-5" />, color: "#4479a1" },
       { name: "Node.js", icon: <NodejsIcon className="w-5 h-5" />, color: "#68a063" },
       { name: "Express", icon: <ExpressIcon className="w-5 h-5" />, color: "#e8e0f0" },
-      { name: "Prisma", icon: <PrismaIcon className="w-5 h-5" />, color: "#d946ef" },
+      { name: "FastAPI", icon: <ApiIcon className="w-5 h-5" />, color: "#009688" },
       { name: "PostgreSQL", icon: <PostgresIcon className="w-5 h-5" />, color: "#336791" },
-      { name: "MongoDB", icon: <MongoIcon className="w-5 h-5" />, color: "#47a248" },
-      { name: "REST API", icon: <ApiIcon className="w-5 h-5" />, color: "#06b6d4" },
     ],
   },
   {
-    title: lang === 'en' ? 'Tools' : 'Herramientas',
-    icon: <Wrench className="w-5 h-5" />,
+    title: lang === 'en' ? 'AI & Automation' : 'IA y Automatización',
+    icon: <Bot className="w-5 h-5" />,
     skills: [
-      { name: "VS Code", icon: <VscodeIcon className="w-5 h-5" />, color: "#007acc" },
-      { name: "Git", icon: <GitIcon className="w-5 h-5" />, color: "#f05032" },
+      { name: "Claude Code", icon: <TerminalIcon className="w-5 h-5" />, color: "#d97757" },
+      { name: lang === 'en' ? 'SDLC Agents' : 'Agentes SDLC', icon: <Bot className="w-5 h-5" />, color: "#00ff88" },
+      { name: "Playwright", icon: <TerminalIcon className="w-5 h-5" />, color: "#2ead33" },
+      { name: "GitLab CI/CD", icon: <GitIcon className="w-5 h-5" />, color: "#fc6d26" },
       { name: "Docker", icon: <DockerIcon className="w-5 h-5" />, color: "#2496ed" },
-      { name: "Figma", icon: <FigmaIcon className="w-5 h-5" />, color: "#a259ff" },
+      { name: "Git", icon: <GitIcon className="w-5 h-5" />, color: "#f05032" },
     ],
   },
 ]
@@ -161,19 +163,19 @@ const avCategories = (lang: 'en' | 'es') => [
 /* ── Stats per profile ──────────────────────────────────── */
 const STATS = {
   dev: [
-    { label: { en: 'Technologies', es: 'Tecnologías' }, value: 16 },
-    { label: { en: 'Projects', es: 'Proyectos' }, value: 30 },
-    { label: { en: 'Commits', es: 'Commits' }, value: 2847 },
+    { label: { en: 'Commits', es: 'Commits' }, value: 6354, suffix: '' },
+    { label: { en: 'Merged MRs', es: 'MRs fusionados' }, value: 369, suffix: '' },
+    { label: { en: 'Merge rate', es: 'Tasa de fusión' }, value: 97, suffix: '%' },
   ],
   sec: [
-    { label: { en: 'CTF Solved', es: 'CTF Resueltos' }, value: 45 },
-    { label: { en: 'CVEs Found', es: 'CVEs Hallados' }, value: 8 },
-    { label: { en: 'Tools Used', es: 'Herramientas' }, value: 20 },
+    { label: { en: 'CTF Solved', es: 'CTF Resueltos' }, value: 45, suffix: '+' },
+    { label: { en: 'CVEs Found', es: 'CVEs Hallados' }, value: 8, suffix: '+' },
+    { label: { en: 'Tools Used', es: 'Herramientas' }, value: 20, suffix: '+' },
   ],
   av: [
-    { label: { en: 'Events', es: 'Eventos' }, value: 120 },
-    { label: { en: 'AV Tools', es: 'Herramientas' }, value: 18 },
-    { label: { en: 'Years', es: 'Años' }, value: 5 },
+    { label: { en: 'Events', es: 'Eventos' }, value: 120, suffix: '+' },
+    { label: { en: 'AV Tools', es: 'Herramientas' }, value: 18, suffix: '+' },
+    { label: { en: 'Years', es: 'Años' }, value: 5, suffix: '+' },
   ],
 }
 
@@ -184,7 +186,7 @@ const SECTIONS = {
 }
 
 const SUBTITLES = {
-  dev: { en: 'A complete stack for modern web applications.', es: 'Un stack completo para aplicaciones web modernas.' },
+  dev: { en: 'The stack I ship to production — verified GitLab metrics, 2022–2026.', es: 'El stack con el que entrego a producción — métricas de GitLab verificadas, 2022–2026.' },
   sec: { en: 'Tools and techniques for offensive & defensive ops.', es: 'Herramientas para operaciones ofensivas y defensivas.' },
   av: { en: 'End-to-end AV production and integration.', es: 'Producción e integración AV de punta a punta.' },
 }
@@ -261,7 +263,7 @@ export function Skills() {
               <div key={stat.label.en} className="text-center">
                 <div className="text-2xl md:text-3xl font-bold text-neon font-mono">
                   <AnimatedCounter target={stat.value} />
-                  <span className="text-neon/60">+</span>
+                  <span className="text-neon/60">{stat.suffix}</span>
                 </div>
                 <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wider font-mono">
                   {stat.label[language]}
