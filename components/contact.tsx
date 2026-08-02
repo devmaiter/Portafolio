@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, Send, MapPin, ExternalLink } from "lucide-react"
+import { Github, Gitlab, Mail, Send, MapPin, ExternalLink } from "lucide-react"
 import { useProfile, useLanguage } from '@/app/providers'
 import { portfolioData } from '@/lib/data'
 
@@ -24,8 +24,8 @@ function useInView(threshold = 0.1) {
 }
 
 const SOCIAL_LINKS = [
-  { href: 'https://github.com/oscar-julian-osorio', label: 'GitHub', Icon: Github, color: 'hover:border-zinc-400 hover:text-zinc-300' },
-  { href: 'https://linkedin.com/in/oscar-julian-osorio', label: 'LinkedIn', Icon: Linkedin, color: 'hover:border-blue-400 hover:text-blue-400' },
+  { href: 'https://github.com/devmaiter', label: 'GitHub', Icon: Github, color: 'hover:border-zinc-400 hover:text-zinc-300' },
+  { href: 'https://gitlab.com/oscar.osorio.kf', label: 'GitLab', Icon: Gitlab, color: 'hover:border-orange-400 hover:text-orange-400' },
 ]
 
 export function Contact() {
@@ -91,16 +91,16 @@ export function Contact() {
               <div className="space-y-3">
                 {/* Email */}
                 <a
-                  href="mailto:contacto@oscarjulian.dev"
+                  href="mailto:f1000161620@gmail.com"
                   className="flex items-center gap-4 p-3 rounded-lg hover:bg-primary/5 group transition-all duration-200"
-                  aria-label="Send email to contacto@oscarjulian.dev"
+                  aria-label="Send email to f1000161620@gmail.com"
                 >
                   <div className="w-10 h-10 flex-shrink-0 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_14px_color-mix(in_srgb,var(--primary)_25%,transparent)] transition-all duration-300">
                     <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-0.5">Email</p>
-                    <p className="text-foreground text-sm group-hover:text-primary transition-colors duration-200">contacto@oscarjulian.dev</p>
+                    <p className="text-foreground text-sm group-hover:text-primary transition-colors duration-200">f1000161620@gmail.com</p>
                   </div>
                 </a>
 
@@ -163,7 +163,7 @@ export function Contact() {
                 className="w-full glow-border group relative overflow-hidden"
                 asChild
               >
-                <a href="mailto:contacto@oscarjulian.dev">
+                <a href="mailto:f1000161620@gmail.com">
                   <span
                     className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{ background: 'linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 70%, var(--accent)))' }}

@@ -65,6 +65,7 @@ export interface ProfileData {
     experience: {
         title: string;
         items: ExperienceItem[];
+        caseStudy?: { label: string; url: string };
     };
     education: {
         title: string;

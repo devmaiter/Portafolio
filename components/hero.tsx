@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, ChevronDown, Terminal, Shield, Radio } from "lucide-react"
+import { Github, Gitlab, Mail, ChevronDown, Terminal, Shield, Radio } from "lucide-react"
 import { useProfile, useLanguage } from '@/app/providers'
 import { portfolioData } from '@/lib/data'
 
@@ -354,9 +354,9 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.64 }}
         >
           {[
-            { href: 'https://github.com/oscar-julian-osorio', label: 'GitHub', Icon: Github },
-            { href: 'https://linkedin.com/in/oscar-julian-osorio', label: 'LinkedIn', Icon: Linkedin },
-            { href: 'mailto:contacto@oscarjulian.dev', label: 'Email', Icon: Mail },
+            { href: 'https://github.com/devmaiter', label: 'GitHub', Icon: Github },
+            { href: 'https://gitlab.com/oscar.osorio.kf', label: 'GitLab', Icon: Gitlab },
+            { href: 'mailto:f1000161620@gmail.com', label: 'Email', Icon: Mail },
           ].map(({ href, label, Icon }) => (
             <a
               key={label}

@@ -149,8 +149,9 @@ export function HackIntro({ onComplete }: { onComplete: () => void }) {
                 {/* Terminal body */}
                 <div ref={termRef} className="rounded-b-xl overflow-y-auto" style={{
                     background: 'rgba(5,5,14,0.98)',
-                    border: `1px solid ${isGranted ? '#00ff88' : '#1e3a5f'}`,
-                    borderTop: 'none', height: '340px', padding: '14px 18px',
+                    borderWidth: '0 1px 1px 1px', borderStyle: 'solid',
+                    borderColor: isGranted ? '#00ff88' : '#1e3a5f',
+                    height: '340px', padding: '14px 18px',
                     fontFamily: '"JetBrains Mono","Fira Code",monospace', fontSize: '13px', lineHeight: '1.75',
                     transition: 'border-color 0.3s,box-shadow 0.3s',
                     boxShadow: isGranted

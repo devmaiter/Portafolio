@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react"
 import { CircuitBackground } from "@/components/circuit-background"
-import { Zap, Calendar, MapPin, Briefcase } from "lucide-react"
+import { Zap, Calendar, MapPin, Briefcase, ExternalLink } from "lucide-react"
 import { useProfile, useLanguage } from "@/app/providers"
 import { portfolioData } from "@/lib/data"
 import type { ExperienceItem } from "@/lib/data"
@@ -27,7 +27,10 @@ function TimelineNode({
         style={{
           backgroundColor: isActive ? `${color}15` : "transparent",
           boxShadow: isActive ? `0 0 20px ${color}30, 0 0 40px ${color}10` : "none",
-          animation: isActive ? "pulse 2s ease-in-out infinite" : "none",
+          animationName: isActive ? "pulse" : "none",
+          animationDuration: "2s",
+          animationTimingFunction: "ease-in-out",
+          animationIterationCount: "infinite",
           animationDelay: `${index * 200}ms`,
         }}
       />
@@ -431,8 +434,28 @@ export function Experience() {
           </div>
         </div>
 
+        {/* Case study CTA — links out to the verified GitLab metrics page */}
+        {data.caseStudy && (
+          <div
+            className={`mt-16 flex justify-center transition-all duration-700 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+            style={{ transitionDelay: "500ms" }}
+          >
+            <a
+              href={data.caseStudy.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group spotlight-card shine relative inline-flex items-center gap-2 rounded-full border border-neon/30 bg-neon/5 px-6 py-3 text-sm font-mono text-neon transition-all duration-300 hover:border-neon/60 hover:bg-neon/10"
+            >
+              {data.caseStudy.label}
+              <ExternalLink className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </div>
+        )}
+
         {/* Bottom decorative element */}
-        <div className="mt-16 flex items-center justify-center gap-4">
+        <div className="mt-10 flex items-center justify-center gap-4">
           <div className="h-px flex-1 max-w-[100px] bg-gradient-to-r from-transparent to-neon/30" />
           <div className="flex items-center gap-2">
             <Briefcase className="w-4 h-4 text-neon/40" />
