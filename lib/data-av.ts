@@ -13,33 +13,33 @@ export const avData: Record<'en' | 'es', ProfileData> = {
         },
         hero: {
             title: "Oscar Julián Osorio",
-            subtitle: "AV Engineering Expert",
-            description: "Designing and implementing advanced audio-visual systems. Specializing in protocols, signal flow, and system integration.",
+            subtitle: "Software for Live AV",
+            description: "I build tools for audio, lighting and video crews: show control over OSC and Art-Net, grandMA2 automation, rider-driven production sheets and network utilities for Dante rigs.",
             availableText: "Available for projects",
             contactButton: "Contact Me"
         },
         skills: {
             title: "AV Engineering Skills",
-            description: "Expertise in audio-visual systems, protocols, and connections.",
+            description: "Protocols and systems I work with in my tools.",
             items: [
-                { name: "Dante / AES67", level: 95 },
-                { name: "Signal Processing", level: 90 },
-                { name: "System Design", level: 85 },
-                { name: "Crestron / Extron", level: 80 },
-                { name: "Acoustics", level: 75 },
+                { name: "OSC / Art-Net", level: 80 },
+                { name: "Dante networks", level: 70 },
+                { name: "grandMA2 Lua", level: 75 },
+                { name: "Production paperwork", level: 80 },
+                { name: "Python / TypeScript", level: 85 },
             ],
             categories: [
                 {
-                    title: "Audio Protocols",
-                    items: ["Dante", "AES67", "AVB", "MADI", "AES/EBU"]
+                    title: "Protocols",
+                    items: ["OSC", "Art-Net", "Dante", "UDP", "WebSockets"]
                 },
                 {
-                    title: "Video & Control",
-                    items: ["NDI", "SDI", "HDBaseT", "Crestron", "Q-SYS", "Extron"]
+                    title: "Systems",
+                    items: ["grandMA2", "Resolume", "Onyx"]
                 },
                 {
-                    title: "Connections & Systems",
-                    items: ["Video Walls", "DSP", "Livestreaming", "Acoustics", "Lutron"]
+                    title: "Production",
+                    items: ["Riders", "Backline", "Input lists", "RF planning"]
                 }
             ]
         },
@@ -47,22 +47,31 @@ export const avData: Record<'en' | 'es', ProfileData> = {
             title: "AV Projects",
             items: [
                 {
-                    company: "AudioVisual Pro",
-                    role: "System Integrator",
-                    period: "2021 - Present",
-                    location: "Remote",
-                    description: "Designing complex AV systems for corporate and event spaces, integrating Dante, NDI and control protocols.",
-                    tags: ["Dante", "Q-SYS", "NDI", "Crestron"],
+                    company: "loop-av-middleware",
+                    role: "Real-time show control",
+                    period: "2026",
+                    location: "Own project",
+                    description: "Middleware that bridges OSC, Art-Net, UDP and WebSockets to drive Resolume and Onyx during live shows, with a web dashboard for the operator.",
+                    tags: ["TypeScript", "OSC", "Art-Net", "WebSockets"],
                     tagColor: "#06b6d4"
                 },
                 {
-                    company: "Live Events Co.",
-                    role: "AV Technician",
-                    period: "2019 - 2021",
-                    location: "On-site",
-                    description: "Operating and maintaining audio-visual equipment for live events, corporate conferences, and broadcasting.",
-                    tags: ["Resolume", "Blackmagic", "Yamaha CL", "OBS"],
+                    company: "grandMA2 kit",
+                    role: "Lighting console automation",
+                    period: "2026",
+                    location: "Own project",
+                    description: "Lua plugins for grandMA2 onPC: an importer that loads a predefined library (31 effects, 233 macros, 68 MAtricks) and a color picker, plus a Python generator that builds the patch from a rider.",
+                    tags: ["Lua", "Python", "grandMA2"],
                     tagColor: "#a259ff"
+                },
+                {
+                    company: "Backline",
+                    role: "Festival production sheet",
+                    period: "2026",
+                    location: "Own project",
+                    description: "Production sheet for a multi-band festival: reads each band's rider, builds the backline and input lists per band and adds up the festival totals.",
+                    tags: ["JavaScript", "Riders", "Backline"],
+                    tagColor: "#f59e0b"
                 }
             ]
         },
@@ -70,15 +79,21 @@ export const avData: Record<'en' | 'es', ProfileData> = {
             title: "Education",
             items: [
                 {
-                    institution: "AV Tech Academy",
-                    degree: "Certified Technology Specialist (CTS)",
-                    period: "2021",
+                    institution: "SENA",
+                    degree: "Technologist in Software Analysis and Development (ADSO)",
+                    period: "In progress",
+                },
+                {
+                    institution: "Self-study in networked audio",
+                    degree: "Dante / AoIP and RF for in-ear monitors",
+                    period: "2026",
+                    description: "Hands-on lab on Dante networks and link-budget and intermodulation calculations for wireless in-ear systems."
                 }
             ]
         },
         contact: {
             title: "Connect for AV",
-            description: "Let's discuss your audio-visual needs.",
+            description: "Need a tool for your crew or your show? Let's talk.",
             form: {
                 name: "Name",
                 email: "Email",
@@ -99,33 +114,33 @@ export const avData: Record<'en' | 'es', ProfileData> = {
         },
         hero: {
             title: "Oscar Julián Osorio",
-            subtitle: "Experto en Ingeniería AV",
-            description: "Diseñando e implementando sistemas audiovisuales avanzados. Especializado en protocolos, flujo de señal e integración de sistemas.",
+            subtitle: "Software para AV en Vivo",
+            description: "Construyo herramientas para equipos de audio, luces y video: control de shows por OSC y Art-Net, automatización de grandMA2, hojas de producción a partir de riders y utilidades de red para sistemas Dante.",
             availableText: "Disponible para proyectos",
             contactButton: "Contáctame"
         },
         skills: {
             title: "Habilidades en Ingeniería AV",
-            description: "Experiencia en sistemas audiovisuales, protocolos y conexiones.",
+            description: "Protocolos y sistemas con los que trabajan mis herramientas.",
             items: [
-                { name: "Dante / AES67", level: 95 },
-                { name: "Procesamiento de Señal", level: 90 },
-                { name: "Diseño de Sistemas", level: 85 },
-                { name: "Crestron / Extron", level: 80 },
-                { name: "Acústica", level: 75 },
+                { name: "OSC / Art-Net", level: 80 },
+                { name: "Redes Dante", level: 70 },
+                { name: "Lua para grandMA2", level: 75 },
+                { name: "Documentación de producción", level: 80 },
+                { name: "Python / TypeScript", level: 85 },
             ],
             categories: [
                 {
-                    title: "Protocolos de Audio",
-                    items: ["Dante", "AES67", "AVB", "MADI", "AES/EBU"]
+                    title: "Protocolos",
+                    items: ["OSC", "Art-Net", "Dante", "UDP", "WebSockets"]
                 },
                 {
-                    title: "Video y Control",
-                    items: ["NDI", "SDI", "HDBaseT", "Crestron", "Q-SYS", "Extron"]
+                    title: "Sistemas",
+                    items: ["grandMA2", "Resolume", "Onyx"]
                 },
                 {
-                    title: "Conexiones y Sistemas",
-                    items: ["Video Walls", "DSP", "Livestreaming", "Acústica", "Lutron"]
+                    title: "Producción",
+                    items: ["Riders", "Backline", "Input lists", "Planeación RF"]
                 }
             ]
         },
@@ -133,22 +148,31 @@ export const avData: Record<'en' | 'es', ProfileData> = {
             title: "Proyectos AV",
             items: [
                 {
-                    company: "AudioVisual Pro",
-                    role: "Integrador de Sistemas",
-                    period: "2021 - Presente",
-                    location: "Remoto",
-                    description: "Diseñando sistemas AV complejos para espacios corporativos y de eventos, integrando Dante, NDI y protocolos de control.",
-                    tags: ["Dante", "Q-SYS", "NDI", "Crestron"],
+                    company: "loop-av-middleware",
+                    role: "Control de shows en tiempo real",
+                    period: "2026",
+                    location: "Proyecto propio",
+                    description: "Middleware que conecta OSC, Art-Net, UDP y WebSockets para controlar Resolume y Onyx en shows en vivo, con un dashboard web para el operador.",
+                    tags: ["TypeScript", "OSC", "Art-Net", "WebSockets"],
                     tagColor: "#06b6d4"
                 },
                 {
-                    company: "Live Events Co.",
-                    role: "Técnico AV",
-                    period: "2019 - 2021",
-                    location: "Presencial",
-                    description: "Operando y manteniendo equipos audiovisuales para eventos en vivo, conferencias corporativas y transmisiones.",
-                    tags: ["Resolume", "Blackmagic", "Yamaha CL", "OBS"],
+                    company: "Kit grandMA2",
+                    role: "Automatización de consola de luces",
+                    period: "2026",
+                    location: "Proyecto propio",
+                    description: "Plugins Lua para grandMA2 onPC: un importador que carga una librería predefinida (31 efectos, 233 macros, 68 MAtricks) y un selector de color, más un generador en Python que arma el patch a partir de un rider.",
+                    tags: ["Lua", "Python", "grandMA2"],
                     tagColor: "#a259ff"
+                },
+                {
+                    company: "Backline",
+                    role: "Hoja de producción de festival",
+                    period: "2026",
+                    location: "Proyecto propio",
+                    description: "Hoja de producción para un festival con varias bandas: lee el rider de cada banda, arma el backline y el input list por banda y suma los totales del festival.",
+                    tags: ["JavaScript", "Riders", "Backline"],
+                    tagColor: "#f59e0b"
                 }
             ]
         },
@@ -156,15 +180,21 @@ export const avData: Record<'en' | 'es', ProfileData> = {
             title: "Educación",
             items: [
                 {
-                    institution: "Academia Tecnología AV",
-                    degree: "Especialista Certificado en Tecnología (CTS)",
-                    period: "2021",
+                    institution: "SENA",
+                    degree: "Tecnólogo en Análisis y Desarrollo de Software (ADSO)",
+                    period: "En curso",
+                },
+                {
+                    institution: "Autoformación en audio en red",
+                    degree: "Dante / AoIP y RF para monitores in-ear",
+                    period: "2026",
+                    description: "Laboratorio práctico de redes Dante y cálculos de link budget e intermodulación para sistemas in-ear inalámbricos."
                 }
             ]
         },
         contact: {
             title: "Conecta para AV",
-            description: "Hablemos de tus necesidades audiovisuales.",
+            description: "¿Necesitas una herramienta para tu equipo o tu show? Hablemos.",
             form: {
                 name: "Nombre",
                 email: "Correo",

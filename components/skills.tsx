@@ -94,15 +94,13 @@ const devCategories = (lang: 'en' | 'es') => [
 
 const secCategories = (lang: 'en' | 'es') => [
   {
-    title: lang === 'en' ? 'Offensive' : 'Ofensivo',
+    title: lang === 'en' ? 'Analysis' : 'Análisis',
     icon: <Shield className="w-5 h-5" />,
     skills: [
-      { name: "Kali Linux", icon: <TerminalIcon className="w-5 h-5" />, color: "#557c94" },
-      { name: "Metasploit", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
-      { name: "Burp Suite", icon: <TerminalIcon className="w-5 h-5" />, color: "#f97316" },
+      { name: "STRIDE", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
+      { name: "FMEA", icon: <TerminalIcon className="w-5 h-5" />, color: "#f97316" },
       { name: "Wireshark", icon: <TerminalIcon className="w-5 h-5" />, color: "#1d6fa4" },
       { name: "Nmap", icon: <TerminalIcon className="w-5 h-5" />, color: "#00ff88" },
-      { name: "SQLMap", icon: <TerminalIcon className="w-5 h-5" />, color: "#d946ef" },
     ],
   },
   {
@@ -112,17 +110,16 @@ const secCategories = (lang: 'en' | 'es') => [
       { name: "Python", icon: <TerminalIcon className="w-5 h-5" />, color: "#3b7ebf" },
       { name: "Bash", icon: <TerminalIcon className="w-5 h-5" />, color: "#4eaa25" },
       { name: "PowerShell", icon: <TerminalIcon className="w-5 h-5" />, color: "#012456" },
-      { name: "C / C++", icon: <TerminalIcon className="w-5 h-5" />, color: "#00599c" },
     ],
   },
   {
     title: lang === 'en' ? 'Defensive' : 'Defensivo',
     icon: <Wrench className="w-5 h-5" />,
     skills: [
-      { name: "SIEM / Splunk", icon: <TerminalIcon className="w-5 h-5" />, color: "#65a30d" },
-      { name: "IDS / IPS", icon: <TerminalIcon className="w-5 h-5" />, color: "#f59e0b" },
-      { name: "Forensics", icon: <TerminalIcon className="w-5 h-5" />, color: "#06b6d4" },
-      { name: "OSINT", icon: <TerminalIcon className="w-5 h-5" />, color: "#a78bfa" },
+      { name: "JWT / Passkeys", icon: <TerminalIcon className="w-5 h-5" />, color: "#65a30d" },
+      { name: "Hardening", icon: <TerminalIcon className="w-5 h-5" />, color: "#f59e0b" },
+      { name: "SHA-256", icon: <TerminalIcon className="w-5 h-5" />, color: "#06b6d4" },
+      { name: "OWASP", icon: <TerminalIcon className="w-5 h-5" />, color: "#a78bfa" },
     ],
   },
 ]
@@ -168,14 +165,14 @@ const STATS = {
     { label: { en: 'Merge rate', es: 'Tasa de fusión' }, value: 97, suffix: '%' },
   ],
   sec: [
-    { label: { en: 'CTF Solved', es: 'CTF Resueltos' }, value: 45, suffix: '+' },
-    { label: { en: 'CVEs Found', es: 'CVEs Hallados' }, value: 8, suffix: '+' },
-    { label: { en: 'Tools Used', es: 'Herramientas' }, value: 20, suffix: '+' },
+    { label: { en: 'Failure modes analyzed', es: 'Modos de falla analizados' }, value: 6, suffix: '' },
+    { label: { en: 'NetQuick tests', es: 'Tests en NetQuick' }, value: 135, suffix: '' },
+    { label: { en: 'Merged OSS PRs', es: 'PRs OSS mergeados' }, value: 4, suffix: '' },
   ],
   av: [
-    { label: { en: 'Events', es: 'Eventos' }, value: 120, suffix: '+' },
-    { label: { en: 'AV Tools', es: 'Herramientas' }, value: 18, suffix: '+' },
-    { label: { en: 'Years', es: 'Años' }, value: 5, suffix: '+' },
+    { label: { en: 'grandMA2 macros', es: 'Macros grandMA2' }, value: 233, suffix: '' },
+    { label: { en: 'Protocols bridged', es: 'Protocolos integrados' }, value: 4, suffix: '' },
+    { label: { en: 'AV tools built', es: 'Herramientas AV propias' }, value: 3, suffix: '' },
   ],
 }
 
@@ -187,8 +184,8 @@ const SECTIONS = {
 
 const SUBTITLES = {
   dev: { en: 'The stack I ship to production — verified GitLab metrics, 2022–2026.', es: 'El stack con el que entrego a producción — métricas de GitLab verificadas, 2022–2026.' },
-  sec: { en: 'Tools and techniques for offensive & defensive ops.', es: 'Herramientas para operaciones ofensivas y defensivas.' },
-  av: { en: 'End-to-end AV production and integration.', es: 'Producción e integración AV de punta a punta.' },
+  sec: { en: 'Security practices applied to my own software and networks.', es: 'Prácticas de seguridad aplicadas a mi propio software y redes.' },
+  av: { en: 'Protocols and systems my AV tools work with.', es: 'Protocolos y sistemas con los que trabajan mis herramientas AV.' },
 }
 
 /* ═══════════════════════════════════════════════════════════

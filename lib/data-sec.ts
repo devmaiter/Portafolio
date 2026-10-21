@@ -13,55 +13,55 @@ export const secData: Record<'en' | 'es', ProfileData> = {
         },
         hero: {
             title: "Oscar Julián Osorio",
-            subtitle: "Cybersecurity Specialist",
-            description: "Protecting digital assets and ensuring system integrity. Expertise in penetration testing and security auditing.",
-            availableText: "Available for consulting",
+            subtitle: "Secure Software & Networks",
+            description: "Developer who designs with security in mind: threat modeling, failure analysis and hardening of the tools I ship — from Windows network utilities to modern authentication.",
+            availableText: "Available for projects",
             contactButton: "Contact Me"
         },
         skills: {
             title: "Security Skills",
-            description: "Tools and methodologies for securing digital environments.",
+            description: "Practices I apply to my own software and networks.",
             items: [
-                { name: "Penetration Testing", level: 85 },
-                { name: "Network Security", level: 90 },
-                { name: "Cryptography", level: 80 },
-                { name: "Security Auditing", level: 85 },
+                { name: "Threat Modeling (STRIDE)", level: 75 },
+                { name: "Network Analysis", level: 75 },
+                { name: "Secure Authentication", level: 75 },
+                { name: "Windows Hardening", level: 70 },
                 { name: "Python Scripting", level: 80 },
             ],
             categories: [
                 {
-                    title: "Offensive",
-                    items: ["Metasploit", "Burp Suite", "Nmap", "Kali Linux"]
+                    title: "Analysis",
+                    items: ["STRIDE", "FMEA", "Wireshark", "Nmap"]
                 },
                 {
-                    title: "Defensive",
-                    items: ["Firewalls", "IDS/IPS", "SIEM", "Hardening"]
+                    title: "Application",
+                    items: ["JWT rotation", "WebAuthn / Passkeys", "OWASP"]
                 },
                 {
-                    title: "Compliance",
-                    items: ["ISO 27001", "GDPR", "NIST", "OWASP"]
+                    title: "Operations",
+                    items: ["Hardening", "SHA-256 release verification", "CI"]
                 }
             ]
         },
         experience: {
-            title: "Security Experience",
+            title: "Security Work",
             items: [
                 {
-                    company: "SecureNet Systems",
-                    role: "Security Analyst",
-                    period: "2022 - Present",
-                    location: "Remote",
-                    description: "Conducting vulnerability assessments, penetration testing, and security audits for enterprise clients.",
-                    tags: ["Kali Linux", "Burp Suite", "Nmap", "Metasploit"],
+                    company: "NetQuick (open source)",
+                    role: "Security & reliability review",
+                    period: "2026",
+                    location: "Own project",
+                    description: "Failure-mode analysis (FMEA) and STRIDE threat model of a Windows network tool that runs with admin rights. Fixed a privilege-escalation path in its scheduled task, made profile storage atomic and added SHA-256 verification to the installer. 135 tests, CI with ruff and coverage.",
+                    tags: ["STRIDE", "FMEA", "Python", "Windows", "CI"],
                     tagColor: "#ef4444"
                 },
                 {
-                    company: "CyberDefense Corp.",
-                    role: "SOC Analyst",
-                    period: "2021 - 2022",
-                    location: "Remote",
-                    description: "Monitoring security events, incident response, and threat analysis using SIEM tools and forensic techniques.",
-                    tags: ["Splunk", "Wireshark", "OSINT", "Python"],
+                    company: "auth-starter",
+                    role: "Secure authentication",
+                    period: "2026",
+                    location: "Own project",
+                    description: "Authentication starter with short-lived JWT access tokens, opaque refresh tokens with rotation and reuse detection that revokes the whole session family, and password-less login with Passkeys (WebAuthn).",
+                    tags: ["JWT", "WebAuthn", "Next.js", "Prisma"],
                     tagColor: "#f59e0b"
                 }
             ]
@@ -70,20 +70,26 @@ export const secData: Record<'en' | 'es', ProfileData> = {
             title: "Education",
             items: [
                 {
-                    institution: "Cyber Institute",
-                    degree: "Certified Ethical Hacker",
-                    period: "2022",
+                    institution: "SENA",
+                    degree: "Technologist in Software Analysis and Development (ADSO)",
+                    period: "In progress",
+                },
+                {
+                    institution: "Open source as school",
+                    degree: "Merged contributions to third-party projects",
+                    period: "2026",
+                    description: "PRs merged in terraform-provider-minio (Go) and zerocode (Java)."
                 }
             ]
         },
         contact: {
-            title: "Secure Communication",
-            description: "Reach out for security consultations.",
+            title: "Get in Touch",
+            description: "Need a security review of your tool or network? Write to me.",
             form: {
                 name: "Name",
                 email: "Email",
-                message: "Encrypted Message",
-                send: "Send Securely"
+                message: "Message",
+                send: "Send Message"
             }
         }
     },
@@ -99,55 +105,55 @@ export const secData: Record<'en' | 'es', ProfileData> = {
         },
         hero: {
             title: "Oscar Julián Osorio",
-            subtitle: "Especialista en Ciberseguridad",
-            description: "Protegiendo activos digitales y asegurando la integridad del sistema. Experiencia en pruebas de penetración y auditoría de seguridad.",
-            availableText: "Disponible para consultoría",
+            subtitle: "Software y Redes Seguras",
+            description: "Desarrollador que diseña pensando en seguridad: modelado de amenazas, análisis de fallas y endurecimiento de las herramientas que entrego — desde utilidades de red para Windows hasta autenticación moderna.",
+            availableText: "Disponible para proyectos",
             contactButton: "Contáctame"
         },
         skills: {
             title: "Habilidades de Seguridad",
-            description: "Herramientas y metodologías para asegurar entornos digitales.",
+            description: "Prácticas que aplico a mi propio software y redes.",
             items: [
-                { name: "Pruebas de Penetración", level: 85 },
-                { name: "Seguridad de Redes", level: 90 },
-                { name: "Criptografía", level: 80 },
-                { name: "Auditoría de Seguridad", level: 85 },
+                { name: "Modelado de amenazas (STRIDE)", level: 75 },
+                { name: "Análisis de redes", level: 75 },
+                { name: "Autenticación segura", level: 75 },
+                { name: "Hardening en Windows", level: 70 },
                 { name: "Scripting Python", level: 80 },
             ],
             categories: [
                 {
-                    title: "Ofensiva",
-                    items: ["Metasploit", "Burp Suite", "Nmap", "Kali Linux"]
+                    title: "Análisis",
+                    items: ["STRIDE", "FMEA", "Wireshark", "Nmap"]
                 },
                 {
-                    title: "Defensiva",
-                    items: ["Firewalls", "IDS/IPS", "SIEM", "Hardening"]
+                    title: "Aplicaciones",
+                    items: ["Rotación de JWT", "WebAuthn / Passkeys", "OWASP"]
                 },
                 {
-                    title: "Cumplimiento",
-                    items: ["ISO 27001", "GDPR", "NIST", "OWASP"]
+                    title: "Operación",
+                    items: ["Hardening", "Verificación SHA-256 de releases", "CI"]
                 }
             ]
         },
         experience: {
-            title: "Experiencia en Seguridad",
+            title: "Trabajo en Seguridad",
             items: [
                 {
-                    company: "SecureNet Systems",
-                    role: "Analista de Seguridad",
-                    period: "2022 - Presente",
-                    location: "Remoto",
-                    description: "Realizando evaluaciones de vulnerabilidad, pruebas de penetración y auditorías de seguridad para clientes empresariales.",
-                    tags: ["Kali Linux", "Burp Suite", "Nmap", "Metasploit"],
+                    company: "NetQuick (open source)",
+                    role: "Revisión de seguridad y confiabilidad",
+                    period: "2026",
+                    location: "Proyecto propio",
+                    description: "Análisis de modos de falla (FMEA) y modelo de amenazas STRIDE de una herramienta de red para Windows que corre con permisos de administrador. Corregí una ruta de escalada de privilegios en su tarea programada, hice atómico el guardado de perfiles y agregué verificación SHA-256 al instalador. 135 tests, CI con ruff y cobertura.",
+                    tags: ["STRIDE", "FMEA", "Python", "Windows", "CI"],
                     tagColor: "#ef4444"
                 },
                 {
-                    company: "CyberDefense Corp.",
-                    role: "Analista SOC",
-                    period: "2021 - 2022",
-                    location: "Remoto",
-                    description: "Monitoreo de eventos de seguridad, respuesta a incidentes y análisis de amenazas usando herramientas SIEM y técnicas forenses.",
-                    tags: ["Splunk", "Wireshark", "OSINT", "Python"],
+                    company: "auth-starter",
+                    role: "Autenticación segura",
+                    period: "2026",
+                    location: "Proyecto propio",
+                    description: "Starter de autenticación con access tokens JWT de vida corta, refresh tokens opacos con rotación y detección de reúso que revoca toda la familia de sesiones, y login sin contraseña con Passkeys (WebAuthn).",
+                    tags: ["JWT", "WebAuthn", "Next.js", "Prisma"],
                     tagColor: "#f59e0b"
                 }
             ]
@@ -156,20 +162,26 @@ export const secData: Record<'en' | 'es', ProfileData> = {
             title: "Educación",
             items: [
                 {
-                    institution: "Instituto Cyber",
-                    degree: "Hacker Ético Certificado",
-                    period: "2022",
+                    institution: "SENA",
+                    degree: "Tecnólogo en Análisis y Desarrollo de Software (ADSO)",
+                    period: "En curso",
+                },
+                {
+                    institution: "El open source como escuela",
+                    degree: "Contribuciones fusionadas en proyectos de terceros",
+                    period: "2026",
+                    description: "PRs mergeados en terraform-provider-minio (Go) y zerocode (Java)."
                 }
             ]
         },
         contact: {
-            title: "Comunicación Segura",
-            description: "Contáctame para consultas de seguridad.",
+            title: "Ponte en Contacto",
+            description: "¿Necesitas revisar la seguridad de tu herramienta o tu red? Escríbeme.",
             form: {
                 name: "Nombre",
                 email: "Correo",
-                message: "Mensaje Encriptado",
-                send: "Enviar Seguramente"
+                message: "Mensaje",
+                send: "Enviar Mensaje"
             }
         }
     }
