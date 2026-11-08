@@ -2,9 +2,10 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import { GraduationCap, Award, BookOpen } from "lucide-react"
+import { GraduationCap, Award, BookOpen, ExternalLink } from "lucide-react"
 import { useProfile, useLanguage } from '@/app/providers'
 import { portfolioData } from '@/lib/data'
+import { rutas, cursosDestacados, textosCertificados, fechaCorta, type Certificado } from '@/lib/data-certs'
 
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLElement>(null)
@@ -31,6 +32,68 @@ const ICON_COLORS = [
 ]
 
 const ICONS = [GraduationCap, Award, BookOpen, GraduationCap, Award]
+
+function ListaCertificados({ titulo, items }: { titulo: string; items: Certificado[] }) {
+  const { language } = useLanguage()
+  return (
+    <div>
+      <h4 className="font-mono text-xs tracking-widest uppercase text-muted-foreground mb-3">{titulo}</h4>
+      <ul className="grid gap-2 sm:grid-cols-2">
+        {items.map((c) => (
+          <li key={c.url}>
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-start justify-between gap-3 h-full p-3 rounded-lg border border-border glass hover:border-primary/50 transition-colors duration-200"
+            >
+              <span className="min-w-0">
+                <span className="block text-sm text-foreground group-hover:text-primary transition-colors duration-200">
+                  {c.nombre}
+                </span>
+                <time dateTime={c.fecha} className="block text-xs text-muted-foreground mt-0.5">
+                  {fechaCorta(c.fecha, language)}
+                </time>
+              </span>
+              <ExternalLink className="h-4 w-4 flex-shrink-0 mt-0.5 text-muted-foreground group-hover:text-primary" aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function Certificaciones({ inView }: { inView: boolean }) {
+  const { language } = useLanguage()
+  const t = textosCertificados[language]
+  return (
+    <motion.div
+      className="mt-16"
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <h3 className="text-2xl font-bold mb-2">{t.titulo}</h3>
+      <p className="text-sm text-muted-foreground mb-8 max-w-2xl">{t.resumen}</p>
+      <div className="grid gap-8">
+        <ListaCertificados titulo={t.rutas} items={rutas} />
+        <ListaCertificados titulo={t.cursos} items={cursosDestacados} />
+      </div>
+      <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 text-sm">
+        <a
+          href={t.perfil}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline underline-offset-4"
+        >
+          {t.verTodos}
+        </a>
+        <span className="text-muted-foreground">{t.enCurso}</span>
+      </div>
+    </motion.div>
+  )
+}
 
 export function Education() {
   const { ref: sectionRef, inView } = useInView(0.08)
@@ -128,6 +191,8 @@ export function Education() {
             )
           })}
         </div>
+
+        <Certificaciones inView={inView} />
       </div>
     </section>
   )
