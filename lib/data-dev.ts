@@ -55,6 +55,13 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
+                    title: "Per-diem & Shifts Dashboard — internal tool for Circuito",
+                    description: "Built for the staffing coordinator at Circuito, who used to cross-check the clock-in/out spreadsheet against the meals log by hand every pay period to work out what each person was owed. Now he uploads both files and sees, per person, the day-by-day schedule, which meals were given and what was paid. The app matches names written differently (accents, surname first) and flags incomplete punches, shifts over 20 hours and records with no event. Underneath: a 7-rule per-diem engine with Colombian holidays, a FastAPI + PostgreSQL backend with JWT, and automated tests on every layer. Designed to be read on a phone.",
+                    tags: ["Python", "Streamlit", "pandas", "FastAPI", "PostgreSQL", "pytest"],
+                    image: { src: "/proyectos/viaticos-detalle-persona.jpg", alt: "Per-diem dashboard: one person's schedule, day by day" },
+                    featured: true
+                },
+                {
                     title: "Julian Store — Full-stack E-commerce Demo",
                     description: "Production-ready e-commerce split into two services. Storefront in Next.js 16 + React 19 with persistent Zustand cart, JWT-authenticated checkout and a role-aware admin panel; REST API in Express + Sequelize + Postgres with Zod validation, JWT + role middleware, transactional orders, Swagger UI docs and a Docker multi-stage build. Frontend on Vercel, API + Postgres on Railway. Admins manage products and categories inline from the catalog and watch live Postgres tables refresh every 5 seconds.",
                     tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Zustand", "Node.js", "Express", "Sequelize", "PostgreSQL", "JWT", "Zod", "Docker", "Railway", "Vercel"],
@@ -193,6 +200,13 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     title: "Pipeline SDLC con Agentes de IA",
                     description: "El sistema que diseño y mantengo para que un equipo pequeño automatice el ciclo de vida completo de un issue de GitLab con agentes de IA: un repositorio central de skills, agentes y CI compartidos donde los agentes leen el issue, proponen un plan, implementan en una rama con las convenciones del equipo, se revisan entre sí y ejecutan pruebas Playwright — con revisión humana antes de cada merge. La entrega pasó de 101 MRs fusionados en 2024 a 135 en 2025 (+34 %) manteniendo 97 % de aceptación. Métricas de GitLab verificadas en el caso de estudio.",
                     tags: ["Claude Code", "Agentes IA", "GitLab CI/CD", "Playwright", "SDLC"],
+                    featured: true
+                },
+                {
+                    title: "Viáticos y turnos — herramienta interna para Circuito",
+                    description: "La hice para el coordinador de personal de Circuito, que en cada periodo cruzaba a mano el Excel de entradas y salidas con la bitácora de comidas para saber qué pagarle a cada persona. Ahora sube los dos archivos y ve, por persona, su horario día por día, qué comidas se le dieron y lo que se pagó. La app empareja nombres escritos distinto (tildes, apellidos primero) y señala marcaciones incompletas, jornadas de más de 20 horas y registros sin evento. Por debajo: motor de las 7 reglas de viáticos con festivos de Colombia, backend FastAPI + PostgreSQL con JWT y pruebas automáticas en cada capa. Pensada para leerse en el celular.",
+                    tags: ["Python", "Streamlit", "pandas", "FastAPI", "PostgreSQL", "pytest"],
+                    image: { src: "/proyectos/viaticos-detalle-persona.jpg", alt: "Dashboard de viáticos: horario de una persona día por día" },
                     featured: true
                 },
                 {

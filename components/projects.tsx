@@ -193,6 +193,14 @@ export function Projects() {
                 className={`group spotlight-card shine flex flex-col justify-between rounded-xl border border-border/40 bg-card/40 p-6 glass-strong transition-colors duration-300 will-change-transform ${borderGlowColor}`}
               >
                 <div>
+                  {project.image && (
+                    <img
+                      src={project.image.src}
+                      alt={project.image.alt}
+                      loading="lazy"
+                      className="mb-5 aspect-[16/10] w-full rounded-lg border border-border/40 object-cover object-top"
+                    />
+                  )}
                   {/* Card Glowing Line */}
                   <div className={`h-0.5 w-12 bg-gradient-to-r ${lineGradient} mb-6`} />
 

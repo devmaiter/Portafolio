@@ -21,6 +21,7 @@ export interface ProjectItem {
     github?: string;
     link?: string;
     featured?: boolean;
+    image?: { src: string; alt: string };
 }
 
 export interface ExperienceItem {
