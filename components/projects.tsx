@@ -195,7 +195,7 @@ export function Projects() {
                 <div>
                   {project.image && (
                     <img
-                      src={project.image.src}
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${project.image.src}`}
                       alt={project.image.alt}
                       loading="lazy"
                       className="mb-5 aspect-[16/10] w-full rounded-lg border border-border/40 object-cover object-top"
