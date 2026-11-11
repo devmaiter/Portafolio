@@ -243,7 +243,7 @@ export function Skills() {
           <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-neon/30 bg-neon/5">
             <span className="w-1.5 h-1.5 rounded-full bg-neon animate-pulse" />
             <span className="text-sm font-mono text-neon tracking-widest uppercase">
-              {"// Habilidades"}
+              {language === "en" ? "// Skills" : "// Habilidades"}
             </span>
           </div>
 

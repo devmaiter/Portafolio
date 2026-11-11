@@ -33,6 +33,16 @@ function useTypewriter(lines: string[], pause = 1800) {
   const reducedMotion = typeof window !== 'undefined'
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
+  // Start over when the lines change (language or profile switch), so the
+  // old phrase doesn't linger half-typed in the other language.
+  const linesKey = lines.join('|')
+  useEffect(() => {
+    setDisplayed('')
+    setLineIdx(0)
+    setCharIdx(0)
+    setDeleting(false)
+  }, [linesKey])
+
   useEffect(() => {
     // Skip animation for accessibility
     if (reducedMotion) {

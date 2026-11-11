@@ -51,7 +51,7 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     role: "Real-time show control",
                     period: "2026",
                     location: "Own project",
-                    description: "Middleware that bridges OSC, Art-Net, UDP and WebSockets to drive Resolume and Onyx during live shows, with a web dashboard for the operator.",
+                    description: "Middleware that bridges OSC, Art-Net, UDP and WebSockets to drive Resolume and Onyx during live shows, with a web dashboard for the operator. Running in a real bar and bought by the AV company Multiaudio.",
                     tags: ["TypeScript", "OSC", "Art-Net", "WebSockets"],
                     tagColor: "#06b6d4"
                 },
@@ -73,7 +73,11 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     tags: ["JavaScript", "Riders", "Backline"],
                     tagColor: "#f59e0b"
                 }
-            ]
+            ],
+            caseStudy: {
+                label: "See the Loop case study: photos, video and code from the real bar →",
+                url: "https://devmaiter.github.io/loop/"
+            }
         },
         education: {
             title: "Education",
@@ -152,7 +156,7 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     role: "Control de shows en tiempo real",
                     period: "2026",
                     location: "Proyecto propio",
-                    description: "Middleware que conecta OSC, Art-Net, UDP y WebSockets para controlar Resolume y Onyx en shows en vivo, con un dashboard web para el operador.",
+                    description: "Middleware que conecta OSC, Art-Net, UDP y WebSockets para controlar Resolume y Onyx en shows en vivo, con un dashboard web para el operador. Funciona en un bar real y lo compró la empresa de audiovisuales Multiaudio.",
                     tags: ["TypeScript", "OSC", "Art-Net", "WebSockets"],
                     tagColor: "#06b6d4"
                 },
@@ -174,7 +178,11 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     tags: ["JavaScript", "Riders", "Backline"],
                     tagColor: "#f59e0b"
                 }
-            ]
+            ],
+            caseStudy: {
+                label: "Ver el caso de estudio de Loop: fotos, video y código del bar real →",
+                url: "https://devmaiter.github.io/loop/"
+            }
         },
         education: {
             title: "Educación",

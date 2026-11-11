@@ -27,13 +27,19 @@ export function Projects() {
     e.currentTarget.style.setProperty('--spot-y', `${e.clientY - rect.top}px`)
   }, [])
 
-  // Collect all unique tags for filter buttons
+  // Filter buttons: only the tags shared by 2+ projects, most used first (max 8),
+  // so the bar stays readable instead of a wall of 45 chips.
   const allTags = useMemo(() => {
-    const tagsSet = new Set<string>()
+    const counts = new Map<string, number>()
     projectsData?.items.forEach(project => {
-      project.tags.forEach(tag => tagsSet.add(tag))
+      project.tags.forEach(tag => counts.set(tag, (counts.get(tag) ?? 0) + 1))
     })
-    return ["All", ...Array.from(tagsSet)]
+    const shared = Array.from(counts.entries())
+      .filter(([, n]) => n >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 8)
+      .map(([tag]) => tag)
+    return ["All", ...shared]
   }, [projectsData])
 
   // Filter projects by selected tag
