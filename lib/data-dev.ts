@@ -45,13 +45,15 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             ]
         },
         projects: {
-            title: "Featured Projects",
-            description: "Production-ready solutions designed to automate business operations and solve real problems.",
+            title: "Projects",
+            description: "Software that is in use: at my job, at an events company, in a bar and in other teams' projects.",
             items: [
                 {
                     title: "AI-Agent SDLC Pipeline",
                     description: "The system I design and maintain so a small team automates the full lifecycle of a GitLab issue with AI agents: a central repository of shared skills, agents and CI where agents read the issue, propose a plan, implement on a branch following team conventions, review each other and run Playwright tests — with human review before every merge. Delivery went from 101 merged MRs in 2024 to 135 in 2025 (+34%) holding a 97% merge rate. Verified GitLab metrics in the case study.",
                     tags: ["Claude Code", "AI Agents", "GitLab CI/CD", "Playwright", "SDLC"],
+                    link: "https://devmaiter.github.io/",
+                    linkLabel: "Case study",
                     featured: true
                 },
                 {
@@ -62,43 +64,28 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "Julian Store — Full-stack E-commerce Demo",
-                    description: "Production-ready e-commerce split into two services. Storefront in Next.js 16 + React 19 with persistent Zustand cart, JWT-authenticated checkout and a role-aware admin panel; REST API in Express + Sequelize + Postgres with Zod validation, JWT + role middleware, transactional orders, Swagger UI docs and a Docker multi-stage build. Frontend on Vercel, API + Postgres on Railway. Admins manage products and categories inline from the catalog and watch live Postgres tables refresh every 5 seconds.",
-                    tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Zustand", "Node.js", "Express", "Sequelize", "PostgreSQL", "JWT", "Zod", "Docker", "Railway", "Vercel"],
-                    link: "https://my-store-v2-web.vercel.app",
+                    title: "Loop — live show control",
+                    description: "Middleware that ties Resolume, Onyx and Reaper together during a show: it listens to OSC, fires strobes and color over UDP and Art-Net, and gives the operator a web panel on a tablet. It runs in a real bar and was bought by the AV company Multiaudio. Version 3.0.0 ships as a Windows .exe with automated tests. The case study has photos, video and the code.",
+                    tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
+                    image: { src: "/proyectos/loop-bar.jpg", alt: "Loop running the lights in the bar" },
+                    link: "https://devmaiter.github.io/loop/",
+                    linkLabel: "Case study",
+                    github: "https://github.com/devmaiter/loop-av-middleware",
                     featured: true
                 },
                 {
-                    title: "auth-starter — Passkeys + JWT Rotation",
-                    description: "Modern authentication starter on Next.js 15 + TypeScript + Prisma + PostgreSQL. Implements JWT access tokens, opaque refresh tokens with rotation and reuse-detection cascade, and Passkeys (WebAuthn) for password-less login via Touch ID / Windows Hello / Android biometrics. Ships with a built-in ES/EN i18n module. Deployed on Vercel with Neon Postgres.",
-                    tags: ["TypeScript", "Next.js 15", "Prisma", "WebAuthn / Passkeys", "JWT", "PostgreSQL"],
-                    link: "https://auth-starter-api.vercel.app",
+                    title: "NetQuick — switch networks on Windows in seconds",
+                    description: "Floating tray widget for Windows that changes the machine's IP or network in one click, with saved profiles for static IP and DHCP. Before applying it checks the IP is free (ping plus an ARP probe), and if the new address leaves you without a gateway it counts down 30 seconds and goes back to the previous config on its own. Scanner compatible with Dante networks. Open source, with tests, CI and releases that publish the .exe with its SHA-256.",
+                    tags: ["Python", "Tkinter", "Windows", "pytest", "GitHub Actions"],
+                    github: "https://github.com/devmaiter/NetQuick",
                     featured: true
                 },
                 {
-                    title: "DevBlog - Interactive Router Platform",
-                    description: "An interactive, portfolio-ready developer blogging platform built to demonstrate advanced React concepts. Features React Router v6 nested routes and layout frames, client-side route guards (authentication), state persistence using custom localStorage hooks, comment threads, a post creation/edit editor, and a reusable ES/EN i18n module.",
-                    tags: ["React 19", "React Router", "CSS Modules", "Framer Motion", "i18n", "LocalStorage"],
-                    featured: true
-                },
-                {
-                    title: "TanStack Query Courses",
-                    description: "Online courses catalog built with React 18, TypeScript, Vite and TanStack Query v5. Demonstrates modern server-state management: debounced search, combined filters by level and category, pagination with useTransition, lazy-loaded components with Suspense, skeleton loaders and a polished dark theme. Production-ready and fully responsive.",
-                    tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
-                    link: "https://tanstack-query-courses.vercel.app",
-                    featured: true
-                },
-                {
-                    title: "RecipeDux — Redux Showcase",
-                    description: "Recipe finder and bookmark app built with React 18 and Redux as core state manager. Demonstrates professional Redux patterns: Redux Toolkit createSlice, createAsyncThunk for async API calls, custom curried middleware (logger), combineReducers, and modern React-Redux hooks (useSelector with shallowEqual, useDispatch). Features a live interactive demo with a real-time Redux state viewer and action log.",
-                    tags: ["React", "Redux", "Redux Toolkit", "Redux Thunk", "Middleware", "React-Redux"],
-                    link: "https://recipedux.vercel.app",
-                    featured: true
-                },
-                {
-                    title: "Stellar SSR Portal",
-                    description: "Custom React 18 Server-Side Rendering setup built from scratch with Node/Express, Webpack 5, SWC, and Styled Components. Features a dual-pipeline data flow (server-rendered initial page and seamless client-side hydration context for SPA transitions), dynamic SEO metadata injection based on routes, rate-limit resilience with network caching and fallbacks, and a cyberpunk telemetry space control room UI displaying real-time NASA APIs.",
-                    tags: ["React 18", "Node.js", "Express", "Webpack 5", "SWC", "Server-Side Rendering", "Styled Components"],
+                    title: "Open source contributions",
+                    description: "Pull requests merged into other teams' projects, under their conventions and their code review. terraform-provider-minio (Go): three PRs with acceptance tests and fixes to the test infrastructure. zerocode (Java): full removal of the WireMock integration — dependency, code and tests.",
+                    tags: ["Go", "Java", "Terraform", "Testing", "Code review"],
+                    link: "https://github.com/search?q=author%3Adevmaiter+is%3Apr+is%3Amerged+-user%3Adevmaiter&type=pullrequests",
+                    linkLabel: "Merged PRs",
                     featured: true
                 }
             ]
@@ -193,13 +180,15 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             ]
         },
         projects: {
-            title: "Proyectos Destacados",
-            description: "Soluciones listas para producción diseñadas para automatizar operaciones comerciales y resolver problemas reales.",
+            title: "Proyectos",
+            description: "Software que está en uso: en mi trabajo, en una empresa de eventos, en un bar y en proyectos de otros equipos.",
             items: [
                 {
                     title: "Pipeline SDLC con Agentes de IA",
                     description: "El sistema que diseño y mantengo para que un equipo pequeño automatice el ciclo de vida completo de un issue de GitLab con agentes de IA: un repositorio central de skills, agentes y CI compartidos donde los agentes leen el issue, proponen un plan, implementan en una rama con las convenciones del equipo, se revisan entre sí y ejecutan pruebas Playwright — con revisión humana antes de cada merge. La entrega pasó de 101 MRs fusionados en 2024 a 135 en 2025 (+34 %) manteniendo 97 % de aceptación. Métricas de GitLab verificadas en el caso de estudio.",
                     tags: ["Claude Code", "Agentes IA", "GitLab CI/CD", "Playwright", "SDLC"],
+                    link: "https://devmaiter.github.io/",
+                    linkLabel: "Caso de estudio",
                     featured: true
                 },
                 {
@@ -210,43 +199,28 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "Julian Store — E-commerce Full-stack",
-                    description: "Demo de e-commerce lista para producción dividida en dos servicios. Storefront en Next.js 16 + React 19 con carrito persistente con Zustand, checkout autenticado con JWT y panel admin sensible al rol; API REST en Express + Sequelize + Postgres con validación Zod, middleware JWT + roles, órdenes en transacción, documentación interactiva en Swagger UI y Dockerfile multi-stage. Frontend en Vercel, API y Postgres en Railway. El admin gestiona productos y categorías inline desde el catálogo y observa las tablas de Postgres refrescándose cada 5 segundos.",
-                    tags: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Zustand", "Node.js", "Express", "Sequelize", "PostgreSQL", "JWT", "Zod", "Docker", "Railway", "Vercel"],
-                    link: "https://my-store-v2-web.vercel.app",
+                    title: "Loop — control de show en vivo",
+                    description: "Middleware que une Resolume, Onyx y Reaper durante un show: escucha OSC, dispara estrobos y color por UDP y Art-Net, y le da al operador un panel web en una tablet. Se usa en un bar y lo compró la empresa de eventos Multiaudio. La versión 3.0.0 se entrega como .exe de Windows, con pruebas automáticas. El caso de estudio tiene fotos, video y el código.",
+                    tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
+                    image: { src: "/proyectos/loop-bar.jpg", alt: "Loop manejando las luces en el bar" },
+                    link: "https://devmaiter.github.io/loop/",
+                    linkLabel: "Caso de estudio",
+                    github: "https://github.com/devmaiter/loop-av-middleware",
                     featured: true
                 },
                 {
-                    title: "auth-starter — Passkeys + JWT con rotación",
-                    description: "Starter de autenticación moderno sobre Next.js 15 + TypeScript + Prisma + PostgreSQL. Implementa JWT access tokens, refresh tokens opacos con rotación y reuse-detection en cascada, y Passkeys (WebAuthn) para login sin contraseña con Touch ID / Windows Hello / biometría Android. Incluye módulo i18n ES/EN propio. Desplegado en Vercel con Neon Postgres.",
-                    tags: ["TypeScript", "Next.js 15", "Prisma", "WebAuthn / Passkeys", "JWT", "PostgreSQL"],
-                    link: "https://auth-starter-api.vercel.app",
+                    title: "NetQuick — cambiar de red en Windows en segundos",
+                    description: "Widget flotante para Windows, en la bandeja del sistema, que cambia la IP o la red del equipo con un clic, con perfiles guardados de IP fija y DHCP. Antes de aplicar revisa que la IP esté libre (ping y sonda ARP), y si la nueva dirección deja el equipo sin puerta de enlace, cuenta 30 segundos y vuelve sola a la configuración anterior. Escáner compatible con redes Dante. Código abierto, con pruebas, CI y versiones que publican el .exe con su SHA-256.",
+                    tags: ["Python", "Tkinter", "Windows", "pytest", "GitHub Actions"],
+                    github: "https://github.com/devmaiter/NetQuick",
                     featured: true
                 },
                 {
-                    title: "DevBlog - Plataforma Interactiva de Router",
-                    description: "Plataforma interactiva de blogs técnicos diseñada para portafolio. Implementa vistas anidadas y layouts con React Router, guards de navegación y autenticación del lado del cliente, persistencia de datos (artículos, comentarios, perfiles de usuario) en localStorage, editor de publicaciones interactivo y módulo i18n ES/EN reutilizable.",
-                    tags: ["React 19", "React Router", "CSS Modules", "Framer Motion", "i18n", "LocalStorage"],
-                    featured: true
-                },
-                {
-                    title: "TanStack Query Courses",
-                    description: "Catálogo de cursos online construido con React 18, TypeScript, Vite y TanStack Query v5. Demuestra manejo moderno de server state: búsqueda con debounce, filtros combinados por nivel y categoría, paginación con useTransition, componentes lazy con Suspense, skeleton loaders y un dark theme cuidado. Listo para producción y responsive.",
-                    tags: ["React", "TypeScript", "Vite", "TanStack Query", "CSS3"],
-                    link: "https://tanstack-query-courses.vercel.app",
-                    featured: true
-                },
-                {
-                    title: "RecipeDux — Showcase de Redux",
-                    description: "Buscador y guardador de recetas construido con React 18 y Redux como gestor de estado central. Demuestra patrones profesionales de Redux: createSlice y createAsyncThunk de Redux Toolkit, middleware personalizado con patrón curried (logger), combineReducers, y hooks modernos de React-Redux (useSelector con shallowEqual, useDispatch). Incluye demo interactiva con visor de estado Redux en tiempo real y log de acciones.",
-                    tags: ["React", "Redux", "Redux Toolkit", "Redux Thunk", "Middleware", "React-Redux"],
-                    link: "https://recipedux.vercel.app",
-                    featured: true
-                },
-                {
-                    title: "Stellar SSR Portal",
-                    description: "Implementación de Server-Side Rendering (SSR) personalizado desde cero utilizando React 18, Express, Webpack 5, SWC y Styled Components. Cuenta con flujo de datos de doble pipeline (página inicial renderizada en servidor e hidratación en cliente con contexto para transiciones SPA), inyección dinámica de metadatos SEO por ruta, resiliencia ante límites de tasa de API con mocks de alta fidelidad, y una interfaz de telemetría cyberpunk con APIs de la NASA.",
-                    tags: ["React 18", "Node.js", "Express", "Webpack 5", "SWC", "Server-Side Rendering", "Styled Components"],
+                    title: "Contribuciones open source",
+                    description: "Pull requests fusionados en proyectos de otros equipos, con sus convenciones y su revisión de código. terraform-provider-minio (Go): tres PRs con pruebas de aceptación y arreglos de la infraestructura de pruebas. zerocode (Java): retiro completo de la integración con WireMock: dependencia, código y pruebas.",
+                    tags: ["Go", "Java", "Terraform", "Testing", "Code review"],
+                    link: "https://github.com/search?q=author%3Adevmaiter+is%3Apr+is%3Amerged+-user%3Adevmaiter&type=pullrequests",
+                    linkLabel: "PRs fusionados",
                     featured: true
                 }
             ]

@@ -130,7 +130,7 @@ export function Projects() {
         </div>
 
         {/* Dynamic Filters */}
-        {(allTags.length > 2 || selectedTag !== "All") && (
+        {((projectsData.items.length > 5 && allTags.length > 2) || selectedTag !== "All") && (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -243,7 +243,7 @@ export function Projects() {
                         className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <Github className="w-4 h-4" />
-                        <span>Source</span>
+                        <span>{language === "en" ? "Code" : "Código"}</span>
                       </a>
                     )}
                     {project.link && (
@@ -254,7 +254,7 @@ export function Projects() {
                         className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        <span>Live Demo</span>
+                        <span>{project.linkLabel ?? (language === "en" ? "View" : "Ver")}</span>
                       </a>
                     )}
                   </div>

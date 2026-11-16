@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Gitlab, Mail, ChevronDown, Terminal, Shield, Radio } from "lucide-react"
+import { Github, Gitlab, Linkedin, Mail, ChevronDown, Terminal, Shield, Radio } from "lucide-react"
 import { useProfile, useLanguage } from '@/app/providers'
 import { portfolioData } from '@/lib/data'
 
@@ -366,6 +366,7 @@ export function Hero() {
           {[
             { href: 'https://github.com/devmaiter', label: 'GitHub', Icon: Github },
             { href: 'https://gitlab.com/oscar.osorio.kf', label: 'GitLab', Icon: Gitlab },
+            { href: 'https://www.linkedin.com/in/oscar-julian-osorio-romero-369689229', label: 'LinkedIn', Icon: Linkedin },
             { href: 'mailto:f1000161620@gmail.com', label: 'Email', Icon: Mail },
           ].map(({ href, label, Icon }) => (
             <a

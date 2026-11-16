@@ -20,6 +20,7 @@ export interface ProjectItem {
     tags: string[];
     github?: string;
     link?: string;
+    linkLabel?: string;
     featured?: boolean;
     image?: { src: string; alt: string };
 }

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Gitlab, Mail, Send, MapPin, ExternalLink } from "lucide-react"
+import { Github, Gitlab, Linkedin, Mail, Send, MapPin, ExternalLink } from "lucide-react"
 import { useProfile, useLanguage } from '@/app/providers'
 import { portfolioData } from '@/lib/data'
 
@@ -26,6 +26,7 @@ function useInView(threshold = 0.1) {
 const SOCIAL_LINKS = [
   { href: 'https://github.com/devmaiter', label: 'GitHub', Icon: Github, color: 'hover:border-zinc-400 hover:text-zinc-300' },
   { href: 'https://gitlab.com/oscar.osorio.kf', label: 'GitLab', Icon: Gitlab, color: 'hover:border-orange-400 hover:text-orange-400' },
+  { href: 'https://www.linkedin.com/in/oscar-julian-osorio-romero-369689229', label: 'LinkedIn', Icon: Linkedin, color: 'hover:border-sky-400 hover:text-sky-400' },
 ]
 
 export function Contact() {
@@ -120,7 +121,7 @@ export function Contact() {
             {/* Social networks */}
             <div className="p-6 rounded-xl border border-border glass">
               <h3 className="text-lg font-semibold mb-4 text-foreground">{networksTitle}</h3>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 {SOCIAL_LINKS.map(({ href, label, Icon, color }) => (
                   <a
                     key={label}

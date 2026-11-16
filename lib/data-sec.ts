@@ -54,15 +54,6 @@ export const secData: Record<'en' | 'es', ProfileData> = {
                     description: "Failure-mode analysis (FMEA) and STRIDE threat model of a Windows network tool that runs with admin rights. Fixed a privilege-escalation path in its scheduled task, made profile storage atomic and added SHA-256 verification to the installer. 135 tests, CI with ruff and coverage.",
                     tags: ["STRIDE", "FMEA", "Python", "Windows", "CI"],
                     tagColor: "#ef4444"
-                },
-                {
-                    company: "auth-starter",
-                    role: "Secure authentication",
-                    period: "2026",
-                    location: "Own project",
-                    description: "Authentication starter with short-lived JWT access tokens, opaque refresh tokens with rotation and reuse detection that revokes the whole session family, and password-less login with Passkeys (WebAuthn).",
-                    tags: ["JWT", "WebAuthn", "Next.js", "Prisma"],
-                    tagColor: "#f59e0b"
                 }
             ]
         },
@@ -146,15 +137,6 @@ export const secData: Record<'en' | 'es', ProfileData> = {
                     description: "Análisis de modos de falla (FMEA) y modelo de amenazas STRIDE de una herramienta de red para Windows que corre con permisos de administrador. Corregí una ruta de escalada de privilegios en su tarea programada, hice atómico el guardado de perfiles y agregué verificación SHA-256 al instalador. 135 tests, CI con ruff y cobertura.",
                     tags: ["STRIDE", "FMEA", "Python", "Windows", "CI"],
                     tagColor: "#ef4444"
-                },
-                {
-                    company: "auth-starter",
-                    role: "Autenticación segura",
-                    period: "2026",
-                    location: "Proyecto propio",
-                    description: "Starter de autenticación con access tokens JWT de vida corta, refresh tokens opacos con rotación y detección de reúso que revoca toda la familia de sesiones, y login sin contraseña con Passkeys (WebAuthn).",
-                    tags: ["JWT", "WebAuthn", "Next.js", "Prisma"],
-                    tagColor: "#f59e0b"
                 }
             ]
         },

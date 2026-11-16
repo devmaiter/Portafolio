@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
-import { Github, Gitlab, Mail, Heart, Terminal } from "lucide-react"
+import { Github, Gitlab, Linkedin, Mail, Heart, Terminal } from "lucide-react"
 import { useLanguage, useProfile } from '@/app/providers'
 import { AnimatedCounter } from "@/components/animated-counter"
 
@@ -25,7 +25,7 @@ function useInView(threshold = 0.3) {
 /* ── Stats shown in footer ──────────────────────────────── */
 const STATS = [
   { target: 3, suffix: '+', labelEn: 'Years Exp.', labelEs: 'Años Exp.' },
-  { target: 30, suffix: '+', labelEn: 'Projects', labelEs: 'Proyectos' },
+  { target: 369, suffix: '', labelEn: 'Merged MRs', labelEs: 'MRs fusionados' },
   { target: 3, suffix: '', labelEn: 'Specializations', labelEs: 'Esp.' },
   { target: 100, suffix: '%', labelEn: 'Remote Ready', labelEs: 'Remoto' },
 ]
@@ -33,6 +33,7 @@ const STATS = [
 const SOCIAL_LINKS = [
   { href: 'https://github.com/devmaiter', Icon: Github, label: 'GitHub' },
   { href: 'https://gitlab.com/oscar.osorio.kf', Icon: Gitlab, label: 'GitLab' },
+  { href: 'https://www.linkedin.com/in/oscar-julian-osorio-romero-369689229', Icon: Linkedin, label: 'LinkedIn' },
   { href: 'mailto:f1000161620@gmail.com', Icon: Mail, label: 'Email' },
 ]
 
