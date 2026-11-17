@@ -3,11 +3,19 @@
 import { useEffect, useState, useRef } from "react"
 import { CircuitBackground } from "@/components/circuit-background"
 import { SkillCard } from "@/components/skill-card"
-import { Code2, Server, Wrench, Shield, Music, Bot } from "lucide-react"
 import {
-  ReactIcon, NextjsIcon, TailwindIcon, TypeScriptIcon, Css3Icon,
-  NodejsIcon, ExpressIcon, PostgresIcon, ApiIcon,
-  GitIcon, TerminalIcon, DockerIcon,
+  Code2, Server, Wrench, Shield, Music, Bot, Drama, ShieldAlert, ShieldCheck, ListChecks, Radar,
+  Fingerprint, AudioLines, SlidersHorizontal, MonitorPlay, Clapperboard, Lightbulb,
+} from "lucide-react"
+import {
+  siElm, siSass, siPhp, siMysql, siFastapi, siClaude, siGitlab, siWireshark, siPython, siGnubash,
+  siJsonwebtokens, siOwasp, siYamahacorporation, siNdi, siObsstudio, siBlackmagicdesign, siSketchup, siAutocad,
+} from "simple-icons"
+import { BrandIcon, PowerShellIcon } from "@/components/brand-icon"
+import {
+  ReactIcon, NextjsIcon, TailwindIcon, TypeScriptIcon,
+  NodejsIcon, ExpressIcon, PostgresIcon,
+  GitIcon, DockerIcon,
 } from "@/components/tech-icons"
 import { useLanguage, useProfile } from "@/app/providers"
 
@@ -61,20 +69,20 @@ const devCategories = (lang: 'en' | 'es') => [
       { name: "TypeScript", icon: <TypeScriptIcon className="w-5 h-5" />, color: "#3178c6" },
       { name: "React", icon: <ReactIcon className="w-5 h-5" />, color: "#61dafb" },
       { name: "Next.js", icon: <NextjsIcon className="w-5 h-5" />, color: "#e8e0f0" },
-      { name: "Elm", icon: <TerminalIcon className="w-5 h-5" />, color: "#60b5cc" },
+      { name: "Elm", icon: <BrandIcon icon={siElm} className="w-5 h-5" />, color: "#60b5cc" },
       { name: "Tailwind CSS", icon: <TailwindIcon className="w-5 h-5" />, color: "#38bdf8" },
-      { name: "SASS", icon: <Css3Icon className="w-5 h-5" />, color: "#cf649a" },
+      { name: "SASS", icon: <BrandIcon icon={siSass} className="w-5 h-5" />, color: "#cf649a" },
     ],
   },
   {
     title: lang === 'en' ? 'Backend & Data' : 'Backend y Datos',
     icon: <Server className="w-5 h-5" />,
     skills: [
-      { name: "PHP", icon: <TerminalIcon className="w-5 h-5" />, color: "#777bb4" },
-      { name: "MySQL", icon: <TerminalIcon className="w-5 h-5" />, color: "#4479a1" },
+      { name: "PHP", icon: <BrandIcon icon={siPhp} className="w-5 h-5" />, color: "#777bb4" },
+      { name: "MySQL", icon: <BrandIcon icon={siMysql} className="w-5 h-5" />, color: "#5b9bd5" },
       { name: "Node.js", icon: <NodejsIcon className="w-5 h-5" />, color: "#68a063" },
       { name: "Express", icon: <ExpressIcon className="w-5 h-5" />, color: "#e8e0f0" },
-      { name: "FastAPI", icon: <ApiIcon className="w-5 h-5" />, color: "#009688" },
+      { name: "FastAPI", icon: <BrandIcon icon={siFastapi} className="w-5 h-5" />, color: "#009688" },
       { name: "PostgreSQL", icon: <PostgresIcon className="w-5 h-5" />, color: "#336791" },
     ],
   },
@@ -82,10 +90,10 @@ const devCategories = (lang: 'en' | 'es') => [
     title: lang === 'en' ? 'AI & Automation' : 'IA y Automatización',
     icon: <Bot className="w-5 h-5" />,
     skills: [
-      { name: "Claude Code", icon: <TerminalIcon className="w-5 h-5" />, color: "#d97757" },
+      { name: "Claude Code", icon: <BrandIcon icon={siClaude} className="w-5 h-5" />, color: "#d97757" },
       { name: lang === 'en' ? 'AI agents' : 'Agentes de IA', icon: <Bot className="w-5 h-5" />, color: "#00ff88" },
-      { name: "Playwright", icon: <TerminalIcon className="w-5 h-5" />, color: "#2ead33" },
-      { name: "GitLab CI/CD", icon: <GitIcon className="w-5 h-5" />, color: "#fc6d26" },
+      { name: "Playwright", icon: <Drama className="w-5 h-5" />, color: "#2ead33" },
+      { name: "GitLab CI/CD", icon: <BrandIcon icon={siGitlab} className="w-5 h-5" />, color: "#fc6d26" },
       { name: "Docker", icon: <DockerIcon className="w-5 h-5" />, color: "#2496ed" },
       { name: "Git", icon: <GitIcon className="w-5 h-5" />, color: "#f05032" },
     ],
@@ -97,29 +105,29 @@ const secCategories = (lang: 'en' | 'es') => [
     title: lang === 'en' ? 'Analysis' : 'Análisis',
     icon: <Shield className="w-5 h-5" />,
     skills: [
-      { name: "STRIDE", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
-      { name: "FMEA", icon: <TerminalIcon className="w-5 h-5" />, color: "#f97316" },
-      { name: "Wireshark", icon: <TerminalIcon className="w-5 h-5" />, color: "#1d6fa4" },
-      { name: "Nmap", icon: <TerminalIcon className="w-5 h-5" />, color: "#00ff88" },
+      { name: "STRIDE", icon: <ShieldAlert className="w-5 h-5" />, color: "#e34f26" },
+      { name: "FMEA", icon: <ListChecks className="w-5 h-5" />, color: "#f97316" },
+      { name: "Wireshark", icon: <BrandIcon icon={siWireshark} className="w-5 h-5" />, color: "#1d6fa4" },
+      { name: "Nmap", icon: <Radar className="w-5 h-5" />, color: "#00ff88" },
     ],
   },
   {
     title: lang === 'en' ? 'Scripting' : 'Scripting',
     icon: <Code2 className="w-5 h-5" />,
     skills: [
-      { name: "Python", icon: <TerminalIcon className="w-5 h-5" />, color: "#3b7ebf" },
-      { name: "Bash", icon: <TerminalIcon className="w-5 h-5" />, color: "#4eaa25" },
-      { name: "PowerShell", icon: <TerminalIcon className="w-5 h-5" />, color: "#012456" },
+      { name: "Python", icon: <BrandIcon icon={siPython} className="w-5 h-5" />, color: "#3b7ebf" },
+      { name: "Bash", icon: <BrandIcon icon={siGnubash} className="w-5 h-5" />, color: "#4eaa25" },
+      { name: "PowerShell", icon: <PowerShellIcon className="w-5 h-5" />, color: "#012456" },
     ],
   },
   {
     title: lang === 'en' ? 'Defensive' : 'Defensivo',
     icon: <Wrench className="w-5 h-5" />,
     skills: [
-      { name: "JWT / Passkeys", icon: <TerminalIcon className="w-5 h-5" />, color: "#65a30d" },
-      { name: "Hardening", icon: <TerminalIcon className="w-5 h-5" />, color: "#f59e0b" },
-      { name: "SHA-256", icon: <TerminalIcon className="w-5 h-5" />, color: "#06b6d4" },
-      { name: "OWASP", icon: <TerminalIcon className="w-5 h-5" />, color: "#a78bfa" },
+      { name: "JWT / Passkeys", icon: <BrandIcon icon={siJsonwebtokens} className="w-5 h-5" />, color: "#65a30d" },
+      { name: "Hardening", icon: <ShieldCheck className="w-5 h-5" />, color: "#f59e0b" },
+      { name: "SHA-256", icon: <Fingerprint className="w-5 h-5" />, color: "#06b6d4" },
+      { name: "OWASP", icon: <BrandIcon icon={siOwasp} className="w-5 h-5" />, color: "#a78bfa" },
     ],
   },
 ]
@@ -129,29 +137,29 @@ const avCategories = (lang: 'en' | 'es') => [
     title: lang === 'en' ? 'Audio' : 'Audio',
     icon: <Music className="w-5 h-5" />,
     skills: [
-      { name: "Dante / AES67", icon: <TerminalIcon className="w-5 h-5" />, color: "#38bdf8" },
-      { name: "Q-SYS", icon: <TerminalIcon className="w-5 h-5" />, color: "#f97316" },
-      { name: "Yamaha CL/QL", icon: <TerminalIcon className="w-5 h-5" />, color: "#d946ef" },
-      { name: "NDI", icon: <TerminalIcon className="w-5 h-5" />, color: "#00ff88" },
+      { name: "Dante / AES67", icon: <AudioLines className="w-5 h-5" />, color: "#38bdf8" },
+      { name: "Q-SYS", icon: <SlidersHorizontal className="w-5 h-5" />, color: "#f97316" },
+      { name: "Yamaha CL/QL", icon: <BrandIcon icon={siYamahacorporation} className="w-5 h-5" />, color: "#d946ef" },
+      { name: "NDI", icon: <BrandIcon icon={siNdi} className="w-5 h-5" />, color: "#00ff88" },
     ],
   },
   {
     title: lang === 'en' ? 'Video' : 'Video',
     icon: <Code2 className="w-5 h-5" />,
     skills: [
-      { name: "Resolume", icon: <TerminalIcon className="w-5 h-5" />, color: "#f59e0b" },
-      { name: "OBS Studio", icon: <TerminalIcon className="w-5 h-5" />, color: "#6366f1" },
-      { name: "vMix", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
-      { name: "Blackmagic", icon: <TerminalIcon className="w-5 h-5" />, color: "#64748b" },
+      { name: "Resolume", icon: <MonitorPlay className="w-5 h-5" />, color: "#f59e0b" },
+      { name: "OBS Studio", icon: <BrandIcon icon={siObsstudio} className="w-5 h-5" />, color: "#6366f1" },
+      { name: "vMix", icon: <Clapperboard className="w-5 h-5" />, color: "#e34f26" },
+      { name: "Blackmagic", icon: <BrandIcon icon={siBlackmagicdesign} className="w-5 h-5" />, color: "#64748b" },
     ],
   },
   {
     title: lang === 'en' ? 'Tools' : 'Herramientas',
     icon: <Wrench className="w-5 h-5" />,
     skills: [
-      { name: "Onyx / MA", icon: <TerminalIcon className="w-5 h-5" />, color: "#fbbf24" },
-      { name: "Sketchup", icon: <TerminalIcon className="w-5 h-5" />, color: "#007acc" },
-      { name: "AutoCAD", icon: <TerminalIcon className="w-5 h-5" />, color: "#e34f26" },
+      { name: "Onyx / MA", icon: <Lightbulb className="w-5 h-5" />, color: "#fbbf24" },
+      { name: "Sketchup", icon: <BrandIcon icon={siSketchup} className="w-5 h-5" />, color: "#007acc" },
+      { name: "AutoCAD", icon: <BrandIcon icon={siAutocad} className="w-5 h-5" />, color: "#e34f26" },
       { name: "Git", icon: <GitIcon className="w-5 h-5" />, color: "#f05032" },
     ],
   },
