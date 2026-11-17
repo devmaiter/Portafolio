@@ -94,7 +94,7 @@ export function SkillCard({ title, icon, skills, index }: SkillCardProps) {
                                     {skill.icon}
                                 </div>
                                 <span
-                                    className="text-sm font-medium transition-colors duration-300 truncate flex-1"
+                                    className="text-sm font-medium leading-tight transition-colors duration-300 flex-1 min-w-0 break-words"
                                     style={{ color: hoveredSkill === i ? skill.color : "var(--foreground)" }}
                                 >
                                     {skill.name}

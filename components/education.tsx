@@ -90,6 +90,7 @@ function Certificaciones({ inView }: { inView: boolean }) {
           {t.verTodos}
         </a>
         <span className="text-muted-foreground">{t.enCurso}</span>
+        <span className="text-muted-foreground">{t.idioma}</span>
       </div>
     </motion.div>
   )

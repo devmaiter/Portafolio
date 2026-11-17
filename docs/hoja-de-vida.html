@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Oscar Julián Osorio Romero · Hoja de vida</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  @page { size: A4; margin: 11mm 14mm; }
+  :root { --tinta: #14161a; --gris: #5a606b; --linea: #d9dce1; --acento: #0d8f7e; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; color: var(--tinta); }
+  body { font: 9pt/1.4 Inter, "Segoe UI", Arial, sans-serif; }
+  h1 { font-size: 21pt; line-height: 1.1; margin: 0; letter-spacing: -0.01em; }
+  .rol { font-size: 11.5pt; color: var(--acento); font-weight: 600; margin: 3px 0 8px; }
+  .contacto { display: flex; flex-wrap: wrap; gap: 3px 14px; color: var(--gris); font-size: 8.8pt; margin: 0; padding: 0; list-style: none; }
+  .contacto a { color: inherit; text-decoration: none; }
+  h2 { font: 700 8pt/1 "JetBrains Mono", Consolas, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--acento);
+       margin: 11px 0 6px; padding-bottom: 3px; border-bottom: 1px solid var(--linea); }
+  p { margin: 0 0 5px; }
+  .perfil { margin-top: 10px; }
+  .cifras { display: flex; gap: 22px; margin: 7px 0 2px; }
+  .cifras b { display: block; font: 700 13pt/1 "JetBrains Mono", monospace; color: var(--tinta); }
+  .cifras span { font-size: 7.6pt; color: var(--gris); text-transform: uppercase; letter-spacing: 0.06em; }
+  .item { margin-bottom: 5px; break-inside: avoid; }
+  .cab { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+  .cab strong { font-size: 10.2pt; }
+  .cab .cuando { font: 500 8pt "JetBrains Mono", monospace; color: var(--gris); white-space: nowrap; }
+  .lugar { color: var(--gris); font-size: 8.8pt; margin-bottom: 3px; }
+  ul.puntos { margin: 3px 0 0; padding-left: 14px; }
+  ul.puntos li { margin-bottom: 2px; }
+  .proy { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 18px; }
+  .proy .item p { font-size: 9pt; }
+  .stack { font: 500 8.2pt "JetBrains Mono", monospace; color: var(--gris); }
+  .oss li { margin-bottom: 2px; }
+  .oss code { font: 500 8.4pt "JetBrains Mono", monospace; }
+  .dos { display: grid; grid-template-columns: 1.15fr 1fr; gap: 0 22px; }
+  .hab dt { font-weight: 600; float: left; clear: left; width: 62px; }
+  .hab dd { margin: 0 0 2px 62px; color: var(--tinta); }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Oscar Julián Osorio Romero</h1>
+    <p class="rol">Desarrollador Full-Stack</p>
+    <ul class="contacto">
+      <li>Bogotá, Colombia · remoto</li>
+      <li><a href="mailto:f1000161620@gmail.com">f1000161620@gmail.com</a></li>
+      <li><a href="https://devmaiter.github.io/Portafolio/">devmaiter.github.io/Portafolio</a></li>
+      <li><a href="https://github.com/devmaiter">github.com/devmaiter</a></li>
+      <li><a href="https://www.linkedin.com/in/oscar-julian-osorio-romero-369689229">linkedin.com/in/oscar-julian-osorio-romero-369689229</a></li>
+    </ul>
+  </header>
+
+  <p class="perfil">
+    Más de 3 años sosteniendo una plataforma comercial en producción de punta a punta: backend, frontend, base de datos e integración continua.
+    Diseño y mantengo un pipeline de desarrollo con agentes de IA y revisión humana en cada entrega. Además construyo software que se usa en
+    producción de eventos en vivo: festivales, bares y empresas de audio y luces.
+  </p>
+  <div class="cifras">
+    <div><b>369</b><span>MRs fusionados</span></div>
+    <div><b>97 %</b><span>tasa de fusión</span></div>
+    <div><b>6 354</b><span>commits</span></div>
+    <div><b>5</b><span>PRs open source</span></div>
+  </div>
+  <p style="font-size:7.6pt;color:var(--gris);margin-top:4px">Cifras de GitLab, nov 2022 – jul 2026.</p>
+
+  <h2>Experiencia</h2>
+  <div class="item">
+    <div class="cab"><strong>Desarrollador Full-Stack · Konrradf</strong><span class="cuando">nov 2022 – presente</span></div>
+    <div class="lugar">Colombia, remoto</div>
+    <ul class="puntos">
+      <li>Construyo y mantengo la plataforma de productos de la empresa (sitio público, CMS de páginas y paneles de administración) con PHP, Elm, TypeScript y MySQL sobre una arquitectura propia.</li>
+      <li>Diseñé el pipeline SDLC con agentes de IA (Claude Code): los agentes planifican, implementan, se revisan y corren pruebas Playwright; una persona aprueba cada merge. La entrega pasó de 101 MRs fusionados en 2024 a 135 en 2025 (+34 %).</li>
+     <li>2026: bloques de contenido para el CMS, editor de texto enriquecido con puertos de Elm, gestión de ofertas de servicio en Elm y procedimientos almacenados en MySQL.</li>
+    </ul>
+  </div>
+
+  <h2>Proyectos en uso</h2>
+  <div class="proy">
+    <div class="item">
+      <div class="cab"><strong>BackFlow</strong><span class="cuando">2026</span></div>
+      <p>Lee los riders técnicos de las bandas (PDF, Excel, texto o foto), arma el backline por sección, avisa lo que falta y controla cada pieza desde el celular. Usado en 2 festivales con 168 equipos.</p>
+      <p class="stack">TypeScript · Elm · OCR en el navegador · IndexedDB</p>
+    </div>
+    <div class="item">
+      <div class="cab"><strong>Loop</strong><span class="cuando">2026</span></div>
+      <p>Middleware que une Resolume, Onyx y Reaper en un show, con panel web en tablet. Funcionó en un bar y lo compró Multiaudio, empresa de eventos.</p>
+      <p class="stack">TypeScript · Node.js · OSC · Art-Net · WebSockets</p>
+    </div>
+    <div class="item">
+      <div class="cab"><strong>Viáticos y turnos</strong><span class="cuando">2026</span></div>
+      <p>Herramienta interna para el personal de eventos de Circuito: cruza marcaciones con comidas y calcula viáticos con 7 reglas y festivos de Colombia.</p>
+      <p class="stack">Python · FastAPI · PostgreSQL · Streamlit · pytest</p>
+    </div>
+    <div class="item">
+      <div class="cab"><strong>NetQuick</strong><span class="cuando">código abierto</span></div>
+      <p>Widget de Windows para cambiar de red con un clic; revisa que la IP esté libre y vuelve sola a la red anterior si la nueva falla.</p>
+      <p class="stack">Python · Tkinter · pytest · GitHub Actions</p>
+    </div>
+  </div>
+
+  <h2>Open source</h2>
+  <ul class="oss puntos">
+    <li><code>prod-forge/backend</code> (TypeScript): validación del filtro de la API de tareas, con pruebas. Fusionado en nov 2026.</li>
+    <li><code>authorjapps/zerocode</code> (Java): retiro completo de la integración con WireMock. Fusionado en jul 2026.</li>
+    <li><code>aminueza/terraform-provider-minio</code> (Go): 3 PRs de pruebas de aceptación e infraestructura de pruebas. Fusionados en jul 2026.</li>
+  </ul>
+
+  <div class="dos">
+    <section>
+      <h2>Habilidades</h2>
+      <dl class="hab">
+        <dt>Backend</dt><dd>PHP, Node.js, Express, FastAPI, Python</dd>
+        <dt>Frontend</dt><dd>TypeScript, Elm, React, Next.js, Tailwind CSS</dd>
+        <dt>Datos</dt><dd>MySQL, PostgreSQL, procedimientos almacenados</dd>
+        <dt>Calidad</dt><dd>Playwright, pytest, Vitest, GitLab CI/CD, GitHub Actions</dd>
+        <dt>IA</dt><dd>Claude Code, agentes y skills para el ciclo de desarrollo</dd>
+        <dt>Eventos</dt><dd>OSC, Art-Net, Dante, grandMA2</dd>
+      </dl>
+    </section>
+    <section>
+      <h2>Educación</h2>
+      <div class="item">
+        <div class="cab"><strong>Tecnólogo en Análisis y Desarrollo de Software (ADSO)</strong></div>
+        <div class="lugar">SENA · en curso · proyecto formativo: BackFlow</div>
+      </div>
+      <div class="item">
+        <div class="cab"><strong>Platzi</strong></div>
+        <div class="lugar">6 rutas y 62 cursos con diploma verificable, entre ellos Full Stack Developer con JavaScript (2026)</div>
+      </div>
+      <h2>Idiomas</h2>
+      <p>Español: nativo · Inglés: A2</p>
+    </section>
+  </div>
+</body>
+</html>

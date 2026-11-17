@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Github, Gitlab, Linkedin, Mail, Send, MapPin, ExternalLink } from "lucide-react"
+import { Github, Gitlab, Linkedin, Mail, Send, MapPin, ExternalLink, FileDown } from "lucide-react"
 import { useProfile, useLanguage } from '@/app/providers'
 import { portfolioData } from '@/lib/data'
 
@@ -112,7 +112,7 @@ export function Contact() {
                   </div>
                   <div>
                     <p className="text-xs text-muted-foreground mb-0.5">{language === 'en' ? 'Location' : 'Ubicación'}</p>
-                    <p className="text-foreground text-sm">Boyacá, Colombia 🇨🇴</p>
+                    <p className="text-foreground text-sm">Bogotá, Colombia 🇨🇴</p>
                   </div>
                 </div>
               </div>
@@ -172,6 +172,12 @@ export function Contact() {
                   />
                   <Mail className="mr-2 h-4 w-4 relative z-10" aria-hidden="true" />
                   <span className="relative z-10">{data.form.send}</span>
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" className="mt-3 w-full bg-transparent" asChild>
+                <a href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/oscar-julian-osorio-hoja-de-vida.pdf`} target="_blank" rel="noopener noreferrer">
+                  <FileDown className="mr-2 h-4 w-4" aria-hidden="true" />
+                  {language === 'en' ? 'Résumé (PDF, in Spanish)' : 'Descargar hoja de vida (PDF)'}
                 </a>
               </Button>
             </div>

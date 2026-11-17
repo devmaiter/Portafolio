@@ -18,7 +18,6 @@ export const rutas: Certificado[] = [
     { nombre: 'Diseño y Desarrollo Frontend', fecha: '2026-11-05', url: ruta('30064') },
     { nombre: 'Fundamentos del Desarrollo Web Profesional', fecha: '2026-11-05', url: ruta('30063') },
     { nombre: 'Desarrollo Frontend con React.js', fecha: '2026-05-31', url: ruta('30068') },
-    { nombre: 'Inglés Básico A1', fecha: '2026-01-10', url: ruta('8309') },
 ];
 
 export const cursosDestacados: Certificado[] = [
@@ -39,6 +38,7 @@ export const textosCertificados: Record<Language, {
     cursos: string;
     verTodos: string;
     enCurso: string;
+    idioma: string;
     perfil: string;
 }> = {
     es: {
@@ -48,6 +48,7 @@ export const textosCertificados: Record<Language, {
         cursos: 'Cursos destacados',
         verTodos: 'Ver los 62 certificados en Platzi →',
         enCurso: 'En curso: ruta Programación y Desarrollo de Software (27 %).',
+        idioma: 'Inglés: nivel A2.',
         perfil: PERFIL,
     },
     en: {
@@ -57,6 +58,7 @@ export const textosCertificados: Record<Language, {
         cursos: 'Featured courses',
         verTodos: 'See all 62 certificates on Platzi →',
         enCurso: 'In progress: Software Programming and Development path (27%).',
+        idioma: 'English: A2 level.',
         perfil: PERFIL,
     },
 };

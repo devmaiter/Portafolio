@@ -23,6 +23,12 @@ export interface ProjectItem {
     linkLabel?: string;
     featured?: boolean;
     image?: { src: string; alt: string };
+    /** Dónde y cuándo: «Konrradf · 2024–2026». */
+    context?: string;
+    /** La cifra que resume el proyecto. Si no hay imagen, ocupa el lugar de la imagen. */
+    metric?: { value: string; label: string };
+    /** Gráfica propia en lugar de imagen. */
+    visual?: 'mrs-por-ano';
 }
 
 export interface ExperienceItem {

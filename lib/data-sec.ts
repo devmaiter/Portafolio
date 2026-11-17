@@ -64,12 +64,6 @@ export const secData: Record<'en' | 'es', ProfileData> = {
                     institution: "SENA",
                     degree: "Technologist in Software Analysis and Development (ADSO)",
                     period: "In progress",
-                },
-                {
-                    institution: "Open source as school",
-                    degree: "Merged contributions to third-party projects",
-                    period: "2026",
-                    description: "PRs merged in terraform-provider-minio (Go) and zerocode (Java)."
                 }
             ]
         },
@@ -147,12 +141,6 @@ export const secData: Record<'en' | 'es', ProfileData> = {
                     institution: "SENA",
                     degree: "Tecnólogo en Análisis y Desarrollo de Software (ADSO)",
                     period: "En curso",
-                },
-                {
-                    institution: "El open source como escuela",
-                    degree: "Contribuciones fusionadas en proyectos de terceros",
-                    period: "2026",
-                    description: "PRs mergeados en terraform-provider-minio (Go) y zerocode (Java)."
                 }
             ]
         },

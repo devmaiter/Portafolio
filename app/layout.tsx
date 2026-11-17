@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Oscar Julián Osorio' }],
   openGraph: {
     title: 'Oscar Julián Osorio — Desarrollador Full-Stack',
-    description: '6 354 commits · 369 MRs fusionados · 97 % de aceptación · pipeline SDLC con agentes de IA. Métricas verificadas de GitLab, 2022–2026.',
+    description: '6 354 commits · 369 MRs fusionados · 97 % de aceptación · pipeline SDLC con agentes de IA. Métricas verificadas de GitLab, nov 2022 – jul 2026.',
     type: 'website',
     locale: 'es_CO',
   },

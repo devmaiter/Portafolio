@@ -183,7 +183,7 @@ const SECTIONS = {
 }
 
 const SUBTITLES = {
-  dev: { en: 'The stack I ship to production — verified GitLab metrics, 2022–2026.', es: 'El stack con el que entrego a producción — métricas de GitLab verificadas, 2022–2026.' },
+  dev: { en: 'The stack I ship to production — verified GitLab metrics, Nov 2022 to Jul 2026.', es: 'El stack con el que entrego a producción — métricas de GitLab verificadas, de nov 2022 a jul 2026.' },
   sec: { en: 'Security practices applied to my own software and networks.', es: 'Prácticas de seguridad aplicadas a mi propio software y redes.' },
   av: { en: 'Protocols and systems my AV tools work with.', es: 'Protocolos y sistemas con los que trabajan mis herramientas AV.' },
 }

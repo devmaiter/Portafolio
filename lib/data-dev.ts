@@ -7,6 +7,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                 { label: "Home", href: "#hero" },
                 { label: "Skills", href: "#skills" },
                 { label: "Projects", href: "#projects" },
+                { label: "Open source", href: "#open-source" },
                 { label: "Experience", href: "#experience" },
                 { label: "Education", href: "#education" },
                 { label: "Contact", href: "#contact" },
@@ -46,26 +47,33 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         },
         projects: {
             title: "Projects",
-            description: "Software that is in use: at my job, at an events company, in a bar and in other teams' projects.",
+            description: "Software that is in use: at festivals, at my job, at an events company and on other people's computers.",
             items: [
                 {
-                    title: "AI-Agent SDLC Pipeline",
-                    description: "The system I design and maintain so a small team automates the full lifecycle of a GitLab issue with AI agents: a central repository of shared skills, agents and CI where agents read the issue, propose a plan, implement on a branch following team conventions, review each other and run Playwright tests — with human review before every merge. Delivery went from 101 merged MRs in 2024 to 135 in 2025 (+34%) holding a 97% merge rate. Verified GitLab metrics in the case study.",
+                    title: "BackFlow — festival backline",
+                    context: "Live events production · 2026",
+                    metric: { value: "168", label: "pieces of equipment tracked at 2 real festivals" },
+                    description: "At a festival, each band's gear is scattered across emails, PDFs, production sheets and chats. BackFlow reads each band's technical rider (PDF, Excel, text or photo), sorts it by section, flags what seems to be missing — a drum kit with no throne, a bass with no stand — and tracks every piece by band, date and event from a phone, with warehouse and stage photos as evidence. Documents are read on the phone itself, without sending them to any server. Used at 2 festivals with about 15 bands.",
+                    tags: ["TypeScript", "Elm", "In-browser OCR", "IndexedDB", "Vitest"],
+                    image: { src: "/proyectos/backflow-alerta.png", alt: "BackFlow: a band's drum section warning about the pieces the rider did not ask for" },
+                    featured: true
+                },
+                {
+                    title: "AI-agent SDLC pipeline",
+                    context: "Konrradf · 2024–2026",
+                    metric: { value: "+34%", label: "merged MRs from 2024 to 2025, with a 97% merge rate" },
+                    description: "The system I design and maintain so a small team automates the full lifecycle of a GitLab issue with AI agents: a central repository of shared skills, agents and CI where agents read the issue, propose a plan, implement on a branch following team conventions, review each other and run Playwright tests — with human review before every merge.",
                     tags: ["Claude Code", "AI Agents", "GitLab CI/CD", "Playwright", "SDLC"],
-                    link: "https://devmaiter.github.io/",
+                    visual: "mrs-por-ano",
+                    link: "caso-pipeline/",
                     linkLabel: "Case study",
                     featured: true
                 },
                 {
-                    title: "Per-diem & Shifts Dashboard — internal tool for Circuito",
-                    description: "Built for the staffing coordinator at Circuito, who used to cross-check the clock-in/out spreadsheet against the meals log by hand every pay period to work out what each person was owed. Now he uploads both files and sees, per person, the day-by-day schedule, which meals were given and what was paid. The app matches names written differently (accents, surname first) and flags incomplete punches, shifts over 20 hours and records with no event. Underneath: a 7-rule per-diem engine with Colombian holidays, a FastAPI + PostgreSQL backend with JWT, and automated tests on every layer. Designed to be read on a phone.",
-                    tags: ["Python", "Streamlit", "pandas", "FastAPI", "PostgreSQL", "pytest"],
-                    image: { src: "/proyectos/viaticos-detalle-persona.jpg", alt: "Per-diem dashboard: one person's schedule, day by day" },
-                    featured: true
-                },
-                {
                     title: "Loop — live show control",
-                    description: "Middleware that ties Resolume, Onyx and Reaper together during a show: it listens to OSC, fires strobes and color over UDP and Art-Net, and gives the operator a web panel on a tablet. It runs in a real bar and was bought by the AV company Multiaudio. Version 3.0.0 ships as a Windows .exe with automated tests. The case study has photos, video and the code.",
+                    context: "A bar with live music · 2026",
+                    metric: { value: "Sold", label: "to Multiaudio, an events company, after running in a bar" },
+                    description: "Middleware that ties Resolume, Onyx and Reaper together during a show: it listens to OSC, fires strobes and color over UDP and Art-Net, and gives the operator a web panel on a tablet. Version 3.0.0 ships as a Windows .exe with automated tests.",
                     tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
                     image: { src: "/proyectos/loop-bar.jpg", alt: "Loop running the lights in the bar" },
                     link: "https://devmaiter.github.io/loop/",
@@ -74,18 +82,21 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "NetQuick — switch networks on Windows in seconds",
-                    description: "Floating tray widget for Windows that changes the machine's IP or network in one click, with saved profiles for static IP and DHCP. Before applying it checks the IP is free (ping plus an ARP probe), and if the new address leaves you without a gateway it counts down 30 seconds and goes back to the previous config on its own. Scanner compatible with Dante networks. Open source, with tests, CI and releases that publish the .exe with its SHA-256.",
-                    tags: ["Python", "Tkinter", "Windows", "pytest", "GitHub Actions"],
-                    github: "https://github.com/devmaiter/NetQuick",
+                    title: "Per-diems and shifts — internal tool",
+                    context: "Circuito · events staff · 2026",
+                    metric: { value: "2 → 1", label: "two spreadsheets crossed by hand, now one screen per person" },
+                    description: "Built for the staffing coordinator at Circuito, who used to cross-check the clock-in/out spreadsheet against the meals log by hand every pay period. Now he uploads both files and sees, per person, the day-by-day schedule, which meals were given and what was paid. It matches names written differently and flags incomplete punches, shifts over 20 hours and records with no event. Underneath: a 7-rule per-diem engine with Colombian holidays, FastAPI + PostgreSQL with JWT, and tests on every layer.",
+                    tags: ["Python", "Streamlit", "pandas", "FastAPI", "PostgreSQL", "pytest"],
+                    image: { src: "/proyectos/viaticos-detalle-persona.jpg", alt: "Per-diem dashboard: one person's schedule, day by day (sample data)" },
                     featured: true
                 },
                 {
-                    title: "Open source contributions",
-                    description: "Pull requests merged into other teams' projects, under their conventions and their code review. terraform-provider-minio (Go): three PRs with acceptance tests and fixes to the test infrastructure. zerocode (Java): full removal of the WireMock integration — dependency, code and tests.",
-                    tags: ["Go", "Java", "Terraform", "Testing", "Code review"],
-                    link: "https://github.com/search?q=author%3Adevmaiter+is%3Apr+is%3Amerged+-user%3Adevmaiter&type=pullrequests",
-                    linkLabel: "Merged PRs",
+                    title: "NetQuick — switch networks on Windows",
+                    context: "Open source · Windows",
+                    metric: { value: "30 s", label: "then it goes back to the previous network on its own if the new one leaves you stranded" },
+                    description: "Tray widget that changes the machine's IP or network in one click, with saved static and DHCP profiles. Before applying it checks the IP is free (ping plus an ARP probe). Scanner compatible with Dante audio networks. Tests, CI, and releases that publish the .exe with its SHA-256.",
+                    tags: ["Python", "Tkinter", "Windows", "pytest", "GitHub Actions"],
+                    github: "https://github.com/devmaiter/NetQuick",
                     featured: true
                 }
             ]
@@ -105,23 +116,23 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             ],
             caseStudy: {
                 label: "See verified GitLab metrics and the full case study →",
-                url: "https://devmaiter.github.io"
+                url: "caso-pipeline/"
             }
         },
         education: {
             title: "Education",
             items: [
                 {
+                    institution: "SENA",
+                    degree: "Technologist in Software Analysis and Development (ADSO)",
+                    period: "In progress",
+                    description: "Technology degree program. My training project is BackFlow."
+                },
+                {
                     institution: "Production as classroom — self-taught engineering",
                     degree: "Continuous software engineering training",
                     period: "2019 - Present",
                     description: "Learning proven in production: 3+ years sustaining a commercial platform, a proprietary architecture mastered layer by layer, and an AI-agent SDLC pipeline designed from scratch."
-                },
-                {
-                    institution: "Open source as school",
-                    degree: "Merged contributions to third-party projects",
-                    period: "2026",
-                    description: "PRs merged in terraform-provider-minio (Go) and zerocode (Java) — other teams' codebases, their conventions, their code reviews."
                 }
             ]
         },
@@ -142,6 +153,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                 { label: "Inicio", href: "#hero" },
                 { label: "Habilidades", href: "#skills" },
                 { label: "Proyectos", href: "#projects" },
+                { label: "Open source", href: "#open-source" },
                 { label: "Experiencia", href: "#experience" },
                 { label: "Educación", href: "#education" },
                 { label: "Contacto", href: "#contact" },
@@ -181,26 +193,33 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         },
         projects: {
             title: "Proyectos",
-            description: "Software que está en uso: en mi trabajo, en una empresa de eventos, en un bar y en proyectos de otros equipos.",
+            description: "Software que está en uso: en festivales, en mi trabajo, en una empresa de eventos y en computadores de otras personas.",
             items: [
                 {
-                    title: "Pipeline SDLC con Agentes de IA",
-                    description: "El sistema que diseño y mantengo para que un equipo pequeño automatice el ciclo de vida completo de un issue de GitLab con agentes de IA: un repositorio central de skills, agentes y CI compartidos donde los agentes leen el issue, proponen un plan, implementan en una rama con las convenciones del equipo, se revisan entre sí y ejecutan pruebas Playwright — con revisión humana antes de cada merge. La entrega pasó de 101 MRs fusionados en 2024 a 135 en 2025 (+34 %) manteniendo 97 % de aceptación. Métricas de GitLab verificadas en el caso de estudio.",
+                    title: "BackFlow — backline de festivales",
+                    context: "Producción de eventos · 2026",
+                    metric: { value: "168", label: "equipos controlados en 2 festivales reales" },
+                    description: "En un festival, el equipo de cada banda vive regado entre correos, PDF, hojas de producción y chats. BackFlow lee el rider técnico de cada banda (PDF, Excel, texto o foto), lo ordena por sección, avisa lo que parece faltar —una batería sin silla, un bajo sin base— y deja controlar cada pieza por banda, fecha y evento desde el celular, con fotos de bodega y de tarima como evidencia. Los documentos se leen en el mismo teléfono, sin enviarlos a ningún servidor. Se usó en 2 festivales, con unas 15 bandas.",
+                    tags: ["TypeScript", "Elm", "OCR en el navegador", "IndexedDB", "Vitest"],
+                    image: { src: "/proyectos/backflow-alerta.png", alt: "BackFlow: la sección de batería de una banda avisa las piezas que el rider no pidió" },
+                    featured: true
+                },
+                {
+                    title: "Pipeline SDLC con agentes de IA",
+                    context: "Konrradf · 2024–2026",
+                    metric: { value: "+34 %", label: "MRs fusionados de 2024 a 2025, con 97 % de aceptación" },
+                    description: "El sistema que diseño y mantengo para que un equipo pequeño automatice el ciclo de vida completo de un issue de GitLab con agentes de IA: un repositorio central de skills, agentes y CI compartidos donde los agentes leen el issue, proponen un plan, implementan en una rama con las convenciones del equipo, se revisan entre sí y ejecutan pruebas Playwright, con revisión humana antes de cada merge.",
                     tags: ["Claude Code", "Agentes IA", "GitLab CI/CD", "Playwright", "SDLC"],
-                    link: "https://devmaiter.github.io/",
+                    visual: "mrs-por-ano",
+                    link: "caso-pipeline/",
                     linkLabel: "Caso de estudio",
                     featured: true
                 },
                 {
-                    title: "Viáticos y turnos — herramienta interna para Circuito",
-                    description: "La hice para el coordinador de personal de Circuito, que en cada periodo cruzaba a mano el Excel de entradas y salidas con la bitácora de comidas para saber qué pagarle a cada persona. Ahora sube los dos archivos y ve, por persona, su horario día por día, qué comidas se le dieron y lo que se pagó. La app empareja nombres escritos distinto (tildes, apellidos primero) y señala marcaciones incompletas, jornadas de más de 20 horas y registros sin evento. Por debajo: motor de las 7 reglas de viáticos con festivos de Colombia, backend FastAPI + PostgreSQL con JWT y pruebas automáticas en cada capa. Pensada para leerse en el celular.",
-                    tags: ["Python", "Streamlit", "pandas", "FastAPI", "PostgreSQL", "pytest"],
-                    image: { src: "/proyectos/viaticos-detalle-persona.jpg", alt: "Dashboard de viáticos: horario de una persona día por día" },
-                    featured: true
-                },
-                {
                     title: "Loop — control de show en vivo",
-                    description: "Middleware que une Resolume, Onyx y Reaper durante un show: escucha OSC, dispara estrobos y color por UDP y Art-Net, y le da al operador un panel web en una tablet. Se usa en un bar y lo compró la empresa de eventos Multiaudio. La versión 3.0.0 se entrega como .exe de Windows, con pruebas automáticas. El caso de estudio tiene fotos, video y el código.",
+                    context: "Un bar con música en vivo · 2026",
+                    metric: { value: "Vendido", label: "a Multiaudio, empresa de eventos, después de funcionar en un bar" },
+                    description: "Middleware que une Resolume, Onyx y Reaper durante un show: escucha OSC, dispara estrobos y color por UDP y Art-Net, y le da al operador un panel web en una tablet. La versión 3.0.0 se entrega como .exe de Windows, con pruebas automáticas.",
                     tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
                     image: { src: "/proyectos/loop-bar.jpg", alt: "Loop manejando las luces en el bar" },
                     link: "https://devmaiter.github.io/loop/",
@@ -209,18 +228,21 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "NetQuick — cambiar de red en Windows en segundos",
-                    description: "Widget flotante para Windows, en la bandeja del sistema, que cambia la IP o la red del equipo con un clic, con perfiles guardados de IP fija y DHCP. Antes de aplicar revisa que la IP esté libre (ping y sonda ARP), y si la nueva dirección deja el equipo sin puerta de enlace, cuenta 30 segundos y vuelve sola a la configuración anterior. Escáner compatible con redes Dante. Código abierto, con pruebas, CI y versiones que publican el .exe con su SHA-256.",
-                    tags: ["Python", "Tkinter", "Windows", "pytest", "GitHub Actions"],
-                    github: "https://github.com/devmaiter/NetQuick",
+                    title: "Viáticos y turnos — herramienta interna",
+                    context: "Circuito · personal de eventos · 2026",
+                    metric: { value: "2 → 1", label: "dos Excel cruzados a mano, ahora una pantalla por persona" },
+                    description: "La hice para el coordinador de personal de Circuito, que en cada periodo cruzaba a mano el Excel de entradas y salidas con la bitácora de comidas. Ahora sube los dos archivos y ve, por persona, su horario día por día, qué comidas se le dieron y lo que se pagó. Empareja nombres escritos distinto y señala marcaciones incompletas, jornadas de más de 20 horas y registros sin evento. Por debajo: motor de las 7 reglas de viáticos con festivos de Colombia, FastAPI + PostgreSQL con JWT y pruebas en cada capa.",
+                    tags: ["Python", "Streamlit", "pandas", "FastAPI", "PostgreSQL", "pytest"],
+                    image: { src: "/proyectos/viaticos-detalle-persona.jpg", alt: "Dashboard de viáticos: horario de una persona día por día (datos de ejemplo)" },
                     featured: true
                 },
                 {
-                    title: "Contribuciones open source",
-                    description: "Pull requests fusionados en proyectos de otros equipos, con sus convenciones y su revisión de código. terraform-provider-minio (Go): tres PRs con pruebas de aceptación y arreglos de la infraestructura de pruebas. zerocode (Java): retiro completo de la integración con WireMock: dependencia, código y pruebas.",
-                    tags: ["Go", "Java", "Terraform", "Testing", "Code review"],
-                    link: "https://github.com/search?q=author%3Adevmaiter+is%3Apr+is%3Amerged+-user%3Adevmaiter&type=pullrequests",
-                    linkLabel: "PRs fusionados",
+                    title: "NetQuick — cambiar de red en Windows",
+                    context: "Código abierto · Windows",
+                    metric: { value: "30 s", label: "y vuelve sola a la red anterior si la nueva te deja sin salida" },
+                    description: "Widget de la bandeja del sistema que cambia la IP o la red del equipo con un clic, con perfiles guardados de IP fija y DHCP. Antes de aplicar revisa que la IP esté libre (ping y sonda ARP). Escáner compatible con redes de audio Dante. Pruebas, CI y versiones que publican el .exe con su SHA-256.",
+                    tags: ["Python", "Tkinter", "Windows", "pytest", "GitHub Actions"],
+                    github: "https://github.com/devmaiter/NetQuick",
                     featured: true
                 }
             ]
@@ -240,23 +262,23 @@ export const devData: Record<'en' | 'es', ProfileData> = {
             ],
             caseStudy: {
                 label: "Ver métricas verificadas de GitLab y el caso de estudio completo →",
-                url: "https://devmaiter.github.io"
+                url: "caso-pipeline/"
             }
         },
         education: {
             title: "Educación",
             items: [
                 {
+                    institution: "SENA",
+                    degree: "Tecnólogo en Análisis y Desarrollo de Software (ADSO)",
+                    period: "En curso",
+                    description: "Formación tecnológica. Mi proyecto formativo es BackFlow."
+                },
+                {
                     institution: "La producción como aula — ingeniería autodidacta",
                     degree: "Formación continua en ingeniería de software",
                     period: "2019 - Presente",
                     description: "Aprendizaje probado en producción: 3+ años sosteniendo una plataforma comercial, una arquitectura propia dominada capa por capa y un pipeline SDLC con agentes de IA diseñado desde cero."
-                },
-                {
-                    institution: "El open source como escuela",
-                    degree: "Contribuciones fusionadas en proyectos de terceros",
-                    period: "2026",
-                    description: "PRs mergeados en terraform-provider-minio (Go) y zerocode (Java) — código ajeno, sus convenciones y sus code reviews."
                 }
             ]
         },

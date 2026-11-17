@@ -26,7 +26,7 @@ function useInView(threshold = 0.3) {
 const STATS = [
   { target: 3, suffix: '+', labelEn: 'Years Exp.', labelEs: 'Años Exp.' },
   { target: 369, suffix: '', labelEn: 'Merged MRs', labelEs: 'MRs fusionados' },
-  { target: 3, suffix: '', labelEn: 'Specializations', labelEs: 'Esp.' },
+  { target: 3, suffix: '', labelEn: 'Profiles', labelEs: 'Perfiles' },
   { target: 100, suffix: '%', labelEn: 'Remote Ready', labelEs: 'Remoto' },
 ]
 
@@ -118,7 +118,7 @@ export function Footer() {
             <code className="font-mono text-primary text-xs px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20">
               {'</código>'}
             </code>
-            <span>— Boyacá, Colombia 🇨🇴</span>
+            <span>— Bogotá, Colombia 🇨🇴</span>
           </motion.div>
 
           {/* Social links */}
