@@ -68,10 +68,10 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "Loop — live show control",
-                    context: "A bar with live music · 2026",
-                    metric: { value: "Sold", label: "to Multiaudio, an events company, after running in a bar" },
-                    description: "Middleware that ties Resolume, Onyx and Reaper together during a show: it listens to OSC, fires strobes and color over UDP and Art-Net, and gives the operator a web panel on a tablet. Version 3.0.0 ships as a Windows .exe with automated tests.",
+                    title: "Loop — video, lights and audio with one operator",
+                    context: "Audiovisual integration · 2026",
+                    metric: { value: "3 → 1", label: "operators: one person runs video, lights and audio from a tablet" },
+                    description: "Software that connects the classic programs of a show — Resolume for video, Onyx for lights and Reaper for audio — so they work as one: lights follow the video and the music, and a single person runs everything from a tablet. Built for events, venues and companies that don't have an operator for every console. Bought by Multiaudio, an events company, after running in live shows.",
                     tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
                     image: { src: "/proyectos/loop-bar.jpg", alt: "Loop running the lights in the bar" },
                     link: "caso-loop/",
@@ -208,10 +208,10 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "Loop — control de show en vivo",
-                    context: "Un bar con música en vivo · 2026",
-                    metric: { value: "Vendido", label: "a Multiaudio, empresa de eventos, después de funcionar en un bar" },
-                    description: "Middleware que une Resolume, Onyx y Reaper durante un show: escucha OSC, dispara estrobos y color por UDP y Art-Net, y le da al operador un panel web en una tablet. La versión 3.0.0 se entrega como .exe de Windows, con pruebas automáticas.",
+                    title: "Loop — video, luces y audio con un solo operador",
+                    context: "Integración audiovisual · 2026",
+                    metric: { value: "3 → 1", label: "operadores: una persona maneja video, luces y audio desde una tablet" },
+                    description: "Software que conecta los programas clásicos de un show —Resolume para video, Onyx para luces y Reaper para audio— para que trabajen como uno solo: las luces siguen al video y a la música, y una sola persona maneja todo desde una tablet. Pensado para eventos, lugares y empresas que no tienen un operador para cada consola. Lo compró Multiaudio, empresa de eventos, después de funcionar en shows en vivo.",
                     tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
                     image: { src: "/proyectos/loop-bar.jpg", alt: "Loop manejando las luces en el bar" },
                     link: "caso-loop/",

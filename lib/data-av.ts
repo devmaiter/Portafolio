@@ -51,7 +51,7 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     role: "Real-time show control",
                     period: "2026",
                     location: "Own project",
-                    description: "Middleware that bridges OSC, Art-Net, UDP and WebSockets to drive Resolume and Onyx during live shows, with a web dashboard for the operator. Running in a real bar and bought by the AV company Multiaudio.",
+                    description: "Connects Resolume, Onyx and Reaper so one person runs video, lights and audio from a tablet, instead of one operator per console. Bought by the events company Multiaudio.",
                     tags: ["TypeScript", "OSC", "Art-Net", "WebSockets"],
                     tagColor: "#06b6d4"
                 },
@@ -156,7 +156,7 @@ export const avData: Record<'en' | 'es', ProfileData> = {
                     role: "Control de shows en tiempo real",
                     period: "2026",
                     location: "Proyecto propio",
-                    description: "Middleware que conecta OSC, Art-Net, UDP y WebSockets para controlar Resolume y Onyx en shows en vivo, con un dashboard web para el operador. Funciona en un bar real y lo compró la empresa de audiovisuales Multiaudio.",
+                    description: "Conecta Resolume, Onyx y Reaper para que una persona maneje video, luces y audio desde una tablet, en vez de un operador por consola. Lo compró la empresa de eventos Multiaudio.",
                     tags: ["TypeScript", "OSC", "Art-Net", "WebSockets"],
                     tagColor: "#06b6d4"
                 },

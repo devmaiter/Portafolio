@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Loop — Integración AV para un club · Oscar Julián Osorio Romero</title>
-<meta name="description" content="Caso de estudio: Loop une video (Resolume), luces (Onyx) y audio (Reaper) en un panel de tablet. Diseñado, programado e instalado por Oscar Julián Osorio Romero; usado en un bar con música en vivo y comprado por Multiaudio.">
-<meta property="og:title" content="Loop — Integración AV para un club">
-<meta property="og:description" content="Las luces siguen al video y a la música, y todo el show se maneja desde una tablet. De la prueba en laboratorio a un producto que compró una empresa de eventos.">
+<title>Loop — Video, luces y audio con un solo operador · Oscar Julián Osorio Romero</title>
+<meta name="description" content="Loop conecta Resolume, Onyx y Reaper para que una sola persona maneje video, luces y audio desde una tablet. Para eventos y lugares que no tienen un operador para cada consola. Lo compró Multiaudio, empresa de eventos.">
+<meta property="og:title" content="Loop — Video, luces y audio con un solo operador">
+<meta property="og:description" content="Integración de los programas clásicos de un show para que una persona haga el trabajo de tres.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://devmaiter.github.io/Portafolio/caso-loop/">
 <meta property="og:image" content="https://devmaiter.github.io/Portafolio/caso-loop/img/bar-montaje.jpg">
@@ -195,34 +195,47 @@
   <img src="img/bar-montaje.jpg" width="1220" height="1626" fetchpriority="high" alt="El bar con la pantalla de video al fondo del escenario y el aro de luces en el techo">
   <div class="wrap">
     <span class="live"><i aria-hidden="true"></i>En uso · v3.0.0</span>
-    <h1>Loop<br><em>video, luces y audio</em><br>en una tablet</h1>
-    <p>Un bar quería que sus luces siguieran al video y a la música. Diseñé, programé e
-      instalé el software que conecta las tres consolas. Después lo compró una empresa de
-      eventos.</p>
+    <h1>Loop<br><em>video, luces y audio</em><br>con un solo operador</h1>
+    <p>Software que conecta los programas clásicos de un show —Resolume, Onyx y Reaper—
+      para que trabajen como uno solo. Donde antes hacían falta tres operadores, una persona
+      maneja todo desde una tablet.</p>
   </div>
 </header>
 
 <main>
   <div class="wrap">
     <ul class="stats">
-      <li><b>3</b>programas que antes no se hablaban</li>
+      <li><b>1</b>operador en vez de tres: maneja video, luces y audio</li>
+      <li><b>3</b>programas clásicos conectados: Resolume, Onyx y Reaper</li>
       <li><b>4</b>protocolos: OSC, Art-Net, UDP y Socket.IO</li>
-      <li><b>12/12</b>pruebas automáticas en verde</li>
       <li><b>1</b>ejecutable: se instala copiando una carpeta</li>
     </ul>
   </div>
 
   <section>
     <div class="wrap">
-      <span class="tape">el encargo</span>
-      <h2>Lo que pidió el cliente</h2>
-      <p>En el bar, el video (Resolume), las luces (Onyx) y el audio (Reaper) corrían en
-        programas y equipos separados. Cada cambio de ambiente necesitaba a alguien en cada
-        consola, y las luces no tenían idea de lo que pasaba en la pantalla.</p>
+      <span class="tape">el problema</span>
+      <h2>Tres programas, tres operadores</h2>
+      <p>En un show, el video corre en Resolume, las luces en Onyx y el audio en Reaper. Cada
+        uno es una isla y necesita su propio operador. Muchos lugares y empresas no tienen a
+        esas tres personas, o no les da el presupuesto para tenerlas en cada evento.</p>
       <ul class="ask">
-        <li><span class="q">"Que las luces reaccionen a la música"</span><span class="arrow" aria-hidden="true">→</span><span class="a">Los estrobos siguen en tiempo real a la capa de video que se mueve con la música</span></li>
-        <li><span class="q">"Que sigan lo que pasa en la pantalla"</span><span class="arrow" aria-hidden="true">→</span><span class="a">Loop lee el color del video y lo muestra en el panel</span></li>
-        <li><span class="q">"No ir de consola en consola"</span><span class="arrow" aria-hidden="true">→</span><span class="a">Escenas, flashes y pistas desde una tablet, o desde varias a la vez</span></li>
+        <li><span class="q">Una persona en cada consola</span><span class="arrow" aria-hidden="true">→</span><span class="a">Una sola persona maneja todo desde una tablet</span></li>
+        <li><span class="q">Las luces no saben qué pasa en la pantalla</span><span class="arrow" aria-hidden="true">→</span><span class="a">Las luces siguen al video y a la música en tiempo real</span></li>
+        <li><span class="q">Cada cambio de ambiente se coordina por radio o a señas</span><span class="arrow" aria-hidden="true">→</span><span class="a">Un toque cambia video, luces y audio a la vez</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">para quién</span>
+      <h2>Para quién es</h2>
+      <ul class="checks">
+        <li><b>Empresas de eventos</b>Montajes que salen con menos personal técnico.</li>
+        <li><b>Bares y salas de música en vivo</b>Un show que se ve profesional sin un operador por consola.</li>
+        <li><b>Auditorios e iglesias</b>Personas sin formación técnica lanzan escenas que ya quedaron listas.</li>
+        <li><b>Productoras pequeñas</b>Integrar los programas y equipos que ya tienen, sin comprar consolas nuevas.</li>
       </ul>
     </div>
   </section>
@@ -232,11 +245,11 @@
       <span class="tape">mi rol</span>
       <h2>De punta a punta, solo</h2>
       <ul class="checks">
-        <li><b>Levantamiento</b>Hablé con el dueño y bajé el pedido a reglas concretas.</li>
+        <li><b>Levantamiento</b>Entendí lo que necesitaba el lugar y lo bajé a reglas concretas.</li>
         <li><b>Arquitectura</b>Un programa en el medio que traduce entre protocolos.</li>
         <li><b>Código</b>Backend en TypeScript, panel web y pruebas.</li>
         <li><b>Programación de luces</b>Cuelists y efectos en Onyx para que respondieran.</li>
-        <li><b>Instalación</b>Montaje en el bar y ajuste durante los shows.</li>
+        <li><b>Instalación</b>Montaje en el sitio y ajuste durante shows en vivo.</li>
         <li><b>Producto</b>Lo llevé a una v3 que otra empresa pudiera usar.</li>
       </ul>
     </div>
@@ -250,7 +263,7 @@
         la vista 3D de Onyx las luces responden.</p>
       <figure class="film">
         <video src="img/lab.mp4" poster="img/lab.jpg" width="848" height="480" controls muted loop playsinline preload="none" aria-label="Prueba de Loop en laboratorio"></video>
-        <figcaption class="note">13 de marzo de 2026 · el video va sin sonido</figcaption>
+        <figcaption class="note">Prueba en laboratorio, 13 de marzo de 2026</figcaption>
       </figure>
       <div class="pinned">
         <img src="img/luces-onyx.jpg" width="1220" height="1626" loading="lazy" alt="Portátil con Onyx abierto, programando los efectos de las cabezas móviles">
@@ -350,43 +363,22 @@
         </svg>
       </div>
 
-      <p class="code-h">así siguen las luces al video · src/show.ts</p>
-<pre><code><span class="c">/** La opacidad de la capa de video maneja los estrobos. */</span>
-<span class="k">onOpacity</span>(opacity: number): void {
-  this.markResolumeOnline();
-  <span class="k">if</span> (!this.state.automation) <span class="k">return</span>;
-
-  <span class="k">const</span> level = opacityToDmx(opacity);
-  <span class="k">if</span> (level === this.lastStrobe) <span class="k">return</span>;   <span class="c">// no inundar la red</span>
-  this.lastStrobe = level;
-  this.lights.setLevel(this.config.onyx.strobeCuelist, level);
-}</code></pre>
-
-      <p class="code-h">y así se comprueba · npm test</p>
-<pre><code><span class="ok">✔</span> la opacidad mueve los estrobos solo si cambia y si la automatización está activa
-<span class="ok">✔</span> los botones usan los comandos de la configuración
-<span class="ok">✔</span> rechaza botones y pistas que no existen
-<span class="ok">✔</span> el estado de mute es uno solo para todas las tablets
-<span class="c">…</span>
-<span class="c">ℹ</span> tests 12  <span class="ok">pass 12</span>  fail 0</code></pre>
     </div>
   </section>
 
   <section>
     <div class="wrap">
       <span class="tape">decisiones</span>
-      <h2>Pensado para un show en vivo</h2>
-      <p>En un show no hay "volver a intentar". Estas decisiones salen de eso:</p>
+      <h2>Hecho para no fallar en vivo</h2>
+      <p>En un show no hay "volver a intentar". Por eso:</p>
       <ol class="decisions">
-        <li><span class="n">01</span><div><b>La tablet manda botones, no comandos.</b>
-          <span>El panel dice "escena 3" y el servidor decide qué sale según la configuración. Alguien en el wifi del club no puede mandarle cualquier cosa a las luces.</span></div></li>
-        <li><span class="n">02</span><div><b>Nada destructivo al arrancar.</b>
+        <li><span class="n">01</span><div><b>Nada destructivo al arrancar.</b>
           <span>Si el PC se reinicia en pleno show, Loop vuelve sin tocar lo que está en escena. Limpiar las luces pide un segundo toque.</span></div></li>
-        <li><span class="n">03</span><div><b>Funciona sin internet.</b>
+        <li><span class="n">02</span><div><b>Funciona sin internet.</b>
           <span>El panel no descarga nada de afuera: en un club la red suele ser solo local.</span></div></li>
-        <li><span class="n">04</span><div><b>Un paquete mal formado no tumba el show.</b>
+        <li><span class="n">03</span><div><b>Un paquete mal formado no tumba el show.</b>
           <span>Cada dato que llega por la red se valida; un mensaje OSC roto se descarta en vez de cerrar el programa.</span></div></li>
-        <li><span class="n">05</span><div><b>La lógica no depende de los equipos.</b>
+        <li><span class="n">04</span><div><b>La lógica no depende de los equipos.</b>
           <span>Las reglas hablan con "luces" y "mezcla", no con Onyx o Reaper. Por eso se prueban sin equipos y se puede cambiar de consola sin reescribir el show.</span></div></li>
       </ol>
     </div>
@@ -411,8 +403,8 @@
   <div class="cta">
     <div class="wrap">
       <h2>¿Tienes equipos que no se hablan?</h2>
-      <p>Integro hardware y software de eventos, y automatizo procesos de negocio. Escríbeme
-        y lo vemos.</p>
+      <p>Integro video, luces y audio para que un equipo pequeño maneje el show completo.
+        Escríbeme y lo vemos.</p>
       <div class="btns">
         <a class="btn solid" href="mailto:f1000161620@gmail.com?subject=Integraci%C3%B3n%20AV">Escribirme</a>
         <a class="btn" href="https://github.com/devmaiter/loop-av-middleware" target="_blank" rel="noopener">Ver el código</a>
