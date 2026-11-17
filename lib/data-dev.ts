@@ -5,9 +5,9 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         navbar: {
             items: [
                 { label: "Home", href: "#hero" },
-                { label: "Skills", href: "#skills" },
                 { label: "Projects", href: "#projects" },
                 { label: "Open source", href: "#open-source" },
+                { label: "Skills", href: "#skills" },
                 { label: "Experience", href: "#experience" },
                 { label: "Education", href: "#education" },
                 { label: "Contact", href: "#contact" },
@@ -145,9 +145,9 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         navbar: {
             items: [
                 { label: "Inicio", href: "#hero" },
-                { label: "Habilidades", href: "#skills" },
                 { label: "Proyectos", href: "#projects" },
                 { label: "Open source", href: "#open-source" },
+                { label: "Habilidades", href: "#skills" },
                 { label: "Experiencia", href: "#experience" },
                 { label: "Educación", href: "#education" },
                 { label: "Contacto", href: "#contact" },

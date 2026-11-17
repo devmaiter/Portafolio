@@ -44,9 +44,9 @@ export default function Home() {
           >
             <Navbar />
             <Hero />
-            <Skills />
             <Projects />
             <OpenSource />
+            <Skills />
             <Experience />
             <Education />
             <Contact />
