@@ -14,6 +14,13 @@ export const urlPr = (p: PullRequest) => pr(p.repo, p.numero);
 
 export const fusionados: PullRequest[] = [
     {
+        repo: 'AlexSergey/rockpack', numero: 117, lenguaje: 'TypeScript', fecha: '2026-11-17',
+        texto: {
+            es: 'El ejecutor de pruebas ignoraba -t, -u, --bail y --ci sin avisar. Ahora los pasa a Jest con una lista blanca, y el número de --bail ya no se confunde con una ruta. Incluye un arreglo a las pruebas, que leían la línea de comandos real.',
+            en: 'The test runner silently dropped -t, -u, --bail and --ci. It now forwards them to Jest through an allowlist, and the --bail count is no longer read as a path. Includes a fix to the specs, which read the real command line.',
+        },
+    },
+    {
         repo: 'prod-forge/backend', numero: 46, lenguaje: 'TypeScript', fecha: '2026-11-17',
         texto: {
             es: 'La lista paginada de tareas podía repetir o saltarse elementos cuando varias tenían el mismo valor en el campo de orden. Ahora desempata por id y el orden es estable entre páginas. Con pruebas.',
@@ -58,13 +65,6 @@ export const fusionados: PullRequest[] = [
 ];
 
 export const enRevision: PullRequest[] = [
-    {
-        repo: 'AlexSergey/rockpack', numero: 117, lenguaje: 'TypeScript', fecha: '2026-11-17',
-        texto: {
-            es: 'El ejecutor de pruebas ignoraba -t, -u, --bail y --ci sin avisar. Ahora los pasa a Jest con una lista blanca, y el número de --bail ya no se confunde con una ruta.',
-            en: 'The test runner silently dropped -t, -u, --bail and --ci. It now forwards them to Jest through an allowlist, and the --bail count is no longer read as a path.',
-        },
-    },
     {
         repo: 'ianare/exif-py', numero: 259, lenguaje: 'Python', fecha: '2026-07-17',
         texto: {
