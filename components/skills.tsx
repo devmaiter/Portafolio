@@ -83,7 +83,7 @@ const devCategories = (lang: 'en' | 'es') => [
     icon: <Bot className="w-5 h-5" />,
     skills: [
       { name: "Claude Code", icon: <TerminalIcon className="w-5 h-5" />, color: "#d97757" },
-      { name: lang === 'en' ? 'SDLC Agents' : 'Agentes SDLC', icon: <Bot className="w-5 h-5" />, color: "#00ff88" },
+      { name: lang === 'en' ? 'AI agents' : 'Agentes de IA', icon: <Bot className="w-5 h-5" />, color: "#00ff88" },
       { name: "Playwright", icon: <TerminalIcon className="w-5 h-5" />, color: "#2ead33" },
       { name: "GitLab CI/CD", icon: <GitIcon className="w-5 h-5" />, color: "#fc6d26" },
       { name: "Docker", icon: <DockerIcon className="w-5 h-5" />, color: "#2496ed" },

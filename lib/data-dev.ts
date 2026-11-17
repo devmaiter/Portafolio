@@ -16,7 +16,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Full-Stack Developer",
-            description: "4 years developing at Konrradf, a software company, taking its products to production: 6,354 commits and 369 merged MRs with a 97% merge rate — and an AI-agent SDLC pipeline with human review on every delivery.",
+            description: "4 years developing at Konrradf, a software company, taking its products to production: 6,354 commits and 369 merged MRs with a 97% merge rate — and a system of AI agents that helps the team ship more, with a person approving every change.",
             availableText: "Available for new projects",
             contactButton: "Contact Me"
         },
@@ -59,14 +59,12 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "AI-agent SDLC pipeline",
+                    title: "AI agents for a development team — more deliveries, same quality",
                     context: "Konrradf · 2024–2026",
-                    metric: { value: "+34%", label: "merged MRs from 2024 to 2025, with a 97% merge rate" },
-                    description: "The system I design and maintain so a small team automates the full lifecycle of a GitLab issue with AI agents: a central repository of shared skills, agents and CI where agents read the issue, propose a plan, implement on a branch following team conventions, review each other and run Playwright tests — with human review before every merge.",
-                    tags: ["Claude Code", "AI Agents", "GitLab CI/CD", "Playwright", "SDLC"],
+                    metric: { value: "+34%", label: "more changes shipped to production in 2025 than in 2024, with 97% approved" },
+                    description: "Problem: a small team was maintaining several products at once, and every task was done start to finish by hand. Solution: I built a system where AI agents read the task, propose a plan, write the change, review it and test it, and a person approves it before it reaches production. Result: the team went from 101 deliveries in 2024 to 135 in 2025, with 97% approved.",
+                    tags: ["Claude Code", "AI Agents", "GitLab CI/CD", "Playwright"],
                     visual: "mrs-por-ano",
-                    link: "caso-pipeline/",
-                    linkLabel: "Case study",
                     featured: true
                 },
                 {
@@ -113,11 +111,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     tags: ["Full-Stack", "TypeScript", "CI/CD", "GitLab"],
                     tagColor: "#d946ef"
                 }
-            ],
-            caseStudy: {
-                label: "See verified GitLab metrics and the full case study →",
-                url: "caso-pipeline/"
-            }
+            ]
         },
         education: {
             title: "Education",
@@ -132,7 +126,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     institution: "Production as classroom — self-taught engineering",
                     degree: "Continuous software engineering training",
                     period: "2019 - Present",
-                    description: "Learning proven in production: 4 years building the products of a software company, a proprietary architecture mastered layer by layer, and an AI-agent SDLC pipeline designed from scratch."
+                    description: "Learning proven in production: 4 years building the products of a software company, a proprietary architecture mastered layer by layer, and a system of AI agents for the team, built from scratch."
                 }
             ]
         },
@@ -162,7 +156,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Desarrollador Full-Stack",
-            description: "4 años desarrollando en Konrradf, una empresa de software, llevando sus productos a producción: 6 354 commits y 369 MRs fusionados con 97 % de aceptación — y un pipeline SDLC con agentes de IA y revisión humana en cada entrega.",
+            description: "4 años desarrollando en Konrradf, una empresa de software, llevando sus productos a producción: 6 354 commits y 369 MRs fusionados con 97 % de aceptación — y un sistema de agentes de IA que ayuda al equipo a entregar más, con una persona aprobando cada cambio.",
             availableText: "Disponible para nuevos proyectos",
             contactButton: "Contáctame"
         },
@@ -205,14 +199,12 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     featured: true
                 },
                 {
-                    title: "Pipeline SDLC con agentes de IA",
+                    title: "Agentes de IA para un equipo de desarrollo — más entregas, misma calidad",
                     context: "Konrradf · 2024–2026",
-                    metric: { value: "+34 %", label: "MRs fusionados de 2024 a 2025, con 97 % de aceptación" },
-                    description: "El sistema que diseño y mantengo para que un equipo pequeño automatice el ciclo de vida completo de un issue de GitLab con agentes de IA: un repositorio central de skills, agentes y CI compartidos donde los agentes leen el issue, proponen un plan, implementan en una rama con las convenciones del equipo, se revisan entre sí y ejecutan pruebas Playwright, con revisión humana antes de cada merge.",
-                    tags: ["Claude Code", "Agentes IA", "GitLab CI/CD", "Playwright", "SDLC"],
+                    metric: { value: "+34 %", label: "más cambios llevados a producción en 2025 que en 2024, con 97 % aprobados" },
+                    description: "Problema: un equipo pequeño mantenía varios productos a la vez y cada tarea se hacía completa a mano. Solución: armé un sistema en el que agentes de IA leen la tarea, proponen un plan, escriben el cambio, lo revisan y lo prueban, y una persona lo aprueba antes de que salga a producción. Resultado: el equipo pasó de 101 entregas en 2024 a 135 en 2025, con 97 % aprobadas.",
+                    tags: ["Claude Code", "Agentes de IA", "GitLab CI/CD", "Playwright"],
                     visual: "mrs-por-ano",
-                    link: "caso-pipeline/",
-                    linkLabel: "Caso de estudio",
                     featured: true
                 },
                 {
@@ -259,11 +251,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     tags: ["Full-Stack", "TypeScript", "CI/CD", "GitLab"],
                     tagColor: "#d946ef"
                 }
-            ],
-            caseStudy: {
-                label: "Ver métricas verificadas de GitLab y el caso de estudio completo →",
-                url: "caso-pipeline/"
-            }
+            ]
         },
         education: {
             title: "Educación",
@@ -278,7 +266,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     institution: "La producción como aula — ingeniería autodidacta",
                     degree: "Formación continua en ingeniería de software",
                     period: "2019 - Presente",
-                    description: "Aprendizaje probado en producción: 4 años construyendo los productos de una empresa de software, una arquitectura propia dominada capa por capa y un pipeline SDLC con agentes de IA diseñado desde cero."
+                    description: "Aprendizaje probado en producción: 4 años construyendo los productos de una empresa de software, una arquitectura propia dominada capa por capa y un sistema de agentes de IA para el equipo, hecho desde cero."
                 }
             ]
         },

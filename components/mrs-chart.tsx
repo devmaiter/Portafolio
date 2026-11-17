@@ -12,8 +12,8 @@ const DATOS = [
 const MAX = 135
 
 const TEXTOS = {
-  es: { titulo: "MRs fusionados por año", nota: "2026: corte al 15 de julio.", mrs: "MRs fusionados", hasta: "hasta el 15 de julio" },
-  en: { titulo: "Merged MRs per year", nota: "2026: data up to July 15.", mrs: "merged MRs", hasta: "up to July 15" },
+  es: { titulo: "Cambios llevados a producción por año", nota: "2026: corte al 15 de julio.", mrs: "cambios llevados a producción", hasta: "hasta el 15 de julio" },
+  en: { titulo: "Changes shipped to production per year", nota: "2026: data up to July 15.", mrs: "changes shipped to production", hasta: "up to July 15" },
 }
 
 export function MrsChart({ language }: { language: Language }) {
