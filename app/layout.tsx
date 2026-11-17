@@ -28,7 +28,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Oscar Julián Osorio | Desarrollador Full-Stack · IA aplicada al desarrollo',
   description:
-    'Desarrollador full-stack con 4 años en Konrradf, una empresa de software: 6 354 commits, 369 MRs fusionados (97 % de aceptación) y un sistema de agentes de IA para su equipo. Bogotá, Colombia, remoto.',
+    'Desarrollador full-stack con 4 años en Konrradf, una empresa de software: 6 354 commits, 369 MRs fusionados (97 % de aceptación) y 4 proyectos propios probados en uso real. Bogotá, Colombia, remoto.',
   keywords: ['desarrollador full-stack', 'AI-assisted development', 'agentes IA', 'Claude Code', 'GitLab CI/CD', 'Playwright', 'TypeScript', 'React', 'Colombia', 'remoto'],
   authors: [{ name: 'Oscar Julián Osorio' }],
   openGraph: {

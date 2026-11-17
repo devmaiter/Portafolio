@@ -16,7 +16,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Full-Stack Developer",
-            description: "4 years developing at Konrradf, a software company, taking its products to production: 6,354 commits and 369 merged MRs with a 97% merge rate — and a system of AI agents that helps the team ship more, with a person approving every change.",
+            description: "4 years at Konrradf, a software company: 6,354 commits and 369 merged merge requests, with a 97% acceptance rate. Plus 4 projects of my own proven in real use: BackFlow at 2 festivals, Loop bought by an events company, a per-diem tool for events staff, and NetQuick, open source.",
             availableText: "Available for new projects",
             contactButton: "Contact Me"
         },
@@ -156,7 +156,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Desarrollador Full-Stack",
-            description: "4 años desarrollando en Konrradf, una empresa de software, llevando sus productos a producción: 6 354 commits y 369 MRs fusionados con 97 % de aceptación — y un sistema de agentes de IA que ayuda al equipo a entregar más, con una persona aprobando cada cambio.",
+            description: "4 años en Konrradf, una empresa de software: 6 354 commits y 369 merge requests fusionados, con 97 % de aceptación. Además, 4 proyectos propios probados en uso real: BackFlow en 2 festivales, Loop comprado por una empresa de eventos, una herramienta de viáticos para personal de eventos y NetQuick, de código abierto.",
             availableText: "Disponible para nuevos proyectos",
             contactButton: "Contáctame"
         },
