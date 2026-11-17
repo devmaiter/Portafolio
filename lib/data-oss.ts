@@ -14,6 +14,13 @@ export const urlPr = (p: PullRequest) => pr(p.repo, p.numero);
 
 export const fusionados: PullRequest[] = [
     {
+        repo: 'prod-forge/backend', numero: 46, lenguaje: 'TypeScript', fecha: '2026-11-17',
+        texto: {
+            es: 'La lista paginada de tareas podía repetir o saltarse elementos cuando varias tenían el mismo valor en el campo de orden. Ahora desempata por id y el orden es estable entre páginas. Con pruebas.',
+            en: 'The paginated todo list could repeat or skip items when several shared the same sort value. It now breaks ties by id, so the order is stable across pages. With tests.',
+        },
+    },
+    {
         repo: 'prod-forge/backend', numero: 41, lenguaje: 'TypeScript', fecha: '2026-11-15',
         texto: {
             es: 'El filtro «completed» de la API de tareas aceptaba cualquier valor y devolvía datos equivocados. Ahora solo acepta true o false y responde 422 con lo demás. Con pruebas.',
@@ -51,6 +58,13 @@ export const fusionados: PullRequest[] = [
 ];
 
 export const enRevision: PullRequest[] = [
+    {
+        repo: 'AlexSergey/rockpack', numero: 117, lenguaje: 'TypeScript', fecha: '2026-11-17',
+        texto: {
+            es: 'El ejecutor de pruebas ignoraba -t, -u, --bail y --ci sin avisar. Ahora los pasa a Jest con una lista blanca, y el número de --bail ya no se confunde con una ruta.',
+            en: 'The test runner silently dropped -t, -u, --bail and --ci. It now forwards them to Jest through an allowlist, and the --bail count is no longer read as a path.',
+        },
+    },
     {
         repo: 'ianare/exif-py', numero: 259, lenguaje: 'Python', fecha: '2026-07-17',
         texto: {
