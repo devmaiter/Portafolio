@@ -24,7 +24,7 @@ function useInView(threshold = 0.3) {
 
 /* ── Stats shown in footer ──────────────────────────────── */
 const STATS = [
-  { target: 3, suffix: '+', labelEn: 'Years Exp.', labelEs: 'Años Exp.' },
+  { target: 4, suffix: '', labelEn: 'Years Exp.', labelEs: 'Años Exp.' },
   { target: 369, suffix: '', labelEn: 'Merged MRs', labelEs: 'MRs fusionados' },
   { target: 3, suffix: '', labelEn: 'Profiles', labelEs: 'Perfiles' },
   { target: 100, suffix: '%', labelEn: 'Remote Ready', labelEs: 'Remoto' },

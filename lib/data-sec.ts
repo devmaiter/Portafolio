@@ -14,7 +14,7 @@ export const secData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Secure Software & Networks",
-            description: "Developer who designs with security in mind: threat modeling, failure analysis and hardening of the tools I ship — from Windows network utilities to modern authentication.",
+            description: "Developer who designs with security in mind: threat modeling, failure analysis and hardening of the tools I ship — from Windows network utilities to endpoint security support with Bitdefender.",
             availableText: "Available for projects",
             contactButton: "Contact Me"
         },
@@ -91,7 +91,7 @@ export const secData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Software y Redes Seguras",
-            description: "Desarrollador que diseña pensando en seguridad: modelado de amenazas, análisis de fallas y endurecimiento de las herramientas que entrego — desde utilidades de red para Windows hasta autenticación moderna.",
+            description: "Desarrollador que diseña pensando en seguridad: modelado de amenazas, análisis de fallas y endurecimiento de las herramientas que entrego — desde utilidades de red para Windows hasta soporte de seguridad de equipos con Bitdefender.",
             availableText: "Disponible para proyectos",
             contactButton: "Contáctame"
         },

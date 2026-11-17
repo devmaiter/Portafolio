@@ -16,7 +16,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Full-Stack Developer",
-            description: "3+ years keeping a commercial platform in production: 6,354 commits, 369 merged MRs with a 97% merge rate — and an AI-agent SDLC pipeline with human review on every delivery.",
+            description: "4 years developing at Konrradf, a software company, taking its products to production: 6,354 commits and 369 merged MRs with a 97% merge rate — and an AI-agent SDLC pipeline with human review on every delivery.",
             availableText: "Available for new projects",
             contactButton: "Contact Me"
         },
@@ -109,7 +109,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     role: "Full-Stack Developer",
                     period: "Nov 2022 - Present",
                     location: "Colombia (Remote)",
-                    description: "Building and maintaining Konrradf's product platform end-to-end on a proprietary architecture, no heavy frameworks, full control over every layer. 6,354 commits and 369 merged Merge Requests since 2023, with a self-publishing CI pipeline.",
+                    description: "Building and maintaining Konrradf's software products end-to-end on a proprietary architecture, no heavy frameworks, full control over every layer. 6,354 commits and 369 merged Merge Requests since 2023, with a self-publishing CI pipeline.",
                     tags: ["Full-Stack", "TypeScript", "CI/CD", "GitLab"],
                     tagColor: "#d946ef"
                 }
@@ -132,7 +132,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     institution: "Production as classroom — self-taught engineering",
                     degree: "Continuous software engineering training",
                     period: "2019 - Present",
-                    description: "Learning proven in production: 3+ years sustaining a commercial platform, a proprietary architecture mastered layer by layer, and an AI-agent SDLC pipeline designed from scratch."
+                    description: "Learning proven in production: 4 years building the products of a software company, a proprietary architecture mastered layer by layer, and an AI-agent SDLC pipeline designed from scratch."
                 }
             ]
         },
@@ -162,7 +162,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
         hero: {
             title: "Oscar Julián Osorio",
             subtitle: "Desarrollador Full-Stack",
-            description: "3+ años sosteniendo una plataforma comercial en producción: 6 354 commits, 369 MRs fusionados con 97 % de aceptación — y un pipeline SDLC con agentes de IA y revisión humana en cada entrega.",
+            description: "4 años desarrollando en Konrradf, una empresa de software, llevando sus productos a producción: 6 354 commits y 369 MRs fusionados con 97 % de aceptación — y un pipeline SDLC con agentes de IA y revisión humana en cada entrega.",
             availableText: "Disponible para nuevos proyectos",
             contactButton: "Contáctame"
         },
@@ -255,7 +255,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     role: "Desarrollador Full-Stack",
                     period: "Nov 2022 - Presente",
                     location: "Colombia (Remoto)",
-                    description: "Construyo y mantengo la plataforma de productos de Konrradf de punta a punta, sobre una arquitectura propia sin frameworks pesados, con control total en cada capa. 6 354 commits y 369 Merge Requests fusionados desde 2023, con CI que publica solo.",
+                    description: "Construyo y mantengo de punta a punta los productos de software de Konrradf, sobre una arquitectura propia sin frameworks pesados, con control total en cada capa. 6 354 commits y 369 Merge Requests fusionados desde 2023, con CI que publica solo.",
                     tags: ["Full-Stack", "TypeScript", "CI/CD", "GitLab"],
                     tagColor: "#d946ef"
                 }
@@ -278,7 +278,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     institution: "La producción como aula — ingeniería autodidacta",
                     degree: "Formación continua en ingeniería de software",
                     period: "2019 - Presente",
-                    description: "Aprendizaje probado en producción: 3+ años sosteniendo una plataforma comercial, una arquitectura propia dominada capa por capa y un pipeline SDLC con agentes de IA diseñado desde cero."
+                    description: "Aprendizaje probado en producción: 4 años construyendo los productos de una empresa de software, una arquitectura propia dominada capa por capa y un pipeline SDLC con agentes de IA diseñado desde cero."
                 }
             ]
         },
