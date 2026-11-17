@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loop — Integración AV para un club · Oscar Julián Osorio Romero</title>
+<meta name="description" content="Caso de estudio: Loop une video (Resolume), luces (Onyx) y audio (Reaper) en un panel de tablet. Diseñado, programado e instalado por Oscar Julián Osorio Romero; usado en un bar con música en vivo y comprado por Multiaudio.">
+<meta property="og:title" content="Loop — Integración AV para un club">
+<meta property="og:description" content="Las luces siguen al video y a la música, y todo el show se maneja desde una tablet. De la prueba en laboratorio a un producto que compró una empresa de eventos.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://devmaiter.github.io/Portafolio/caso-loop/">
+<meta property="og:image" content="https://devmaiter.github.io/Portafolio/caso-loop/img/bar-montaje.jpg">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Oscar Julián Osorio Romero">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Oscar Julián Osorio Romero">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "Loop",
+  "description": "Integración AV para shows en vivo: Resolume, Onyx y Reaper controlados desde un panel web en tablet.",
+  "programmingLanguage": "TypeScript",
+  "runtimePlatform": "Node.js",
+  "codeRepository": "https://github.com/devmaiter/loop-av-middleware",
+  "version": "3.0.0",
+  "dateCreated": "2026-03-14",
+  "dateModified": "2026-11-08",
+  "author": {
+    "@type": "Person",
+    "name": "Oscar Julián Osorio Romero",
+    "url": "https://devmaiter.github.io/Portafolio/",
+    "sameAs": [
+      "https://github.com/devmaiter",
+      "https://gitlab.com/oscar.osorio.kf",
+      "https://www.linkedin.com/in/oscar-julian-osorio-romero-369689229"
+    ]
+  }
+}
+</script>
+<link rel="canonical" href="https://devmaiter.github.io/Portafolio/caso-loop/">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230b0b0c'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23ffb020'/%3E%3C/svg%3E">
+<link rel="preload" as="image" href="img/bar-montaje.jpg" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;900&family=Permanent+Marker&family=Libre+Franklin:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg:    #0b0b0c;
+    --ink:   #efede6;
+    --ink-2: #a9a69c;
+    --dim:   #6f6c64;
+    --amber: #ffb020;
+    --tape:  #e9e4d2;
+    --red:   #ff3b30;
+    --stencil: "Big Shoulders Stencil Display", Impact, sans-serif;
+    --marker:  "Permanent Marker", "Comic Sans MS", cursive;
+    --body:    "Libre Franklin", system-ui, sans-serif;
+    --mono:    ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 17px/1.65 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: var(--amber); text-underline-offset: 4px; }
+  a:focus-visible, video:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 20px; }
+  strong { color: var(--ink); font-weight: 600; }
+
+  /* ── Portada ── */
+  .hero { position: relative; min-height: min(90vh, 780px); display: flex; align-items: flex-end; overflow: hidden; }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; opacity: .55; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,11,12,.15), rgba(11,11,12,.4) 50%, var(--bg)); }
+  .hero .wrap { position: relative; z-index: 1; padding-bottom: 40px; width: 100%; }
+  .back { position: absolute; top: 18px; left: 20px; z-index: 2; font: .85rem var(--body); color: var(--ink-2); text-decoration: none; }
+  .back:hover { color: var(--amber); }
+  .live { font: .85rem var(--body); color: var(--ink); display: inline-flex; align-items: center; gap: 8px; }
+  .live i { width: 9px; height: 9px; border-radius: 50%; background: var(--red); box-shadow: 0 0 12px var(--red); animation: rec 2s infinite; }
+  @keyframes rec { 50% { opacity: .35; } }
+  @media (prefers-reduced-motion: reduce) { .live i { animation: none; } }
+  h1 { font: 900 clamp(3.2rem, 13vw, 8rem)/.95 var(--stencil); text-transform: uppercase; margin: 14px 0 18px; }
+  h1 em { font-style: normal; color: var(--amber); }
+  .hero p { max-width: 50ch; font-size: 1.15rem; margin: 0; }
+
+  /* ── Cinta gaffer como etiqueta de sección ── */
+  .tape {
+    display: inline-block; font: 1.05rem var(--marker); color: #1a1a1a; background: var(--tape);
+    padding: 4px 18px 3px; transform: rotate(-2deg); margin: 0 0 18px;
+    clip-path: polygon(0 8%, 3% 0, 97% 4%, 100% 0, 99% 92%, 96% 100%, 4% 96%, 1% 100%);
+  }
+  section:nth-of-type(even) .tape { transform: rotate(1.5deg); }
+  section { padding: 84px 0 0; }
+  h2 { font: 900 clamp(2.2rem, 6vw, 3.6rem)/.95 var(--stencil); text-transform: uppercase; margin: 0 0 20px; }
+  section p { color: var(--ink-2); max-width: 62ch; }
+
+  /* ── Cifras sueltas ── */
+  .stats { display: flex; flex-wrap: wrap; gap: 28px 56px; margin: 56px 0 0; padding: 0; list-style: none; }
+  .stats li { max-width: 12ch; color: var(--ink-2); font-size: .95rem; line-height: 1.35; }
+  .stats b { display: block; font: 900 clamp(3rem, 8vw, 4.6rem)/1 var(--stencil); color: var(--amber); }
+
+  /* ── Pedido → entregado ── */
+  .ask { margin: 30px 0 0; padding: 0; list-style: none; }
+  .ask li { display: grid; grid-template-columns: 1fr auto 1fr; gap: 18px; align-items: baseline; padding: 14px 0; }
+  .ask li + li { background: linear-gradient(90deg, transparent, rgba(255,176,32,.25), transparent) top / 100% 1px no-repeat; }
+  .ask .q { font: italic 1.05rem var(--body); color: var(--ink-2); }
+  .ask .arrow { font: 900 1.6rem var(--stencil); color: var(--amber); }
+  .ask .a { color: var(--ink); }
+  @media (max-width: 640px) { .ask li { grid-template-columns: 1fr; gap: 2px; } .ask .arrow { display: none; } .ask .a::before { content: "→ "; color: var(--amber); } }
+
+  /* ── Rol como checklist de montaje a mano ── */
+  .checks { columns: 2 260px; column-gap: 48px; margin: 26px 0 0; padding: 0; list-style: none; }
+  .checks li { break-inside: avoid; padding: 0 0 18px 38px; position: relative; color: var(--ink-2); }
+  .checks li::before { content: "✓"; position: absolute; left: 0; top: -6px; font: 1.6rem var(--marker); color: var(--amber); transform: rotate(-8deg); }
+  .checks b { display: block; color: var(--ink); font-weight: 600; }
+
+  /* ── Evidencia ── */
+  .film { margin: 30px 0 0; }
+  .film video { display: block; width: 100%; height: auto; aspect-ratio: 848 / 480; background: #000; border-radius: 2px; }
+  .note { font: 1rem var(--marker); color: var(--amber); margin: 10px 0 0; transform: rotate(-1deg); }
+  .pinned { display: grid; grid-template-columns: 1fr 1.2fr; gap: 36px; align-items: center; margin-top: 46px; }
+  .pinned img { width: 100%; height: auto; display: block; transform: rotate(-2.5deg); box-shadow: 0 18px 40px rgba(0,0,0,.6); border: 8px solid #f1eee4; border-bottom-width: 34px; }
+  @media (max-width: 680px) { .pinned { grid-template-columns: 1fr; } .pinned img { max-width: 300px; margin: 0 auto; } }
+
+  /* ── Cronología ── */
+  .timeline { margin: 30px 0 0 8px; padding: 0; list-style: none; border-left: 3px solid var(--amber); }
+  .timeline li { position: relative; padding: 0 0 30px 28px; }
+  .timeline li::before { content: ""; position: absolute; left: -9px; top: 10px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 3px solid var(--amber); }
+  .timeline li.now::before { background: var(--amber); box-shadow: 0 0 14px var(--amber); }
+  .timeline .when { font: 900 1.7rem/1.1 var(--stencil); text-transform: uppercase; color: var(--ink); display: block; }
+  .timeline p { margin: 2px 0 0; }
+
+  /* ── Diagrama ── */
+  .diagram { display: block; width: 100%; height: auto; margin-top: 26px; }
+  .diagram text { font-family: var(--body); }
+  .diagram .box { fill: none; stroke: var(--ink-2); stroke-width: 1.5; }
+  .diagram .core { fill: var(--amber); }
+  .diagram .label { fill: var(--ink); font-size: 15px; font-weight: 600; }
+  .diagram .sub { fill: var(--dim); font-size: 12px; }
+  .diagram .core-label { fill: #111; font: 900 26px var(--stencil); }
+  .diagram .core-sub { fill: #111; font-size: 11px; }
+  .diagram .wire { stroke: var(--amber); stroke-width: 2; fill: none; }
+  .diagram .proto { fill: var(--amber); font: 13px var(--marker); }
+  .scroll-x { overflow-x: auto; }
+  .scroll-x .diagram-h { min-width: 620px; }
+  .diagram-v { display: none; }
+  @media (max-width: 640px) {
+    .diagram-h { display: none; }
+    .diagram-v { display: block; width: 100%; max-width: 420px; margin: 0 auto; }
+  }
+
+  /* ── Código ── */
+  .code-h { font: 1rem var(--marker); color: var(--ink-2); margin: 46px 0 8px; }
+  pre { margin: 0; padding: 20px 22px; background: #141416; border-radius: 2px; overflow-x: auto; font: .86rem/1.7 var(--mono); color: var(--ink); }
+  pre .c { color: var(--dim); } pre .k { color: var(--amber); } pre .ok { color: #3ddc84; }
+
+  /* ── Decisiones ── */
+  .decisions { margin: 30px 0 0; padding: 0; list-style: none; }
+  .decisions li { display: grid; grid-template-columns: 70px 1fr; gap: 12px; padding: 0 0 28px; }
+  .decisions .n { font: 900 3rem/0.9 var(--stencil); color: rgba(255,176,32,.45); }
+  .decisions b { display: block; color: var(--ink); font-weight: 600; font-size: 1.05rem; }
+  .decisions span { color: var(--ink-2); }
+
+  /* ── Rider en prosa ── */
+  .rider { margin: 26px 0 0; }
+  .rider div { padding: 10px 0; }
+  .rider dt { font: 1rem var(--marker); color: var(--amber); }
+  .rider dd { margin: 0; color: var(--ink-2); max-width: 64ch; }
+
+  /* ── Cierre ── */
+  .cta { margin-top: 110px; padding: 70px 0 90px; background: var(--amber); color: #111; }
+  .cta h2 { color: #111; }
+  .cta p { color: #2a2414; max-width: 56ch; font-size: 1.1rem; margin: 0 0 26px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: center; }
+  .btn { font: 600 1rem var(--body); color: #111; }
+  .btn.solid { background: #111; color: var(--amber); text-decoration: none; padding: 13px 22px; border-radius: 2px; }
+  .cta a:focus-visible { outline-color: #111; }
+
+  /* ── Pie ── */
+  .foot { padding: 34px 0 40px; }
+  .foot .who { margin: 0; color: var(--ink); font-weight: 600; }
+  .foot .who span { color: var(--dim); font-weight: 400; }
+  .links { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 10px 0 0; padding: 0; list-style: none; }
+  .links a { color: var(--ink-2); }
+  .links a:hover { color: var(--amber); }
+  .foot .meta { margin: 18px 0 0; font-size: .8rem; color: var(--dim); }
+  ::selection { background: var(--amber); color: #111; }
+</style>
+</head>
+<body>
+
+<a class="back" href="../">← Oscar Julián Osorio Romero · portafolio</a>
+
+<header class="hero">
+  <img src="img/bar-montaje.jpg" width="1220" height="1626" fetchpriority="high" alt="El bar con la pantalla de video al fondo del escenario y el aro de luces en el techo">
+  <div class="wrap">
+    <span class="live"><i aria-hidden="true"></i>En uso · v3.0.0</span>
+    <h1>Loop<br><em>video, luces y audio</em><br>en una tablet</h1>
+    <p>Un bar quería que sus luces siguieran al video y a la música. Diseñé, programé e
+      instalé el software que conecta las tres consolas. Después lo compró una empresa de
+      eventos.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <ul class="stats">
+      <li><b>3</b>programas que antes no se hablaban</li>
+      <li><b>4</b>protocolos: OSC, Art-Net, UDP y Socket.IO</li>
+      <li><b>12/12</b>pruebas automáticas en verde</li>
+      <li><b>1</b>ejecutable: se instala copiando una carpeta</li>
+    </ul>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">el encargo</span>
+      <h2>Lo que pidió el cliente</h2>
+      <p>En el bar, el video (Resolume), las luces (Onyx) y el audio (Reaper) corrían en
+        programas y equipos separados. Cada cambio de ambiente necesitaba a alguien en cada
+        consola, y las luces no tenían idea de lo que pasaba en la pantalla.</p>
+      <ul class="ask">
+        <li><span class="q">"Que las luces reaccionen a la música"</span><span class="arrow" aria-hidden="true">→</span><span class="a">Los estrobos siguen en tiempo real a la capa de video que se mueve con la música</span></li>
+        <li><span class="q">"Que sigan lo que pasa en la pantalla"</span><span class="arrow" aria-hidden="true">→</span><span class="a">Loop lee el color del video y lo muestra en el panel</span></li>
+        <li><span class="q">"No ir de consola en consola"</span><span class="arrow" aria-hidden="true">→</span><span class="a">Escenas, flashes y pistas desde una tablet, o desde varias a la vez</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">mi rol</span>
+      <h2>De punta a punta, solo</h2>
+      <ul class="checks">
+        <li><b>Levantamiento</b>Hablé con el dueño y bajé el pedido a reglas concretas.</li>
+        <li><b>Arquitectura</b>Un programa en el medio que traduce entre protocolos.</li>
+        <li><b>Código</b>Backend en TypeScript, panel web y pruebas.</li>
+        <li><b>Programación de luces</b>Cuelists y efectos en Onyx para que respondieran.</li>
+        <li><b>Instalación</b>Montaje en el bar y ajuste durante los shows.</li>
+        <li><b>Producto</b>Lo llevé a una v3 que otra empresa pudiera usar.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">funcionando</span>
+      <h2>La prueba</h2>
+      <p>En el laboratorio, antes de instalarlo: suena la música, Resolume pone el video y en
+        la vista 3D de Onyx las luces responden.</p>
+      <figure class="film">
+        <video src="img/lab.mp4" poster="img/lab.jpg" width="848" height="480" controls muted loop playsinline preload="none" aria-label="Prueba de Loop en laboratorio"></video>
+        <figcaption class="note">13 de marzo de 2026 · el video va sin sonido</figcaption>
+      </figure>
+      <div class="pinned">
+        <img src="img/luces-onyx.jpg" width="1220" height="1626" loading="lazy" alt="Portátil con Onyx abierto, programando los efectos de las cabezas móviles">
+        <div>
+          <p class="note" style="margin:0 0 8px">25 de abril, en el bar</p>
+          <p>Programando en Onyx los efectos de las cabezas móviles: la otra mitad del
+            trabajo. El software manda la orden; la consola tiene que estar lista para
+            responder con algo que se vea bien.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">cronología</span>
+      <h2>De prototipo a producto</h2>
+      <ol class="timeline">
+        <li><span class="when">13 mar 2026</span><p>Prueba en laboratorio con las tres consolas conectadas.</p></li>
+        <li><span class="when">14 mar 2026</span><p><strong>v1.0.0</strong>: primera versión funcionando en el bar.</p></li>
+        <li><span class="when">Abril</span><p>Programación de luces y ajuste en el sitio, con shows en vivo.</p></li>
+        <li class="now"><span class="when">8 nov 2026</span><p><strong>v3.0.0</strong>: producto para Multiaudio. Configuración en un archivo, panel sin internet, PIN, estado compartido entre tablets, pruebas y un .exe listo para copiar.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">cómo funciona</span>
+      <h2>Un traductor en el medio</h2>
+      <p>Cada programa habla su propio idioma. Loop los escucha, aplica las reglas del show y
+        mantiene un solo estado que ven todas las tablets.</p>
+      <div class="scroll-x">
+        <svg class="diagram diagram-h" viewBox="0 0 720 300" role="img" aria-labelledby="dg-t dg-d">
+          <title id="dg-t">Arquitectura de Loop</title>
+          <desc id="dg-d">Resolume envía opacidad por OSC y color por Art-Net a Loop. Loop envía comandos UDP a Onyx, OSC a Reaper y UDP al PC de audio, y se comunica con las tablets por Socket.IO.</desc>
+          <rect class="box" x="10" y="40" width="170" height="70" rx="2"/>
+          <text class="label" x="95" y="70" text-anchor="middle">Resolume</text>
+          <text class="sub" x="95" y="90" text-anchor="middle">video</text>
+          <rect class="box" x="10" y="190" width="170" height="70" rx="2"/>
+          <text class="label" x="95" y="220" text-anchor="middle">Tablets</text>
+          <text class="sub" x="95" y="240" text-anchor="middle">panel web, con PIN</text>
+          <rect class="core" x="280" y="100" width="160" height="100" rx="2"/>
+          <text class="core-label" x="360" y="152" text-anchor="middle">LOOP</text>
+          <text class="core-sub" x="360" y="174" text-anchor="middle">loop.exe + config</text>
+          <rect class="box" x="540" y="20" width="170" height="62" rx="2"/>
+          <text class="label" x="625" y="47" text-anchor="middle">Onyx</text>
+          <text class="sub" x="625" y="66" text-anchor="middle">luces</text>
+          <rect class="box" x="540" y="119" width="170" height="62" rx="2"/>
+          <text class="label" x="625" y="146" text-anchor="middle">Reaper</text>
+          <text class="sub" x="625" y="165" text-anchor="middle">audio</text>
+          <rect class="box" x="540" y="218" width="170" height="62" rx="2"/>
+          <text class="label" x="625" y="245" text-anchor="middle">PC de audio</text>
+          <text class="sub" x="625" y="264" text-anchor="middle">presets</text>
+          <path class="wire" d="M180 75 C 230 75, 230 125, 280 125"/>
+          <text class="proto" x="182" y="56">OSC + Art-Net</text>
+          <path class="wire" d="M180 225 C 230 225, 230 175, 280 175"/>
+          <text class="proto" x="190" y="272">Socket.IO</text>
+          <path class="wire" d="M440 125 C 490 125, 490 51, 540 51"/>
+          <text class="proto" x="468" y="82">UDP</text>
+          <path class="wire" d="M440 150 L 540 150"/>
+          <text class="proto" x="472" y="142">OSC</text>
+          <path class="wire" d="M440 175 C 490 175, 490 249, 540 249"/>
+          <text class="proto" x="468" y="226">UDP</text>
+        </svg>
+        <svg class="diagram diagram-v" viewBox="0 0 360 450" role="img" aria-labelledby="dgv-t dgv-d">
+          <title id="dgv-t">Arquitectura de Loop</title>
+          <desc id="dgv-d">Arriba entran Resolume, por OSC y Art-Net, y las tablets, por Socket.IO. En el medio está Loop. Abajo salen comandos UDP a Onyx, OSC a Reaper y UDP al PC de audio.</desc>
+          <rect class="box" x="10" y="10" width="160" height="64" rx="2"/>
+          <text class="label" x="90" y="38" text-anchor="middle">Resolume</text>
+          <text class="sub" x="90" y="58" text-anchor="middle">video</text>
+          <rect class="box" x="190" y="10" width="160" height="64" rx="2"/>
+          <text class="label" x="270" y="38" text-anchor="middle">Tablets</text>
+          <text class="sub" x="270" y="58" text-anchor="middle">panel web, con PIN</text>
+          <path class="wire" d="M90 74 C 90 122, 150 122, 150 170"/>
+          <text class="proto" x="6" y="142">OSC + Art-Net</text>
+          <path class="wire" d="M270 74 C 270 122, 210 122, 210 170"/>
+          <text class="proto" x="354" y="142" text-anchor="end">Socket.IO</text>
+          <rect class="core" x="100" y="170" width="160" height="96" rx="2"/>
+          <text class="core-label" x="180" y="222" text-anchor="middle">LOOP</text>
+          <text class="core-sub" x="180" y="244" text-anchor="middle">loop.exe + config</text>
+          <path class="wire" d="M150 266 C 150 323, 58 323, 58 380"/>
+          <text class="proto" x="30" y="334" text-anchor="middle">UDP</text>
+          <path class="wire" d="M180 266 L 180 380"/>
+          <text class="proto" x="188" y="330">OSC</text>
+          <path class="wire" d="M210 266 C 210 323, 302 323, 302 380"/>
+          <text class="proto" x="330" y="334" text-anchor="middle">UDP</text>
+          <rect class="box" x="4" y="380" width="108" height="64" rx="2"/>
+          <text class="label" x="58" y="408" text-anchor="middle">Onyx</text>
+          <text class="sub" x="58" y="428" text-anchor="middle">luces</text>
+          <rect class="box" x="126" y="380" width="108" height="64" rx="2"/>
+          <text class="label" x="180" y="408" text-anchor="middle">Reaper</text>
+          <text class="sub" x="180" y="428" text-anchor="middle">audio</text>
+          <rect class="box" x="248" y="380" width="108" height="64" rx="2"/>
+          <text class="label" x="302" y="408" text-anchor="middle">PC de audio</text>
+          <text class="sub" x="302" y="428" text-anchor="middle">presets</text>
+        </svg>
+      </div>
+
+      <p class="code-h">así siguen las luces al video · src/show.ts</p>
+<pre><code><span class="c">/** La opacidad de la capa de video maneja los estrobos. */</span>
+<span class="k">onOpacity</span>(opacity: number): void {
+  this.markResolumeOnline();
+  <span class="k">if</span> (!this.state.automation) <span class="k">return</span>;
+
+  <span class="k">const</span> level = opacityToDmx(opacity);
+  <span class="k">if</span> (level === this.lastStrobe) <span class="k">return</span>;   <span class="c">// no inundar la red</span>
+  this.lastStrobe = level;
+  this.lights.setLevel(this.config.onyx.strobeCuelist, level);
+}</code></pre>
+
+      <p class="code-h">y así se comprueba · npm test</p>
+<pre><code><span class="ok">✔</span> la opacidad mueve los estrobos solo si cambia y si la automatización está activa
+<span class="ok">✔</span> los botones usan los comandos de la configuración
+<span class="ok">✔</span> rechaza botones y pistas que no existen
+<span class="ok">✔</span> el estado de mute es uno solo para todas las tablets
+<span class="c">…</span>
+<span class="c">ℹ</span> tests 12  <span class="ok">pass 12</span>  fail 0</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">decisiones</span>
+      <h2>Pensado para un show en vivo</h2>
+      <p>En un show no hay "volver a intentar". Estas decisiones salen de eso:</p>
+      <ol class="decisions">
+        <li><span class="n">01</span><div><b>La tablet manda botones, no comandos.</b>
+          <span>El panel dice "escena 3" y el servidor decide qué sale según la configuración. Alguien en el wifi del club no puede mandarle cualquier cosa a las luces.</span></div></li>
+        <li><span class="n">02</span><div><b>Nada destructivo al arrancar.</b>
+          <span>Si el PC se reinicia en pleno show, Loop vuelve sin tocar lo que está en escena. Limpiar las luces pide un segundo toque.</span></div></li>
+        <li><span class="n">03</span><div><b>Funciona sin internet.</b>
+          <span>El panel no descarga nada de afuera: en un club la red suele ser solo local.</span></div></li>
+        <li><span class="n">04</span><div><b>Un paquete mal formado no tumba el show.</b>
+          <span>Cada dato que llega por la red se valida; un mensaje OSC roto se descarta en vez de cerrar el programa.</span></div></li>
+        <li><span class="n">05</span><div><b>La lógica no depende de los equipos.</b>
+          <span>Las reglas hablan con "luces" y "mezcla", no con Onyx o Reaper. Por eso se prueban sin equipos y se puede cambiar de consola sin reescribir el show.</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="tape">rider técnico</span>
+      <h2>Ficha técnica</h2>
+      <dl class="rider">
+        <div><dt>Lenguaje</dt><dd>TypeScript sobre Node.js.</dd></div>
+        <div><dt>Protocolos</dt><dd>OSC y Art-Net de entrada desde Resolume; UDP hacia Onyx y el PC de audio; OSC hacia Reaper; Socket.IO hacia las tablets.</dd></div>
+        <div><dt>Dependencias</dt><dd>Solo 3 en producción: express, osc y socket.io. El lector de Art-Net está escrito a mano.</dd></div>
+        <div><dt>Pruebas</dt><dd>12 con el test runner nativo de Node: reglas del show, configuración y paquetes Art-Net.</dd></div>
+        <div><dt>Entrega</dt><dd>Un solo ejecutable (esbuild + Node SEA) con un JSON de configuración que se valida al arrancar.</dd></div>
+        <div><dt>Seguridad</dt><dd>PIN opcional en el panel, solo botones definidos y validación de todo lo que llega por la red.</dd></div>
+        <div><dt>Clientes</dt><dd>Un bar con música en vivo, donde se instaló, y Multiaudio, empresa de producción de eventos que compró el software.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="cta">
+    <div class="wrap">
+      <h2>¿Tienes equipos que no se hablan?</h2>
+      <p>Integro hardware y software de eventos, y automatizo procesos de negocio. Escríbeme
+        y lo vemos.</p>
+      <div class="btns">
+        <a class="btn solid" href="mailto:f1000161620@gmail.com?subject=Integraci%C3%B3n%20AV">Escribirme</a>
+        <a class="btn" href="https://github.com/devmaiter/loop-av-middleware" target="_blank" rel="noopener">Ver el código</a>
+        <a class="btn" href="../">Ver el portafolio</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="who">Oscar Julián Osorio Romero <span>· Desarrollador Full-Stack · Colombia</span></p>
+    <ul class="links">
+      <li><a href="mailto:f1000161620@gmail.com">f1000161620@gmail.com</a></li>
+      <li><a href="https://github.com/devmaiter" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="https://gitlab.com/oscar.osorio.kf" target="_blank" rel="noopener">GitLab</a></li>
+      <li><a href="https://www.linkedin.com/in/oscar-julian-osorio-romero-369689229" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+    <p class="meta">Pruebas, versiones y fechas tomadas del repositorio el 11 de noviembre de 2026.</p>
+  </div>
+</footer>
+</body>
+</html>

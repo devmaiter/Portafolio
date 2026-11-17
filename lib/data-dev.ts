@@ -76,7 +76,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     description: "Middleware that ties Resolume, Onyx and Reaper together during a show: it listens to OSC, fires strobes and color over UDP and Art-Net, and gives the operator a web panel on a tablet. Version 3.0.0 ships as a Windows .exe with automated tests.",
                     tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
                     image: { src: "/proyectos/loop-bar.jpg", alt: "Loop running the lights in the bar" },
-                    link: "https://devmaiter.github.io/loop/",
+                    link: "caso-loop/",
                     linkLabel: "Case study",
                     github: "https://github.com/devmaiter/loop-av-middleware",
                     featured: true
@@ -222,7 +222,7 @@ export const devData: Record<'en' | 'es', ProfileData> = {
                     description: "Middleware que une Resolume, Onyx y Reaper durante un show: escucha OSC, dispara estrobos y color por UDP y Art-Net, y le da al operador un panel web en una tablet. La versión 3.0.0 se entrega como .exe de Windows, con pruebas automáticas.",
                     tags: ["TypeScript", "Node.js", "OSC", "Art-Net", "WebSockets"],
                     image: { src: "/proyectos/loop-bar.jpg", alt: "Loop manejando las luces en el bar" },
-                    link: "https://devmaiter.github.io/loop/",
+                    link: "caso-loop/",
                     linkLabel: "Caso de estudio",
                     github: "https://github.com/devmaiter/loop-av-middleware",
                     featured: true

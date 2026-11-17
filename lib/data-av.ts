@@ -76,7 +76,7 @@ export const avData: Record<'en' | 'es', ProfileData> = {
             ],
             caseStudy: {
                 label: "See the Loop case study: photos, video and code from the real bar →",
-                url: "https://devmaiter.github.io/loop/"
+                url: "caso-loop/"
             }
         },
         education: {
@@ -181,7 +181,7 @@ export const avData: Record<'en' | 'es', ProfileData> = {
             ],
             caseStudy: {
                 label: "Ver el caso de estudio de Loop: fotos, video y código del bar real →",
-                url: "https://devmaiter.github.io/loop/"
+                url: "caso-loop/"
             }
         },
         education: {
